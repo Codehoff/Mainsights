@@ -34,14 +34,14 @@ class _FlashcardsState extends State<Flashcards> {
 
   void _increasePoints() {
     dummyFlashcards[counter].points += 6;
-    print(dummyFlashcards[counter].points);
+    _increaseCounter();
   }
 
   void _decreasePoints() {
     dummyFlashcards[counter].points < 4
         ? dummyFlashcards[counter].points = 0
         : dummyFlashcards[counter].points -= 4;
-    print(dummyFlashcards[counter].points);
+    _increaseCounter();
   }
 
   @override
