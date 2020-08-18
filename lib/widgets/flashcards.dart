@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:swipedetector/swipedetector.dart';
 
 import "../dummy_data.dart";
+import "../models/flashcard.dart";
 
 class Flashcards extends StatefulWidget {
   @override
@@ -53,7 +54,7 @@ class _FlashcardsState extends State<Flashcards> {
         ),
         SizedBox(
           child: Text(
-            "Question ${counter + 1}/${dummyFlashcards.length}",
+            "Question ${counter + 1}/${dummyFlashcards.length} ${dummyFlashcards[counter].complexity}",
             style: TextStyle(fontSize: 20),
           ),
         ),
@@ -63,11 +64,20 @@ class _FlashcardsState extends State<Flashcards> {
         SwipeDetector(
           onSwipeLeft: _increaseCounter,
           onSwipeRight: _decreaseCounter,
+          swipeConfiguration: SwipeConfiguration(
+            horizontalSwipeMinDisplacement: 20,
+            horizontalSwipeMinVelocity: 50,
+          ),
           child: Container(
             height: 500,
             decoration: BoxDecoration(
               border: Border.all(
-                color: Colors.orange,
+                color: dummyFlashcards[counter].complexity == Complexity.Basic
+                    ? Colors.green
+                    : dummyFlashcards[counter].complexity ==
+                            Complexity.Indermediate
+                        ? Colors.orange
+                        : Colors.red,
                 width: 5,
               ),
             ),
