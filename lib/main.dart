@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/widgets/flashcards.dart';
+
+import './widgets/flashcards.dart';
+import './screens/homescreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(),
+      home: HomeScreen(),
     );
   }
 }
