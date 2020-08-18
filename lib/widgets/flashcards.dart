@@ -46,90 +46,105 @@ class _FlashcardsState extends State<Flashcards> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("${counter + 1}/${dummyFlashcards.length}")),
-      body: SwipeDetector(
-        onSwipeLeft: _increaseCounter,
-        onSwipeRight: _decreaseCounter,
-        child: Column(
-          children: [
-            Container(
-              height: 500,
-              decoration: BoxDecoration(
-                border: Border.all(
-                  color: Colors.orange,
-                  width: 5,
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.center,
-                child: switched == false
-                    ? Text(
-                        dummyFlashcards[counter].question,
-                        style: TextStyle(fontSize: 20),
-                      )
-                    : Text(
-                        dummyFlashcards[counter].answer,
-                        style: TextStyle(fontSize: 20),
-                      ),
+    return Column(
+      children: [
+        SizedBox(
+          height: 10,
+        ),
+        SizedBox(
+          child: Text(
+            "Question ${counter + 1}/${dummyFlashcards.length}",
+            style: TextStyle(fontSize: 20),
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        SwipeDetector(
+          onSwipeLeft: _increaseCounter,
+          onSwipeRight: _decreaseCounter,
+          child: Container(
+            height: 500,
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Colors.orange,
+                width: 5,
               ),
             ),
-            Row(children: [
-              SizedBox(
-                width: 120,
-                height: 80,
-                child: FlatButton(
-                  color: Colors.blue,
-                  textColor: Colors.white,
-                  disabledColor: Colors.grey,
-                  disabledTextColor: Colors.black,
-                  padding: EdgeInsets.all(8.0),
-                  splashColor: Colors.blueAccent,
-                  onPressed: _switchAnswer,
-                  child: Text(
-                    "Flip card",
-                    style: TextStyle(fontSize: 15.0),
-                  ),
+            child: Align(
+              alignment: Alignment.center,
+              child: switched == false
+                  ? Text(
+                      dummyFlashcards[counter].question,
+                      style: TextStyle(fontSize: 20),
+                    )
+                  : Text(
+                      dummyFlashcards[counter].answer,
+                      style: TextStyle(fontSize: 20),
+                    ),
+            ),
+          ),
+        ),
+        SizedBox(
+          height: 20,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            SizedBox(
+              width: 120,
+              height: 80,
+              child: FlatButton(
+                color: Colors.blue,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                splashColor: Colors.blueAccent,
+                onPressed: _switchAnswer,
+                child: Text(
+                  "Flip card",
+                  style: TextStyle(fontSize: 15.0),
                 ),
               ),
-              SizedBox(
-                width: 120,
-                height: 80,
-                child: FlatButton(
-                  color: Colors.red,
-                  textColor: Colors.white,
-                  disabledColor: Colors.grey,
-                  disabledTextColor: Colors.black,
-                  padding: EdgeInsets.all(8.0),
-                  splashColor: Colors.blueAccent,
-                  onPressed: _decreasePoints,
-                  child: Text(
-                    "Did not know",
-                    style: TextStyle(fontSize: 15.0),
-                  ),
+            ),
+            SizedBox(
+              width: 120,
+              height: 80,
+              child: FlatButton(
+                color: Colors.red,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                splashColor: Colors.blueAccent,
+                onPressed: _decreasePoints,
+                child: Text(
+                  "Did not know",
+                  style: TextStyle(fontSize: 15.0),
                 ),
               ),
-              SizedBox(
-                width: 120,
-                height: 80,
-                child: FlatButton(
-                  color: Colors.green,
-                  textColor: Colors.white,
-                  disabledColor: Colors.grey,
-                  disabledTextColor: Colors.black,
-                  padding: EdgeInsets.all(8.0),
-                  splashColor: Colors.blueAccent,
-                  onPressed: _increasePoints,
-                  child: Text(
-                    "I knew it",
-                    style: TextStyle(fontSize: 15.0),
-                  ),
+            ),
+            SizedBox(
+              width: 120,
+              height: 80,
+              child: FlatButton(
+                color: Colors.green,
+                textColor: Colors.white,
+                disabledColor: Colors.grey,
+                disabledTextColor: Colors.black,
+                padding: EdgeInsets.all(8.0),
+                splashColor: Colors.blueAccent,
+                onPressed: _increasePoints,
+                child: Text(
+                  "I knew it",
+                  style: TextStyle(fontSize: 15.0),
                 ),
               ),
-            ]),
+            ),
           ],
         ),
-      ),
+      ],
     );
   }
 }

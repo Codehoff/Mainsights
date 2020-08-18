@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import "./widgets/flashcards.dart";
+import 'package:flutter_complete_guide/widgets/flashcards.dart';
+import "./models/flashcard.dart";
 
 void main() => runApp(MyApp());
 
@@ -22,7 +22,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Questions'),
+        title: Text('Study Mode: Accounting'),
       ),
       body: Flashcards(),
     );
