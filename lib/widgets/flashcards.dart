@@ -54,7 +54,7 @@ class _FlashcardsState extends State<Flashcards> {
         ),
         SizedBox(
           child: Text(
-            "Question ${counter + 1}/${dummyFlashcards.length} ${dummyFlashcards[counter].complexity}",
+            "Question ${counter + 1}/${dummyFlashcards.length}",
             style: TextStyle(fontSize: 20),
           ),
         ),
@@ -65,8 +65,8 @@ class _FlashcardsState extends State<Flashcards> {
           onSwipeLeft: _increaseCounter,
           onSwipeRight: _decreaseCounter,
           swipeConfiguration: SwipeConfiguration(
-            horizontalSwipeMinDisplacement: 20,
-            horizontalSwipeMinVelocity: 50,
+            horizontalSwipeMinDisplacement: 10,
+            horizontalSwipeMinVelocity: 30,
           ),
           child: Container(
             height: 500,
@@ -81,17 +81,42 @@ class _FlashcardsState extends State<Flashcards> {
                 width: 5,
               ),
             ),
-            child: Align(
-              alignment: Alignment.center,
-              child: switched == false
-                  ? Text(
-                      dummyFlashcards[counter].question,
-                      style: TextStyle(fontSize: 20),
-                    )
-                  : Text(
-                      dummyFlashcards[counter].answer,
-                      style: TextStyle(fontSize: 20),
-                    ),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 100,
+                ),
+                SizedBox(
+                  child: switched == false
+                      ? Text(
+                          "Question:",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          "Answer:",
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                ),
+                SizedBox(
+                  height: 100,
+                ),
+                Align(
+                  alignment: Alignment.center,
+                  child: switched == false
+                      ? Text(
+                          dummyFlashcards[counter].question,
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        )
+                      : Text(
+                          dummyFlashcards[counter].answer,
+                          style: TextStyle(
+                              fontSize: 25, fontWeight: FontWeight.bold),
+                        ),
+                ),
+              ],
             ),
           ),
         ),
