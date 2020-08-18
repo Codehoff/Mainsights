@@ -1,44 +1,45 @@
-import "package:flutter/material.dart";
+import 'package:flutter/material.dart';
 
-class HomeScreen extends StatefulWidget {
+import './studyscreen.dart';
+import './searchscreen.dart';
+import "./reviewscreen.dart";
+
+class TabsScreen extends StatefulWidget {
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  _TabsScreenState createState() => _TabsScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _TabsScreenState extends State<TabsScreen> {
+  final List<Map<String, Object>> _pages = [
+    {
+      'page': Studyscreen(),
+      'title': 'Categories',
+    },
+    {
+      'page': Searchscreen(),
+      'title': 'Your Favorite',
+    },
+    {
+      'page': Reviewscreen(),
+      'title': 'Your Favorite',
+    },
+  ];
+
+  int _selectedPageIndex = 0;
+
+  void _selectPage(int index) {
+    setState(() {
+      _selectedPageIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    int _selectedPageIndex = 0;
-
-    void _selectPage(int index) {
-      setState(() {
-        _selectedPageIndex = index;
-      });
-    }
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body: Container(
-        color: Colors.white,
-        child: Column(
-          children: [
-            SizedBox(
-              height: 100,
-            ),
-            Container(
-              width: double.infinity,
-              child: Text("Hi Enno!",
-                  style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
-                      decoration: TextDecoration.none)),
-            ),
-          ],
-        ),
-      ),
+      body: _pages[_selectedPageIndex]['page'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,
         backgroundColor: Theme.of(context).primaryColor,

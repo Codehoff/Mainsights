@@ -4,12 +4,13 @@ import 'package:swipedetector/swipedetector.dart';
 import "../dummy_data.dart";
 import "../models/flashcard.dart";
 
-class Flashcards extends StatefulWidget {
+class Reviewscreen extends StatefulWidget {
+  static const routeName = "/review";
   @override
-  _FlashcardsState createState() => _FlashcardsState();
+  _ReviewsceenState createState() => _ReviewsceenState();
 }
 
-class _FlashcardsState extends State<Flashcards> {
+class _ReviewsceenState extends State<Reviewscreen> {
   var switched = false;
   int counter = 0;
 
