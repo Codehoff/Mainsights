@@ -13,15 +13,15 @@ class _TabsScreenState extends State<TabsScreen> {
   final List<Map<String, Object>> _pages = [
     {
       'page': Studyscreen(),
-      'title': 'Categories',
+      'title': 'Study',
     },
     {
       'page': Searchscreen(),
-      'title': 'Your Favorite',
+      'title': 'Search',
     },
     {
       'page': Reviewscreen(),
-      'title': 'Your Favorite',
+      'title': 'Review',
     },
   ];
 
