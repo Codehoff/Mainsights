@@ -37,13 +37,6 @@ class _FlashcardsState extends State<Flashcards> {
     print(dummyFlashcards[counter].points);
   }
 
-  void _decreasePoints() {
-    dummyFlashcards[counter].points < 4
-        ? dummyFlashcards[counter].points = 0
-        : dummyFlashcards[counter].points -= 4;
-    print(dummyFlashcards[counter].points);
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
