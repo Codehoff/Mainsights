@@ -108,40 +108,50 @@ class _FlashcardsState extends State<Flashcards> {
                 ),
               ),
             ),
-            SizedBox(
-              width: 120,
-              height: 80,
-              child: FlatButton(
-                color: Colors.red,
-                textColor: Colors.white,
-                disabledColor: Colors.grey,
-                disabledTextColor: Colors.black,
-                padding: EdgeInsets.all(8.0),
-                splashColor: Colors.blueAccent,
-                onPressed: _decreasePoints,
-                child: Text(
-                  "Did not know",
-                  style: TextStyle(fontSize: 15.0),
-                ),
-              ),
-            ),
-            SizedBox(
-              width: 120,
-              height: 80,
-              child: FlatButton(
-                color: Colors.green,
-                textColor: Colors.white,
-                disabledColor: Colors.grey,
-                disabledTextColor: Colors.black,
-                padding: EdgeInsets.all(8.0),
-                splashColor: Colors.blueAccent,
-                onPressed: _increasePoints,
-                child: Text(
-                  "I knew it",
-                  style: TextStyle(fontSize: 15.0),
-                ),
-              ),
-            ),
+            switched == true
+                ? SizedBox(
+                    width: 120,
+                    height: 80,
+                    child: FlatButton(
+                      color: Colors.red,
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(8.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: _decreasePoints,
+                      child: Text(
+                        "Did not know",
+                        style: TextStyle(fontSize: 15.0),
+                      ),
+                    ),
+                  )
+                : SizedBox(
+                    height: 80,
+                    width: 120,
+                  ),
+            switched == true
+                ? SizedBox(
+                    width: 120,
+                    height: 80,
+                    child: FlatButton(
+                      color: Colors.green,
+                      textColor: Colors.white,
+                      disabledColor: Colors.grey,
+                      disabledTextColor: Colors.black,
+                      padding: EdgeInsets.all(8.0),
+                      splashColor: Colors.blueAccent,
+                      onPressed: _increasePoints,
+                      child: Text(
+                        "I knew it",
+                        style: TextStyle(fontSize: 15.0),
+                      ),
+                    ),
+                  )
+                : SizedBox(
+                    height: 80,
+                    width: 120,
+                  ),
           ],
         ),
       ],
