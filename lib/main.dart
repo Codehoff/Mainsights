@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/widgets/flashcards.dart';
-import "./models/flashcard.dart";
 
 void main() => runApp(MyApp());
 
