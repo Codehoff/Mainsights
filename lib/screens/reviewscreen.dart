@@ -187,7 +187,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
                 : SizedBox(
                     height: 80,
                     width: 120,
-                  ),
+                  )
           ],
         ),
       ],
