@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:swipedetector/swipedetector.dart';
+import "dart:convert";
+import "package:http/http.dart" as http;
 
 import "../dummy_data.dart";
 import "../models/flashcard.dart";
@@ -13,6 +15,22 @@ class Reviewscreen extends StatefulWidget {
 class _ReviewsceenState extends State<Reviewscreen> {
   var switched = false;
   int counter = 0;
+
+  static const url = "https://mainsights-1fb71.firebaseio.com/flashcards.json";
+
+  void _pushFlashcard() {
+    http.post(
+      url,
+      body: json.encode({
+        "id": dummyFlashcards[counter].id,
+        "question": dummyFlashcards[counter].question,
+        "answer": dummyFlashcards[counter].answer,
+        "complexity": dummyFlashcards[counter].complexity,
+        "category": dummyFlashcards[counter].category,
+        "points": dummyFlashcards[counter].points,
+      }),
+    );
+  }
 
   void _switchAnswer() {
     setState(() {
@@ -37,6 +55,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
   void _increasePoints() {
     dummyFlashcards[counter].points += 6;
     _increaseCounter();
+    _pushFlashcard();
   }
 
   void _decreasePoints() {
@@ -44,6 +63,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
         ? dummyFlashcards[counter].points = 0
         : dummyFlashcards[counter].points -= 4;
     _increaseCounter();
+    _pushFlashcard();
   }
 
   @override

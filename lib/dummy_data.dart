@@ -1,4 +1,13 @@
 import "./models/flashcard.dart";
+import "dart:convert";
+
+import "package:http/http.dart" as http;
+
+const url = "https://mainsights-1fb71.firebaseio.com/flashcards.json";
+
+void pushFlashcards() {
+  http.post(url, body: dummyFlashcards);
+}
 
 var dummyFlashcards = [
   Flashcard(
