@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Study Mode: Accountingg'),
+        title: Text('Study Mode: Accounting'),
       ),
       body: Flashcards(),
     );
