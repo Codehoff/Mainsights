@@ -32,9 +32,20 @@ class _ReviewsceenState extends State<Reviewscreen> {
     );
   }
 
+  void _patchFlashcard() {
+    http.put(
+      url,
+      body: json.encode({
+        "id": dummyFlashcards[counter].id,
+        "points": dummyFlashcards[counter].points,
+      }),
+    );
+  }
+
   void _switchAnswer() {
     setState(() {
       switched == true ? switched = false : switched = true;
+      _pushFlashcard();
     });
   }
 
@@ -54,16 +65,16 @@ class _ReviewsceenState extends State<Reviewscreen> {
 
   void _increasePoints() {
     dummyFlashcards[counter].points += 6;
+    _patchFlashcard();
     _increaseCounter();
-    _pushFlashcard();
   }
 
   void _decreasePoints() {
     dummyFlashcards[counter].points < 4
         ? dummyFlashcards[counter].points = 0
         : dummyFlashcards[counter].points -= 4;
+    _patchFlashcard();
     _increaseCounter();
-    _pushFlashcard();
   }
 
   @override
@@ -93,10 +104,9 @@ class _ReviewsceenState extends State<Reviewscreen> {
             height: 500,
             decoration: BoxDecoration(
               border: Border.all(
-                color: dummyFlashcards[counter].complexity == Complexity.Basic
+                color: dummyFlashcards[counter].complexity == "Basic"
                     ? Colors.green
-                    : dummyFlashcards[counter].complexity ==
-                            Complexity.Indermediate
+                    : dummyFlashcards[counter].complexity == "Intermediate"
                         ? Colors.orange
                         : Colors.red,
                 width: 5,

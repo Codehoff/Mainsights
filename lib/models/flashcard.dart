@@ -16,8 +16,8 @@ class Flashcard {
   final String id;
   final String question;
   final String answer;
-  final Category category;
-  final Complexity complexity;
+  final String category;
+  final String complexity;
   int points;
 
   Flashcard({
