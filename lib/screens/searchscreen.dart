@@ -10,16 +10,19 @@ class Searchscreen extends StatelessWidget {
   void _pushFlashcards() {
     final accountingFlashcards = dummyFlashcards
         .where((flashcard) => flashcard.category == "Accounting");
-    final valuationFlashcards =
-        dummyFlashcards.where((flashcard) => flashcard.category == "Valuation");
-    final processFlashcards =
-        dummyFlashcards.where((flashcard) => flashcard.category == "Process");
     const accountingUrl =
         "https://mainsights-1fb71.firebaseio.com/flashcards/accounting.json";
+
+    final valuationFlashcards =
+        dummyFlashcards.where((flashcard) => flashcard.category == "Valuation");
     const valuationUrl =
         "https://mainsights-1fb71.firebaseio.com/flashcards/valuation.json";
+
+    final processFlashcards =
+        dummyFlashcards.where((flashcard) => flashcard.category == "Process");
     const processUrl =
         "https://mainsights-1fb71.firebaseio.com/flashcards/process.json";
+
     accountingFlashcards.forEach((element) {
       http.post(
         accountingUrl,

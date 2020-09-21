@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/screens/dashboardscreen.dart';
 import 'package:flutter_complete_guide/screens/reviewscreen.dart';
 import 'package:flutter_complete_guide/screens/searchscreen.dart';
 import 'package:flutter_complete_guide/screens/studyscreen.dart';
 import 'package:flutter_complete_guide/screens/tabsscreen.dart';
-
-import './widgets/flashcards.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,7 +17,8 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: "/",
         routes: {
-          "/": (ctx) => TabsScreen(),
+          "/": (ctx) => DashboardScreen(),
+          DashboardScreen.routeName: (ctx) => DashboardScreen(),
           Studyscreen.routeName: (ctx) => Studyscreen(),
           Searchscreen.routeName: (ctx) => Searchscreen(),
           Reviewscreen.routeName: (ctx) => Reviewscreen(),
@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Study Mode: Accounting'),
       ),
-      body: Reviewscreen(),
+      body: Text("data"),
     );
   }
 }
