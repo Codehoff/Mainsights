@@ -6,10 +6,6 @@ import "package:http/http.dart" as http;
 import "../models/flashcard.dart";
 
 class Reviewscreen extends StatefulWidget {
-  final String category;
-
-  Reviewscreen(this.category);
-
   static const routeName = "/review";
 
   @override
@@ -20,6 +16,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
   var _isInit = true;
   var _isLoading = false;
   var switched = false;
+
   int counter = 0;
 
   @override

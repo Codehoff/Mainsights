@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:flutter_complete_guide/screens/reviewscreen.dart';
+import "authscreen.dart";
 
 class ReviewChooseCategoryScreen extends StatefulWidget {
   static const routeName = "/reviewchoosecategory";
@@ -16,7 +17,7 @@ class _ReviewChooseCategoryScreenState
     Navigator.of(ctx).push(
       MaterialPageRoute(
         builder: (_) {
-          return Reviewscreen(dropdownValue);
+          return AuthScreen();
         },
       ),
     );

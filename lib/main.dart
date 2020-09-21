@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
               ReviewChooseCategoryScreen(),
           Studyscreen.routeName: (ctx) => Studyscreen(),
           Searchscreen.routeName: (ctx) => Searchscreen(),
-          Reviewscreen.routeName: (ctx) => Reviewscreen("Process"),
+          Reviewscreen.routeName: (ctx) => Reviewscreen(),
         });
   }
 }
