@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_complete_guide/screens/dashboardscreen.dart';
 import 'package:flutter_complete_guide/screens/reviewscreen.dart';
 import 'package:flutter_complete_guide/screens/searchscreen.dart';
 import 'package:flutter_complete_guide/screens/studyscreen.dart';
 import 'package:flutter_complete_guide/screens/tabsscreen.dart';
+import 'package:flutter_complete_guide/screens/reviewchoosecategoryscreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -17,11 +19,12 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: "/",
         routes: {
-          "/": (ctx) => DashboardScreen(),
-          DashboardScreen.routeName: (ctx) => DashboardScreen(),
+          "/": (ctx) => TabsScreen(),
+          ReviewChooseCategoryScreen.routeName: (ctx) =>
+              ReviewChooseCategoryScreen(),
           Studyscreen.routeName: (ctx) => Studyscreen(),
           Searchscreen.routeName: (ctx) => Searchscreen(),
-          Reviewscreen.routeName: (ctx) => Reviewscreen(),
+          Reviewscreen.routeName: (ctx) => Reviewscreen("Process"),
         });
   }
 }

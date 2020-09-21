@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import './studyscreen.dart';
 import './searchscreen.dart';
-import "./reviewscreen.dart";
+import "./reviewchoosecategoryscreen.dart";
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _TabsScreenState extends State<TabsScreen> {
       'title': 'Search',
     },
     {
-      'page': Reviewscreen(),
+      'page': ReviewChooseCategoryScreen(),
       'title': 'Review',
     },
   ];

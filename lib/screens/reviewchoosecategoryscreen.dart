@@ -1,16 +1,25 @@
 import "package:flutter/material.dart";
+import 'package:flutter_complete_guide/screens/reviewscreen.dart';
 
-class DashboardScreen extends StatefulWidget {
-  static const routeName = "/dashboard";
+class ReviewChooseCategoryScreen extends StatefulWidget {
+  static const routeName = "/reviewchoosecategory";
   @override
-  _DashboardScreenState createState() => _DashboardScreenState();
+  _ReviewChooseCategoryScreenState createState() =>
+      _ReviewChooseCategoryScreenState();
 }
 
-class _DashboardScreenState extends State<DashboardScreen> {
+class _ReviewChooseCategoryScreenState
+    extends State<ReviewChooseCategoryScreen> {
   String dropdownValue = "Accounting";
 
-  void _changePage() {
-    print(dropdownValue);
+  void changePage(BuildContext ctx) {
+    Navigator.of(ctx).push(
+      MaterialPageRoute(
+        builder: (_) {
+          return Reviewscreen(dropdownValue);
+        },
+      ),
+    );
   }
 
   @override
@@ -37,17 +46,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 );
               }).toList(),
             ),
-            SizedBox(
-              width: 70,
-              height: 20,
-              child: FlatButton(
+            InkWell(
+              onTap: () => changePage,
+              child: Container(
                 color: Colors.green,
-                textColor: Colors.white,
-                disabledColor: Colors.grey,
-                disabledTextColor: Colors.black,
-                padding: EdgeInsets.all(2.0),
-                splashColor: Colors.blueAccent,
-                onPressed: _changePage,
                 child: Text(
                   "Print",
                   style: TextStyle(fontSize: 13.0),
