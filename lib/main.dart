@@ -33,7 +33,7 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Study Mode: Accounting'),
       ),
-      body: Flashcards(),
+      body: Reviewscreen(),
     );
   }
 }

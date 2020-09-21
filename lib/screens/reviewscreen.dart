@@ -57,6 +57,18 @@ class _ReviewsceenState extends State<Reviewscreen> {
     });
   }
 
+  Future<void> updatePoints(String id) async {
+    final url = "https://mainsights-1fb71.firebaseio.com/flashcards/$id.json";
+    http.patch(
+      url,
+      body: json.encode(
+        {
+          "points": loadedFlashcards[counter].points,
+        },
+      ),
+    );
+  }
+
   void _switchAnswer() {
     setState(() {
       switched == true ? switched = false : switched = true;
@@ -79,6 +91,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
 
   void _increasePoints() {
     loadedFlashcards[counter].points += 6;
+    updatePoints(loadedFlashcards[counter].id);
     _increaseCounter();
   }
 
@@ -86,6 +99,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
     loadedFlashcards[counter].points < 4
         ? loadedFlashcards[counter].points = 0
         : loadedFlashcards[counter].points -= 4;
+    updatePoints(loadedFlashcards[counter].id);
     _increaseCounter();
   }
 
