@@ -3,7 +3,7 @@ import 'package:swipedetector/swipedetector.dart';
 import "dart:convert";
 import "package:http/http.dart" as http;
 
-import "../dummy_data.dart";
+import "../models/flashcard.dart";
 
 class Reviewscreen extends StatefulWidget {
   static const routeName = "/review";
@@ -12,17 +12,49 @@ class Reviewscreen extends StatefulWidget {
 }
 
 class _ReviewsceenState extends State<Reviewscreen> {
+  var _isInit = true;
+  var _isLoading = false;
   var switched = false;
   int counter = 0;
-  static const url = "https://mainsights-1fb71.firebaseio.com/flashcards.json";
 
-  void _patchFlashcard() {
-    http.put(
-      url,
-      body: json.encode({
-        "points": dummyFlashcards[counter].points,
-      }),
-    );
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    if (_isInit) {
+      setState(() {
+        _isLoading = true;
+      });
+      fetchAndSetFlashcards().then((_) {
+        setState(() {
+          _isLoading = false;
+        });
+      });
+    }
+    _isInit = false;
+    super.didChangeDependencies();
+  }
+
+  final List<Flashcard> loadedFlashcards = [];
+
+  Future<void> fetchAndSetFlashcards() async {
+    const url = "https://mainsights-1fb71.firebaseio.com/flashcards.json";
+
+    final response = await http.get(url);
+    final extractedData = json.decode(response.body) as Map<String, dynamic>;
+    extractedData.forEach((flashcardID, flashcardData) {
+      loadedFlashcards.add(Flashcard(
+        id: flashcardID,
+        question: flashcardData["question"],
+        answer: flashcardData["answer"],
+        category: flashcardData["category"],
+        complexity: flashcardData["complexity"],
+        points: flashcardData["points"],
+      ));
+    });
   }
 
   void _switchAnswer() {
@@ -33,7 +65,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
 
   void _increaseCounter() {
     setState(() {
-      counter < dummyFlashcards.length - 1 ? counter += 1 : counter = counter;
+      counter < loadedFlashcards.length - 1 ? counter += 1 : counter = counter;
       switched = false;
     });
   }
@@ -46,163 +78,166 @@ class _ReviewsceenState extends State<Reviewscreen> {
   }
 
   void _increasePoints() {
-    dummyFlashcards[counter].points += 6;
-    _patchFlashcard();
+    loadedFlashcards[counter].points += 6;
     _increaseCounter();
   }
 
   void _decreasePoints() {
-    dummyFlashcards[counter].points < 4
-        ? dummyFlashcards[counter].points = 0
-        : dummyFlashcards[counter].points -= 4;
-    _patchFlashcard();
+    loadedFlashcards[counter].points < 4
+        ? loadedFlashcards[counter].points = 0
+        : loadedFlashcards[counter].points -= 4;
     _increaseCounter();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SizedBox(
-          height: 10,
-        ),
-        SizedBox(
-          child: Text(
-            "Question ${counter + 1}/${dummyFlashcards.length}",
-            style: TextStyle(fontSize: 20),
-          ),
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        SwipeDetector(
-          onSwipeLeft: _increaseCounter,
-          onSwipeRight: _decreaseCounter,
-          swipeConfiguration: SwipeConfiguration(
-            horizontalSwipeMinDisplacement: 10,
-            horizontalSwipeMinVelocity: 30,
-          ),
-          child: Container(
-            height: 500,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: dummyFlashcards[counter].complexity == "Basic"
-                    ? Colors.green
-                    : dummyFlashcards[counter].complexity == "Intermediate"
-                        ? Colors.orange
-                        : Colors.red,
-                width: 5,
+    return _isLoading
+        ? Center(
+            child: CircularProgressIndicator(),
+          )
+        : Column(
+            children: [
+              SizedBox(
+                height: 10,
               ),
-            ),
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 100,
-                ),
-                SizedBox(
-                  child: switched == false
-                      ? Text(
-                          "Question:",
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        )
-                      : Text(
-                          "Answer:",
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        ),
-                ),
-                SizedBox(
-                  height: 100,
-                ),
-                Align(
-                  alignment: Alignment.center,
-                  child: switched == false
-                      ? Text(
-                          dummyFlashcards[counter].question,
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        )
-                      : Text(
-                          dummyFlashcards[counter].answer,
-                          style: TextStyle(
-                              fontSize: 25, fontWeight: FontWeight.bold),
-                        ),
-                ),
-              ],
-            ),
-          ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            SizedBox(
-              width: 120,
-              height: 80,
-              child: FlatButton(
-                color: Colors.blue,
-                textColor: Colors.white,
-                disabledColor: Colors.grey,
-                disabledTextColor: Colors.black,
-                padding: EdgeInsets.all(8.0),
-                splashColor: Colors.blueAccent,
-                onPressed: _switchAnswer,
+              SizedBox(
                 child: Text(
-                  "Flip card",
-                  style: TextStyle(fontSize: 15.0),
+                  "Question ${counter + 1}/${loadedFlashcards.length}",
+                  style: TextStyle(fontSize: 20),
                 ),
               ),
-            ),
-            switched == true
-                ? SizedBox(
-                    width: 120,
-                    height: 80,
-                    child: FlatButton(
-                      color: Colors.red,
-                      textColor: Colors.white,
-                      disabledColor: Colors.grey,
-                      disabledTextColor: Colors.black,
-                      padding: EdgeInsets.all(8.0),
-                      splashColor: Colors.blueAccent,
-                      onPressed: _decreasePoints,
-                      child: Text(
-                        "Did not know",
-                        style: TextStyle(fontSize: 15.0),
-                      ),
+              SizedBox(
+                height: 10,
+              ),
+              SwipeDetector(
+                onSwipeLeft: _increaseCounter,
+                onSwipeRight: _decreaseCounter,
+                swipeConfiguration: SwipeConfiguration(
+                  horizontalSwipeMinDisplacement: 10,
+                  horizontalSwipeMinVelocity: 30,
+                ),
+                child: Container(
+                  height: 500,
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: loadedFlashcards[counter].complexity == "Basic"
+                          ? Colors.green
+                          : loadedFlashcards[counter].complexity ==
+                                  "Intermediate"
+                              ? Colors.orange
+                              : Colors.red,
+                      width: 5,
                     ),
-                  )
-                : SizedBox(
-                    height: 80,
-                    width: 120,
                   ),
-            switched == true
-                ? SizedBox(
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 100,
+                      ),
+                      SizedBox(
+                        child: switched == false
+                            ? Text(
+                                "Question:",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              )
+                            : Text(
+                                "Answer:",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                      ),
+                      SizedBox(
+                        height: 100,
+                      ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: switched == false
+                            ? Text(
+                                loadedFlashcards[counter].question,
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              )
+                            : Text(
+                                loadedFlashcards[counter].answer,
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  SizedBox(
                     width: 120,
                     height: 80,
                     child: FlatButton(
-                      color: Colors.green,
+                      color: Colors.blue,
                       textColor: Colors.white,
                       disabledColor: Colors.grey,
                       disabledTextColor: Colors.black,
                       padding: EdgeInsets.all(8.0),
                       splashColor: Colors.blueAccent,
-                      onPressed: _increasePoints,
+                      onPressed: _switchAnswer,
                       child: Text(
-                        "I knew it",
+                        "Flip card",
                         style: TextStyle(fontSize: 15.0),
                       ),
                     ),
-                  )
-                : SizedBox(
-                    height: 80,
-                    width: 120,
-                  )
-          ],
-        ),
-      ],
-    );
+                  ),
+                  switched == true
+                      ? SizedBox(
+                          width: 120,
+                          height: 80,
+                          child: FlatButton(
+                            color: Colors.red,
+                            textColor: Colors.white,
+                            disabledColor: Colors.grey,
+                            disabledTextColor: Colors.black,
+                            padding: EdgeInsets.all(8.0),
+                            splashColor: Colors.blueAccent,
+                            onPressed: _decreasePoints,
+                            child: Text(
+                              "Did not know",
+                              style: TextStyle(fontSize: 15.0),
+                            ),
+                          ),
+                        )
+                      : SizedBox(
+                          height: 80,
+                          width: 120,
+                        ),
+                  switched == true
+                      ? SizedBox(
+                          width: 120,
+                          height: 80,
+                          child: FlatButton(
+                            color: Colors.green,
+                            textColor: Colors.white,
+                            disabledColor: Colors.grey,
+                            disabledTextColor: Colors.black,
+                            padding: EdgeInsets.all(8.0),
+                            splashColor: Colors.blueAccent,
+                            onPressed: _increasePoints,
+                            child: Text(
+                              "I knew it",
+                              style: TextStyle(fontSize: 15.0),
+                            ),
+                          ),
+                        )
+                      : SizedBox(
+                          height: 80,
+                          width: 120,
+                        )
+                ],
+              ),
+            ],
+          );
   }
 }
