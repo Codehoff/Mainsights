@@ -41,7 +41,8 @@ class _ReviewsceenState extends State<Reviewscreen> {
   final List<Flashcard> loadedFlashcards = [];
 
   Future<void> fetchAndSetFlashcards() async {
-    const url = "https://mainsights-1fb71.firebaseio.com/flashcards.json";
+    const url =
+        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting.json";
 
     final response = await http.get(url);
     final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -58,7 +59,8 @@ class _ReviewsceenState extends State<Reviewscreen> {
   }
 
   Future<void> updatePoints(String id) async {
-    final url = "https://mainsights-1fb71.firebaseio.com/flashcards/$id.json";
+    final url =
+        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting/$id.json";
     http.patch(
       url,
       body: json.encode(

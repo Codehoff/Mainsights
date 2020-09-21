@@ -7,12 +7,48 @@ import "../dummy_data.dart";
 class Searchscreen extends StatelessWidget {
   static const routeName = "/search";
 
-  static const url = "https://mainsights-1fb71.firebaseio.com/flashcards.json";
-
   void _pushFlashcards() {
-    dummyFlashcards.forEach((element) {
+    final accountingFlashcards = dummyFlashcards
+        .where((flashcard) => flashcard.category == "Accounting");
+    final valuationFlashcards =
+        dummyFlashcards.where((flashcard) => flashcard.category == "Valuation");
+    final processFlashcards =
+        dummyFlashcards.where((flashcard) => flashcard.category == "Process");
+    const accountingUrl =
+        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting.json";
+    const valuationUrl =
+        "https://mainsights-1fb71.firebaseio.com/flashcards/valuation.json";
+    const processUrl =
+        "https://mainsights-1fb71.firebaseio.com/flashcards/process.json";
+    accountingFlashcards.forEach((element) {
       http.post(
-        url,
+        accountingUrl,
+        body: json.encode({
+          "id": element.id,
+          "question": element.question,
+          "answer": element.answer,
+          "complexity": element.complexity,
+          "category": element.category,
+          "points": element.points,
+        }),
+      );
+    });
+    valuationFlashcards.forEach((element) {
+      http.post(
+        valuationUrl,
+        body: json.encode({
+          "id": element.id,
+          "question": element.question,
+          "answer": element.answer,
+          "complexity": element.complexity,
+          "category": element.category,
+          "points": element.points,
+        }),
+      );
+    });
+    processFlashcards.forEach((element) {
+      http.post(
+        processUrl,
         body: json.encode({
           "id": element.id,
           "question": element.question,

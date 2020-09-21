@@ -26,7 +26,7 @@ var dummyFlashcards = [
     id: 'q4',
     question: 'What is your favorite colour?',
     answer: "Red",
-    category: "Valuation",
+    category: "Accounting",
     complexity: "Basic",
   ),
   Flashcard(
@@ -47,14 +47,14 @@ var dummyFlashcards = [
     id: 'q7',
     question: 'What is the purpose of my existence?',
     answer: "Pff I dunno",
-    category: "Valuation",
+    category: "Process",
     complexity: "Basic",
   ),
   Flashcard(
     id: 'q8',
     question: 'What is the airspeed velocity of an unladen swallow?',
     answer: "What do you mean? African or american swallow?",
-    category: "Valuation",
+    category: "Accounting",
     complexity: "Basic",
   ),
 ];
