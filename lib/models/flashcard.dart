@@ -13,7 +13,7 @@ enum Category {
 }
 
 class Flashcard {
-  final String id;
+  String id;
   final String question;
   final String answer;
   final String category;

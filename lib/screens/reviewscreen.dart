@@ -4,7 +4,6 @@ import "dart:convert";
 import "package:http/http.dart" as http;
 
 import "../dummy_data.dart";
-import "../models/flashcard.dart";
 
 class Reviewscreen extends StatefulWidget {
   static const routeName = "/review";
@@ -15,28 +14,12 @@ class Reviewscreen extends StatefulWidget {
 class _ReviewsceenState extends State<Reviewscreen> {
   var switched = false;
   int counter = 0;
-
   static const url = "https://mainsights-1fb71.firebaseio.com/flashcards.json";
-
-  void _pushFlashcard() {
-    http.post(
-      url,
-      body: json.encode({
-        "id": dummyFlashcards[counter].id,
-        "question": dummyFlashcards[counter].question,
-        "answer": dummyFlashcards[counter].answer,
-        "complexity": dummyFlashcards[counter].complexity,
-        "category": dummyFlashcards[counter].category,
-        "points": dummyFlashcards[counter].points,
-      }),
-    );
-  }
 
   void _patchFlashcard() {
     http.put(
       url,
       body: json.encode({
-        "id": dummyFlashcards[counter].id,
         "points": dummyFlashcards[counter].points,
       }),
     );
@@ -45,7 +28,6 @@ class _ReviewsceenState extends State<Reviewscreen> {
   void _switchAnswer() {
     setState(() {
       switched == true ? switched = false : switched = true;
-      _pushFlashcard();
     });
   }
 
