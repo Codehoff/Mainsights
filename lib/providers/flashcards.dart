@@ -9,6 +9,10 @@ import "../models/flashcard.dart";
 class Flashcards with ChangeNotifier {
   List<Flashcard> _items = [];
 
+  final String authToken;
+
+  Flashcards(this.authToken);
+
   List<Flashcard> get items {
     return [..._items];
   }
@@ -19,7 +23,7 @@ class Flashcards with ChangeNotifier {
 
   Future<void> fetchAndSetFlashcards(category) async {
     var url =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/$category.json";
+        "https://mainsights-1fb71.firebaseio.com/flashcards/$category.json?auth=$authToken";
 
     final response = await http.get(url);
     final extractedData = json.decode(response.body) as Map<String, dynamic>;
@@ -41,7 +45,7 @@ class Flashcards with ChangeNotifier {
   Future<void> updatePoints(String id, Flashcard newFlashcard) async {
     final flashcardIndex = _items.indexWhere((element) => element.id == id);
     final url =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting/$id.json";
+        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting/$id.json?auth=$authToken";
     http.patch(
       url,
       body: json.encode(
