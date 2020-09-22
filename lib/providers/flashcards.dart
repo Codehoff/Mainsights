@@ -11,7 +11,7 @@ class Flashcards with ChangeNotifier {
 
   final String authToken;
 
-  Flashcards(this.authToken);
+  Flashcards(this.authToken, this._items);
 
   List<Flashcard> get items {
     return [..._items];
@@ -22,7 +22,7 @@ class Flashcards with ChangeNotifier {
   }
 
   Future<void> fetchAndSetFlashcards(category) async {
-    var url =
+    final url =
         "https://mainsights-1fb71.firebaseio.com/flashcards/$category.json?auth=$authToken";
 
     final response = await http.get(url);
