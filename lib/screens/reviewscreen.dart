@@ -1,10 +1,9 @@
 import "package:flutter/material.dart";
 import 'package:flutter_complete_guide/widgets/flashcards_show.dart';
-import 'package:swipedetector/swipedetector.dart';
+
 import 'package:provider/provider.dart';
 
 import "../providers/flashcards.dart";
-import "../models/flashcard.dart";
 
 class Reviewscreen extends StatefulWidget {
   static const routeName = "/reviewscreen";
