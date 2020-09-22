@@ -20,6 +20,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
   var _isLoading = false;
   var switched = false;
   var counter = 0;
+
   String dropdownValue;
 
   _ReviewsceenState(this.dropdownValue);
@@ -36,7 +37,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
         _isLoading = true;
       });
       Provider.of<Flashcards>(context)
-          .fetchAndSetFlashcards(dropdownValue.toLowerCase(), true)
+          .fetchAndSetFlashcards(dropdownValue.toLowerCase())
           .then((_) {
         setState(() {
           _isLoading = false;
@@ -50,13 +51,14 @@ class _ReviewsceenState extends State<Reviewscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Review Mode'),
-        ),
-        body: _isLoading
-            ? Center(
-                child: CircularProgressIndicator(),
-              )
-            : FlashcardsShow());
+      appBar: AppBar(
+        title: Text('Review Mode'),
+      ),
+      body: _isLoading
+          ? Center(
+              child: CircularProgressIndicator(),
+            )
+          : FlashcardsShow(),
+    );
   }
 }

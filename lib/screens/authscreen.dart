@@ -103,7 +103,6 @@ class _AuthCardState extends State<AuthCard> {
     if (!_formKey.currentState.validate()) {
       return;
     }
-    Provider.of<Flashcards>(context).pushFlashcards();
     _formKey.currentState.save();
     setState(() {
       _isLoading = true;
@@ -121,9 +120,14 @@ class _AuthCardState extends State<AuthCard> {
         _authData['password'],
       );
     }
+    _push();
     setState(() {
       _isLoading = false;
     });
+  }
+
+  void _push() {
+    Provider.of<Flashcards>(context).pushFlashcards();
   }
 
   void _switchAuthMode() {
