@@ -6,16 +6,11 @@ import 'package:provider/provider.dart';
 import "../models/flashcard.dart";
 import '../providers/flashcards.dart';
 
-class Studyscreen extends StatefulWidget {
+class Studyscreen extends StatelessWidget {
   static const routeName = "/studyscreen";
 
   @override
-  _ReviewsceenState createState() => _ReviewsceenState();
-}
-
-class _ReviewsceenState extends State<Studyscreen> {
-  @override
   Widget build(BuildContext context) {
-    return FlashcardsShow();
+    return Text("Hello");
   }
 }

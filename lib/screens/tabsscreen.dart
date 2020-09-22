@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import './studyscreen.dart';
 import './searchscreen.dart';
-import "./reviewscreen.dart";
 import "./reviewchoosecategoryscreen.dart";
 
 class TabsScreen extends StatefulWidget {

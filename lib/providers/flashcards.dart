@@ -17,9 +17,9 @@ class Flashcards with ChangeNotifier {
     return _items.firstWhere((element) => element.id == id);
   }
 
-  Future<void> fetchAndSetFlashcards() async {
+  Future<void> fetchAndSetFlashcards(category) async {
     var url =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting.json";
+        "https://mainsights-1fb71.firebaseio.com/flashcards/$category.json";
 
     final response = await http.get(url);
     final extractedData = json.decode(response.body) as Map<String, dynamic>;
