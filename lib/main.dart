@@ -15,25 +15,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(
-          value: Auth(),
-        ),
-      ],
-      child: MaterialApp(
-          title: 'Mainsights',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
+        providers: [
+          ChangeNotifierProvider.value(
+            value: Auth(),
           ),
-          initialRoute: "/",
-          routes: {
-            "/": (ctx) => AuthScreen(),
-            ReviewChooseCategoryScreen.routeName: (ctx) =>
-                ReviewChooseCategoryScreen(),
-            Studyscreen.routeName: (ctx) => Studyscreen(),
-            Searchscreen.routeName: (ctx) => Searchscreen(),
-            Reviewscreen.routeName: (ctx) => Reviewscreen(),
-          }),
-    );
+        ],
+        child: Consumer<Auth>(
+          builder: (ctx, auth, _) => MaterialApp(
+              title: 'Mainsights',
+              theme: ThemeData(
+                primarySwatch: Colors.blue,
+              ),
+              home: auth.isAuth ? TabsScreen() : AuthScreen(),
+              routes: {
+                ReviewChooseCategoryScreen.routeName: (ctx) =>
+                    ReviewChooseCategoryScreen(),
+                Studyscreen.routeName: (ctx) => Studyscreen(),
+                Searchscreen.routeName: (ctx) => Searchscreen(),
+                Reviewscreen.routeName: (ctx) => Reviewscreen(),
+                TabsScreen.routeName: (ctx) => TabsScreen(),
+              }),
+        ));
   }
 }

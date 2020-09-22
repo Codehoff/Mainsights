@@ -6,6 +6,7 @@ import "./reviewscreen.dart";
 import "./reviewchoosecategoryscreen.dart";
 
 class TabsScreen extends StatefulWidget {
+  static const routeName = "/tabsscreen";
   @override
   _TabsScreenState createState() => _TabsScreenState();
 }
