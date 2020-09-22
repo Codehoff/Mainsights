@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import "../providers/flashcards.dart";
 import '../providers/auth.dart';
 
 enum AuthMode { Signup, Login }
@@ -100,9 +101,9 @@ class _AuthCardState extends State<AuthCard> {
 
   Future<void> _submit() async {
     if (!_formKey.currentState.validate()) {
-      // Invalid!
       return;
     }
+    Provider.of<Flashcards>(context).pushFlashcards();
     _formKey.currentState.save();
     setState(() {
       _isLoading = true;
