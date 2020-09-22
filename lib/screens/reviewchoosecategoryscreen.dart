@@ -13,7 +13,6 @@ class _ReviewChooseCategoryScreenState
   String dropdownValue = "Accounting";
 
   void changePage(dropdownValue) {
-    print(dropdownValue);
     Navigator.push(
       context,
       MaterialPageRoute(
