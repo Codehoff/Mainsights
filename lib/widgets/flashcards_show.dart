@@ -1,33 +1,20 @@
-import "package:flutter/material.dart";
-import 'package:swipedetector/swipedetector.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import "dart:convert";
-import "package:http/http.dart" as http;
+import 'package:swipedetector/swipedetector.dart';
 
-import "../models/flashcard.dart";
-import '../providers/flashcards.dart';
+import "../providers/flashcards.dart";
+import "../screens/studyscreen.dart";
 
-class Reviewscreen extends StatefulWidget {
-  static const routeName = "/reviewscreen";
-  final String dropdownValue;
-
-  const Reviewscreen({this.dropdownValue});
-
+class FlashcardsShow extends StatefulWidget {
   @override
-  _ReviewsceenState createState() => _ReviewsceenState(dropdownValue);
+  _FlashcardsShowState createState() => _FlashcardsShowState();
 }
 
-class _ReviewsceenState extends State<Reviewscreen> {
-  String dropdownValue;
-
-  _ReviewsceenState(this.dropdownValue);
-
+class _FlashcardsShowState extends State<FlashcardsShow> {
   var _isInit = true;
   var _isLoading = false;
   var switched = false;
-  final List<Flashcard> loadedFlashcards = [];
-
-  int counter = 0;
+  var counter = 0;
 
   @override
   void initState() {
@@ -50,73 +37,43 @@ class _ReviewsceenState extends State<Reviewscreen> {
     super.didChangeDependencies();
   }
 
-  Future<void> fetchAndSetFlashcards() async {
-    var url =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/${dropdownValue.toLowerCase()}.json";
-
-    final response = await http.get(url);
-    final extractedData = json.decode(response.body) as Map<String, dynamic>;
-    extractedData.forEach((flashcardID, flashcardData) {
-      loadedFlashcards.add(Flashcard(
-        id: flashcardID,
-        question: flashcardData["question"],
-        answer: flashcardData["answer"],
-        category: flashcardData["category"],
-        complexity: flashcardData["complexity"],
-        points: flashcardData["points"],
-      ));
-    });
-  }
-
-  Future<void> updatePoints(String id) async {
-    final url =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting/$id.json";
-    http.patch(
-      url,
-      body: json.encode(
-        {
-          "points": loadedFlashcards[counter].points,
-        },
-      ),
-    );
-  }
-
-  void _switchAnswer() {
-    setState(() {
-      switched == true ? switched = false : switched = true;
-    });
-  }
-
-  void _increaseCounter() {
-    setState(() {
-      counter < loadedFlashcards.length - 1 ? counter += 1 : counter = counter;
-      switched = false;
-    });
-  }
-
-  void _decreaseCounter() {
-    setState(() {
-      counter > 0 ? counter -= 1 : counter = counter;
-      switched = false;
-    });
-  }
-
-  void _increasePoints() {
-    loadedFlashcards[counter].points += 6;
-    updatePoints(loadedFlashcards[counter].id);
-    _increaseCounter();
-  }
-
-  void _decreasePoints() {
-    loadedFlashcards[counter].points < 4
-        ? loadedFlashcards[counter].points = 0
-        : loadedFlashcards[counter].points -= 4;
-    updatePoints(loadedFlashcards[counter].id);
-    _increaseCounter();
-  }
-
   @override
   Widget build(BuildContext context) {
+    final loadedFlashcards = Provider.of<Flashcards>(context);
+    final flashcards = loadedFlashcards.items;
+
+    void _switchAnswer() {
+      setState(() {
+        switched == true ? switched = false : switched = true;
+      });
+    }
+
+    void _increaseCounter() {
+      setState(() {
+        counter < flashcards.length - 1 ? counter += 1 : counter = counter;
+        switched = false;
+      });
+    }
+
+    void _decreaseCounter() {
+      setState(() {
+        counter > 0 ? counter -= 1 : counter = counter;
+        switched = false;
+      });
+    }
+
+    void _increasePoints() {
+      flashcards[counter].points += 6;
+      _increaseCounter();
+    }
+
+    void _decreasePoints() {
+      flashcards[counter].points < 4
+          ? flashcards[counter].points = 0
+          : flashcards[counter].points -= 4;
+      _increaseCounter();
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text('Review Mode'),
@@ -132,7 +89,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
                 ),
                 SizedBox(
                   child: Text(
-                    "Question ${counter + 1}/${loadedFlashcards.length}",
+                    "Question ${counter + 1}/${flashcards.length}",
                     style: TextStyle(fontSize: 20),
                   ),
                 ),
@@ -147,13 +104,12 @@ class _ReviewsceenState extends State<Reviewscreen> {
                     horizontalSwipeMinVelocity: 30,
                   ),
                   child: Container(
-                    height: 500,
+                    height: 450,
                     decoration: BoxDecoration(
                       border: Border.all(
-                        color: loadedFlashcards[counter].complexity == "Basic"
+                        color: flashcards[counter].complexity == "Basic"
                             ? Colors.green
-                            : loadedFlashcards[counter].complexity ==
-                                    "Intermediate"
+                            : flashcards[counter].complexity == "Intermediate"
                                 ? Colors.orange
                                 : Colors.red,
                         width: 5,
@@ -186,13 +142,13 @@ class _ReviewsceenState extends State<Reviewscreen> {
                           alignment: Alignment.center,
                           child: switched == false
                               ? Text(
-                                  loadedFlashcards[counter].question,
+                                  flashcards[counter].question,
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold),
                                 )
                               : Text(
-                                  loadedFlashcards[counter].answer,
+                                  flashcards[counter].answer,
                                   style: TextStyle(
                                       fontSize: 25,
                                       fontWeight: FontWeight.bold),

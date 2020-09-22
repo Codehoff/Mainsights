@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/models/flashcard.dart';
+import 'package:flutter_complete_guide/providers/flashcards.dart';
 import 'package:flutter_complete_guide/screens/authscreen.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +21,9 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(
             value: Auth(),
           ),
+          ChangeNotifierProvider.value(
+            value: Flashcards(),
+          ),
         ],
         child: Consumer<Auth>(
           builder: (ctx, auth, _) => MaterialApp(
@@ -26,7 +31,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: auth.isAuth ? TabsScreen() : AuthScreen(),
+              home: TabsScreen(),
               routes: {
                 ReviewChooseCategoryScreen.routeName: (ctx) =>
                     ReviewChooseCategoryScreen(),
