@@ -1,71 +1,17 @@
 import "package:flutter/material.dart";
-import "dart:convert";
-import "package:http/http.dart" as http;
+import "package:provider/provider.dart";
 
-import "../dummy_data.dart";
+import "../providers/flashcards.dart";
 
 class Searchscreen extends StatelessWidget {
   static const routeName = "/search";
 
-  void _pushFlashcards() {
-    final accountingFlashcards = dummyFlashcards
-        .where((flashcard) => flashcard.category == "Accounting");
-    const accountingUrl =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting.json";
-
-    final valuationFlashcards =
-        dummyFlashcards.where((flashcard) => flashcard.category == "Valuation");
-    const valuationUrl =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/valuation.json";
-
-    final processFlashcards =
-        dummyFlashcards.where((flashcard) => flashcard.category == "Process");
-    const processUrl =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/process.json";
-
-    accountingFlashcards.forEach((element) {
-      http.post(
-        accountingUrl,
-        body: json.encode({
-          "id": element.id,
-          "question": element.question,
-          "answer": element.answer,
-          "complexity": element.complexity,
-          "category": element.category,
-          "points": element.points,
-        }),
-      );
-    });
-    valuationFlashcards.forEach((element) {
-      http.post(
-        valuationUrl,
-        body: json.encode({
-          "id": element.id,
-          "question": element.question,
-          "answer": element.answer,
-          "complexity": element.complexity,
-          "category": element.category,
-          "points": element.points,
-        }),
-      );
-    });
-    processFlashcards.forEach((element) {
-      http.post(
-        processUrl,
-        body: json.encode({
-          "id": element.id,
-          "question": element.question,
-          "answer": element.answer,
-          "complexity": element.complexity,
-          "category": element.category,
-          "points": element.points,
-        }),
-      );
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
+    void _pushFlashcards() {
+      Provider.of<Flashcards>(context).pushFlashcards();
+    }
+
     return Column(children: [
       Container(
         child: SizedBox(

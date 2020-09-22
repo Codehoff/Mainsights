@@ -36,7 +36,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
         _isLoading = true;
       });
       Provider.of<Flashcards>(context)
-          .fetchAndSetFlashcards(dropdownValue.toLowerCase())
+          .fetchAndSetFlashcards(dropdownValue.toLowerCase(), true)
           .then((_) {
         setState(() {
           _isLoading = false;

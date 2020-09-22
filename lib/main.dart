@@ -21,8 +21,12 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider.value(
             value: Auth(),
           ),
-          ChangeNotifierProvider.value(
-            value: Flashcards(),
+          ChangeNotifierProxyProvider<Auth, Flashcards>(
+            create: null,
+            update: (ctx, auth, previousFlashcards) => Flashcards(
+                auth.token,
+                auth.userId,
+                previousFlashcards == null ? [] : previousFlashcards.items),
           ),
         ],
         child: Consumer<Auth>(
