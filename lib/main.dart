@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: TabsScreen(),
+              home: auth.isAuth ? TabsScreen() : AuthScreen(),
               routes: {
                 ReviewChooseCategoryScreen.routeName: (ctx) =>
                     ReviewChooseCategoryScreen(),
