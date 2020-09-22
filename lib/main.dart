@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/models/flashcard.dart';
 import 'package:flutter_complete_guide/providers/flashcards.dart';
 import 'package:flutter_complete_guide/screens/authscreen.dart';
 import 'package:provider/provider.dart';
 
+import "./screens/splash_screen.dart";
 import './providers/auth.dart';
 import 'package:flutter_complete_guide/screens/reviewscreen.dart';
 import 'package:flutter_complete_guide/screens/searchscreen.dart';
@@ -35,7 +35,16 @@ class MyApp extends StatelessWidget {
               theme: ThemeData(
                 primarySwatch: Colors.blue,
               ),
-              home: auth.isAuth ? TabsScreen() : AuthScreen(),
+              home: auth.isAuth
+                  ? TabsScreen()
+                  : FutureBuilder(
+                      future: auth.tryAutoLogin(),
+                      builder: (ctx, authResultSnapshot) =>
+                          authResultSnapshot.connectionState ==
+                                  ConnectionState.waiting
+                              ? SplashScreen()
+                              : AuthScreen(),
+                    ),
               routes: {
                 ReviewChooseCategoryScreen.routeName: (ctx) =>
                     ReviewChooseCategoryScreen(),
