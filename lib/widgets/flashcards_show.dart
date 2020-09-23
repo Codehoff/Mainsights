@@ -20,6 +20,7 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
   Widget build(BuildContext context) {
     final loadedFlashcards = Provider.of<Flashcards>(context);
     final flashcards = loadedFlashcards.items;
+
     var _editedFlashcard = Flashcard(
         id: flashcards[counter].id,
         category: flashcards[counter].id,
@@ -27,6 +28,7 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
         points: flashcards[counter].points,
         question: flashcards[counter].question,
         answer: flashcards[counter].answer);
+
     void _switchAnswer() {
       setState(() {
         switched == true ? switched = false : switched = true;
@@ -51,6 +53,7 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
       _editedFlashcard.points += 6;
       Provider.of<Flashcards>(context)
           .updatePoints(flashcards[counter].id, _editedFlashcard);
+      print(_editedFlashcard);
       _increaseCounter();
     }
 
@@ -60,6 +63,7 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
           : _editedFlashcard.points -= 4;
       Provider.of<Flashcards>(context)
           .updatePoints(flashcards[counter].id, _editedFlashcard);
+      print(_editedFlashcard);
       _increaseCounter();
     }
 

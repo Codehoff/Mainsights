@@ -24,52 +24,12 @@ class Flashcards with ChangeNotifier {
   }
 
   Future<void> pushFlashcards() async {
-    final accountingFlashcards = dummyFlashcards
-        .where((flashcard) => flashcard.category == "Accounting");
-    final accountingUrl =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/$userId/accounting.json?auth=$authToken";
+    final url =
+        "https://mainsights-1fb71.firebaseio.com/flashcards/$userId.json?auth=$authToken";
 
-    final valuationFlashcards =
-        dummyFlashcards.where((flashcard) => flashcard.category == "Valuation");
-    final valuationUrl =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/$userId/valuation.json?auth=$authToken";
-
-    final processFlashcards =
-        dummyFlashcards.where((flashcard) => flashcard.category == "Process");
-    final processUrl =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/$userId/process.json?auth=$authToken";
-
-    accountingFlashcards.forEach((element) {
+    dummyFlashcards.forEach((element) {
       http.post(
-        accountingUrl,
-        body: json.encode({
-          "id": element.id,
-          "question": element.question,
-          "answer": element.answer,
-          "complexity": element.complexity,
-          "category": element.category,
-          "points": element.points,
-          "creatorId": userId,
-        }),
-      );
-    });
-    valuationFlashcards.forEach((element) {
-      http.post(
-        valuationUrl,
-        body: json.encode({
-          "id": element.id,
-          "question": element.question,
-          "answer": element.answer,
-          "complexity": element.complexity,
-          "category": element.category,
-          "points": element.points,
-          "creatorId": userId,
-        }),
-      );
-    });
-    processFlashcards.forEach((element) {
-      http.post(
-        processUrl,
+        url,
         body: json.encode({
           "id": element.id,
           "question": element.question,
@@ -83,13 +43,10 @@ class Flashcards with ChangeNotifier {
     });
   }
 
-  Future<void> fetchAndSetFlashcards(category,
-      [bool filterByUser = false]) async {
-    final filterString =
-        filterByUser ? 'orderBy="creatorId"&equalTo"$userId"' : '';
+  Future<void> fetchAndSetFlashcards(category) async {
+    final filterString = 'orderBy="category"&equalTo="$category"';
     final url =
-        'https://mainsights-1fb71.firebaseio.com/flashcards/$userId/$category.json?auth=$authToken&$filterString';
-
+        'https://mainsights-1fb71.firebaseio.com/flashcards/$userId.json?auth=$authToken&$filterString';
     final response = await http.get(url);
     final extractedData = json.decode(response.body) as Map<String, dynamic>;
     final List<Flashcard> loadedFlashcards = [];
@@ -110,7 +67,7 @@ class Flashcards with ChangeNotifier {
   Future<void> updatePoints(String id, Flashcard newFlashcard) async {
     final flashcardIndex = _items.indexWhere((element) => element.id == id);
     final url =
-        "https://mainsights-1fb71.firebaseio.com/flashcards/accounting/$id.json?auth=$authToken";
+        "https://mainsights-1fb71.firebaseio.com/flashcards/$userId/$id.json?auth=$authToken";
     http.patch(
       url,
       body: json.encode(
