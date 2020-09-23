@@ -1,20 +1,24 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/models/flashcard.dart';
 import 'package:http/http.dart' as http;
 
 import "../models/flashcard.dart";
 import "../dummy_data.dart";
+import "../helpers/dbhelper.dart";
 
 class Flashcards with ChangeNotifier {
   List<Flashcard> _items = [];
+  List<Flashcard> _localItems = [];
 
   final String authToken;
   final String userId;
 
   Flashcards(this.authToken, this.userId, this._items);
 
+  //online database//
   List<Flashcard> get items {
     return [..._items];
   }
@@ -77,6 +81,46 @@ class Flashcards with ChangeNotifier {
       ),
     );
     _items[flashcardIndex] = newFlashcard;
+    notifyListeners();
+  }
+
+  //Local Database//
+
+  List<Flashcard> get localItems {
+    return [..._items];
+  }
+
+  Flashcard findLocalById(String id) {
+    return _items.firstWhere((element) => element.id == id);
+  }
+
+  Future<void> pushLocalFlashcard() async {
+    dummyFlashcards.forEach((element) {
+      DBHelper.insert('flashcards', {
+        'id': DateTime.now().toString(),
+        'question': element.question,
+        'answer': element.answer,
+        'category': element.category,
+        'complexity': element.complexity,
+        'points': element.points,
+      });
+    });
+  }
+
+  Future<void> fetchAndSetLocalFlashcards() async {
+    final dataList = await DBHelper.getData('flashcards');
+    _localItems = dataList
+        .map(
+          (item) => Flashcard(
+            id: item['id'],
+            question: item['title'],
+            answer: item['image'],
+            category: item["category"],
+            complexity: item["complexity"],
+            points: item["points"],
+          ),
+        )
+        .toList();
     notifyListeners();
   }
 }

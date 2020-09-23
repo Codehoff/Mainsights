@@ -61,7 +61,6 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
       _editedFlashcard.points += 6;
       Provider.of<Flashcards>(context)
           .updatePoints(flashcards[counter].id, _editedFlashcard);
-      print(_editedFlashcard);
       _increaseCounter();
     }
 
@@ -71,7 +70,6 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
           : _editedFlashcard.points -= 4;
       Provider.of<Flashcards>(context)
           .updatePoints(flashcards[counter].id, _editedFlashcard);
-      print(_editedFlashcard);
       _increaseCounter();
     }
 
