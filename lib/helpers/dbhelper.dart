@@ -8,7 +8,7 @@ class DBHelper {
     return sql.openDatabase(path.join(dbPath, 'places.db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT, answer TEXT, category TEXT, complexity TEXT, points INTEGER DEFAULT 0 )');
+          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT, answer TEXT, category TEXT, complexity TEXT, points INTEGER)');
     }, version: 1);
   }
 
@@ -24,5 +24,10 @@ class DBHelper {
   static Future<List<Map<String, dynamic>>> getData(String table) async {
     final db = await DBHelper.database();
     return db.query(table);
+  }
+
+  static Future<List<Map<String, dynamic>>> dropDB() async {
+    final db = await DBHelper.database();
+    await db.rawQuery("DROP table flashcards");
   }
 }
