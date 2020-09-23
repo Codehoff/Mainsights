@@ -35,7 +35,7 @@ class _ReviewChooseCategoryScreenState
           style: TextStyle(fontSize: 22),
         )),
         SizedBox(
-          height: 50,
+          height: 40,
         ),
         DropdownButton(
           style: TextStyle(
@@ -58,7 +58,7 @@ class _ReviewChooseCategoryScreenState
           }).toList(),
         ),
         SizedBox(
-          height: 20,
+          height: 25,
         ),
         FloatingActionButton(
           onPressed: () => changePage(dropdownValue),

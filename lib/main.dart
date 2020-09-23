@@ -5,11 +5,12 @@ import 'package:provider/provider.dart';
 
 import "./screens/splash_screen.dart";
 import './providers/auth.dart';
-import 'package:flutter_complete_guide/screens/reviewscreen.dart';
-import 'package:flutter_complete_guide/screens/searchscreen.dart';
-import 'package:flutter_complete_guide/screens/studyscreen.dart';
-import 'package:flutter_complete_guide/screens/tabsscreen.dart';
-import 'package:flutter_complete_guide/screens/reviewchoosecategoryscreen.dart';
+import './screens/reviewscreen.dart';
+import './screens/searchscreen.dart';
+import './screens/studyscreen.dart';
+import './screens/tabsscreen.dart';
+import "./screens/flashcards_finished_screen.dart";
+import './screens/reviewchoosecategoryscreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -52,6 +53,8 @@ class MyApp extends StatelessWidget {
                 Searchscreen.routeName: (ctx) => Searchscreen(),
                 Reviewscreen.routeName: (ctx) => Reviewscreen(),
                 TabsScreen.routeName: (ctx) => TabsScreen(),
+                FlashcardsFinishedScreen.routeName: (ctx) =>
+                    FlashcardsFinishedScreen(),
               }),
         ));
   }
