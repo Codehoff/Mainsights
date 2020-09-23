@@ -11,6 +11,7 @@ import './screens/studyscreen.dart';
 import './screens/tabsscreen.dart';
 import "./screens/flashcards_finished_screen.dart";
 import './screens/reviewchoosecategoryscreen.dart';
+import "./providers/localFlashcards.dart";
 
 void main() => runApp(MyApp());
 
@@ -21,6 +22,9 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider.value(
             value: Auth(),
+          ),
+          ChangeNotifierProvider.value(
+            value: LocalFlashcards(),
           ),
           ChangeNotifierProxyProvider<Auth, Flashcards>(
             create: null,
