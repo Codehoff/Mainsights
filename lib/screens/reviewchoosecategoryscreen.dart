@@ -26,9 +26,23 @@ class _ReviewChooseCategoryScreenState
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Text("What do you want to study today?"),
+        Center(
+            child: Text(
+          "What do you want to study today?",
+          style: TextStyle(fontSize: 22),
+        )),
+        SizedBox(
+          height: 50,
+        ),
         DropdownButton(
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+          dropdownColor: Theme.of(context).primaryColor,
           value: dropdownValue,
           onChanged: (String newValue) {
             setState(() {
@@ -43,14 +57,16 @@ class _ReviewChooseCategoryScreenState
             );
           }).toList(),
         ),
-        GestureDetector(
-          onTap: () => changePage(dropdownValue),
-          child: Container(
-            color: Colors.green,
-            child: Text(
-              "Print",
-              style: TextStyle(fontSize: 13.0),
-            ),
+        SizedBox(
+          height: 20,
+        ),
+        FloatingActionButton(
+          onPressed: () => changePage(dropdownValue),
+          backgroundColor: Theme.of(context).primaryColor,
+          splashColor: Colors.white,
+          child: Text(
+            "Go",
+            style: TextStyle(fontSize: 16.0),
           ),
         ),
       ],
