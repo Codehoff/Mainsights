@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-import 'package:flutter_complete_guide/widgets/local_flashcards_show.dart';
+
+import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 
 class Studyscreen extends StatefulWidget {
   static const routeName = "/studyscreen";
@@ -13,10 +14,13 @@ class _StudyscreenState extends State<Studyscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Review Mode'),
+          title: Text('Study Mode'),
+        ),
+        drawer: Drawer(
+          child: MainDrawer(),
         ),
         body: Center(
-          child: Text("Hello"),
+          child: Text("Study Mode"),
         ));
   }
 }

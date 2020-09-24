@@ -3,6 +3,7 @@ import 'package:flutter_complete_guide/widgets/local_flashcards_show.dart';
 import "package:provider/provider.dart";
 
 import '../providers/localFlashcards.dart';
+import "../widgets/main_drawer.dart";
 
 class Reviewscreen extends StatefulWidget {
   static const routeName = "/reviewscreen";
@@ -50,6 +51,9 @@ class _ReviewscreenState extends State<Reviewscreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Review Mode'),
+      ),
+      drawer: Drawer(
+        child: MainDrawer(),
       ),
       body: _isLoading
           ? Center(

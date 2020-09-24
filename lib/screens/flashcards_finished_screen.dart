@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
+import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 
-import 'tabs_screen.dart';
+import "../screens/review_choose_category_screen.dart";
 
 class FlashcardsFinishedScreen extends StatelessWidget {
   static const routeName = "/finished";
@@ -11,13 +12,16 @@ class FlashcardsFinishedScreen extends StatelessWidget {
     void _goBack() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => TabsScreen()),
+        MaterialPageRoute(builder: (context) => ReviewChooseCategoryScreen()),
       );
     }
 
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
+      ),
+      drawer: Drawer(
+        child: MainDrawer(),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
