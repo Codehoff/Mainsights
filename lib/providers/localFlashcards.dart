@@ -46,4 +46,11 @@ class LocalFlashcards with ChangeNotifier {
         .toList();
     notifyListeners();
   }
+
+  Future<void> updateFlashcard(id, newFlashcard) async {
+    final flashcardIndex = _items.indexWhere((element) => element.id == id);
+    await DBHelper.updateDB(id, newFlashcard);
+    _items[flashcardIndex] = newFlashcard;
+    notifyListeners();
+  }
 }

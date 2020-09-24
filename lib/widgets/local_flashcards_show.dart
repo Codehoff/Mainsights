@@ -3,32 +3,24 @@ import 'package:flutter_complete_guide/screens/flashcards_finished_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:swipedetector/swipedetector.dart';
 
-import "../providers/flashcards.dart";
+import "../providers/localFlashcards.dart";
 import "../models/flashcard.dart";
 
-class FlashcardsShow extends StatefulWidget {
-  FlashcardsShow({Key key}) : super(key: key);
+class LocalFlashcardsShow extends StatefulWidget {
+  LocalFlashcardsShow({Key key}) : super(key: key);
 
   @override
-  _FlashcardsShowState createState() => _FlashcardsShowState();
+  _LocalFlashcardsShowState createState() => _LocalFlashcardsShowState();
 }
 
-class _FlashcardsShowState extends State<FlashcardsShow> {
+class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
   var switched = false;
   var counter = 0;
 
   @override
   Widget build(BuildContext context) {
-    final loadedFlashcards = Provider.of<Flashcards>(context);
+    final loadedFlashcards = Provider.of<LocalFlashcards>(context);
     final flashcards = loadedFlashcards.items;
-
-    var _editedFlashcard = Flashcard(
-        id: flashcards[counter].id,
-        category: flashcards[counter].category,
-        complexity: flashcards[counter].complexity,
-        points: flashcards[counter].points,
-        question: flashcards[counter].question,
-        answer: flashcards[counter].answer);
 
     void _switchAnswer() {
       setState(() {
@@ -58,18 +50,38 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
     }
 
     void _increasePoints() {
-      _editedFlashcard.points += 6;
-      Provider.of<Flashcards>(context)
-          .updatePoints(flashcards[counter].id, _editedFlashcard);
+      flashcards[counter].points == null
+          ? flashcards[counter].points = 6
+          : flashcards[counter].points += 6;
+      var _editedFlashcard = Flashcard(
+          id: flashcards[counter].id,
+          category: flashcards[counter].category,
+          complexity: flashcards[counter].complexity,
+          points: flashcards[counter].points,
+          question: flashcards[counter].question,
+          answer: flashcards[counter].answer);
+      Provider.of<LocalFlashcards>(context)
+          .updateFlashcard(flashcards[counter].id, _editedFlashcard);
+      print(flashcards[counter].points);
       _increaseCounter();
     }
 
     void _decreasePoints() {
-      _editedFlashcard.points < 4
-          ? _editedFlashcard.points = 0
-          : _editedFlashcard.points -= 4;
-      Provider.of<Flashcards>(context)
-          .updatePoints(flashcards[counter].id, _editedFlashcard);
+      flashcards[counter].points == null
+          ? flashcards[counter].points = 0
+          : flashcards[counter].points < 4
+              ? flashcards[counter].points = 0
+              : flashcards[counter].points -= 4;
+      var _editedFlashcard = Flashcard(
+          id: flashcards[counter].id,
+          category: flashcards[counter].category,
+          complexity: flashcards[counter].complexity,
+          points: flashcards[counter].points,
+          question: flashcards[counter].question,
+          answer: flashcards[counter].answer);
+      Provider.of<LocalFlashcards>(context)
+          .updateFlashcard(flashcards[counter].id, _editedFlashcard);
+      print(flashcards[counter].points);
       _increaseCounter();
     }
 

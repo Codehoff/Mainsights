@@ -18,8 +18,6 @@ class Reviewscreen extends StatefulWidget {
 class _ReviewsceenState extends State<Reviewscreen> {
   var _isInit = true;
   var _isLoading = false;
-  var switched = false;
-  var counter = 0;
 
   String dropdownValue;
 

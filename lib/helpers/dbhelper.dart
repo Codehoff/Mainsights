@@ -30,4 +30,10 @@ class DBHelper {
     final db = await DBHelper.database();
     await db.rawQuery("DROP table flashcards");
   }
+
+  static Future<void> updateDB(id, editedFlashcard) async {
+    final db = await DBHelper.database();
+    db.rawQuery(
+        'UPDATE flashcards SET points = ${editedFlashcard.points} WHERE id = "$id";');
+  }
 }

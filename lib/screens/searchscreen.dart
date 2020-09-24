@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
 import "../providers/flashcards.dart";
+import "../providers/localFlashcards.dart";
 import "../helpers/dbhelper.dart";
 
 class Searchscreen extends StatelessWidget {
@@ -16,7 +17,7 @@ class Searchscreen extends StatelessWidget {
 
     /////push local/////
     void _pushLocalFlashcards() {
-      Provider.of<Flashcards>(context).pushLocalFlashcard();
+      Provider.of<LocalFlashcards>(context).pushLocalFlashcard();
     }
 
     /////Drop local/////
