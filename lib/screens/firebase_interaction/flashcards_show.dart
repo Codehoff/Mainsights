@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/screens/flashcards_finished_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:swipedetector/swipedetector.dart';
@@ -218,3 +218,4 @@ class _FlashcardsShowState extends State<FlashcardsShow> {
     );
   }
 }
+ */

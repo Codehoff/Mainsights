@@ -30,9 +30,9 @@ class LocalFlashcards with ChangeNotifier {
     });
   }
 
-  Future<void> fetchAndSetLocalFlashcards() async {
+  Future<void> fetchAndSetLocalFlashcards([dropdownValue]) async {
     final dataList = await DBHelper.getData('flashcards');
-    _items = dataList
+    final _extractedItems = dataList
         .map(
           (item) => Flashcard(
             id: item['id'],
@@ -43,6 +43,9 @@ class LocalFlashcards with ChangeNotifier {
             points: item["points"],
           ),
         )
+        .toList();
+    _items = _extractedItems
+        .where((element) => element.category == dropdownValue)
         .toList();
     notifyListeners();
   }

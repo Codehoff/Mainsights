@@ -1,9 +1,8 @@
 import "package:flutter/material.dart";
-import 'package:flutter_complete_guide/widgets/flashcards_show.dart';
+import 'package:flutter_complete_guide/widgets/local_flashcards_show.dart';
+import "package:provider/provider.dart";
 
-import 'package:provider/provider.dart';
-
-import "../providers/flashcards.dart";
+import "../providers/localFlashcards.dart";
 
 class Reviewscreen extends StatefulWidget {
   static const routeName = "/reviewscreen";
@@ -12,16 +11,16 @@ class Reviewscreen extends StatefulWidget {
   const Reviewscreen({this.dropdownValue});
 
   @override
-  _ReviewsceenState createState() => _ReviewsceenState(dropdownValue);
+  _ReviewscreenState createState() => _ReviewscreenState(dropdownValue);
 }
 
-class _ReviewsceenState extends State<Reviewscreen> {
+class _ReviewscreenState extends State<Reviewscreen> {
   var _isInit = true;
   var _isLoading = false;
 
   String dropdownValue;
 
-  _ReviewsceenState(this.dropdownValue);
+  _ReviewscreenState(this.dropdownValue);
 
   @override
   void initState() {
@@ -34,8 +33,8 @@ class _ReviewsceenState extends State<Reviewscreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Flashcards>(context)
-          .fetchAndSetFlashcards(dropdownValue)
+      Provider.of<LocalFlashcards>(context)
+          .fetchAndSetLocalFlashcards(dropdownValue)
           .then((_) {
         setState(() {
           _isLoading = false;
@@ -56,7 +55,7 @@ class _ReviewsceenState extends State<Reviewscreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : FlashcardsShow(),
+          : LocalFlashcardsShow(),
     );
   }
 }

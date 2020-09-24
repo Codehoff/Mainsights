@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import './studyscreen.dart';
 import './searchscreen.dart';
 import "./reviewchoosecategoryscreen.dart";
+import "./studyscreen.dart";
 
 class TabsScreen extends StatefulWidget {
   static const routeName = "/tabsscreen";
