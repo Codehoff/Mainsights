@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "../screens/reviewscreen.dart";
+import 'review_screen.dart';
 
 class ReviewChooseCategoryScreen extends StatefulWidget {
   static const routeName = "/reviewchoosecategory";

@@ -8,7 +8,7 @@ class DBHelper {
     return sql.openDatabase(path.join(dbPath, 'places.db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT, answer TEXT, category TEXT, complexity TEXT, points INTEGER)');
+          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT UNIQUE, answer TEXT, category TEXT, complexity TEXT, points INTEGER)');
     }, version: 1);
   }
 

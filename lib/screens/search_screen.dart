@@ -1,9 +1,9 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
 
-import "../providers/flashcards.dart";
-import "../providers/localFlashcards.dart";
-import "../helpers/dbhelper.dart";
+import '../providers/flashcards.dart';
+import '../providers/localFlashcards.dart';
+import '../helpers/dbhelper.dart';
 
 class Searchscreen extends StatelessWidget {
   static const routeName = "/search";

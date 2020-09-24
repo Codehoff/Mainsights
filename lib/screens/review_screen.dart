@@ -2,7 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_complete_guide/widgets/local_flashcards_show.dart';
 import "package:provider/provider.dart";
 
-import "../providers/localFlashcards.dart";
+import '../providers/localFlashcards.dart';
 
 class Reviewscreen extends StatefulWidget {
   static const routeName = "/reviewscreen";

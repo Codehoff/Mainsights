@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import "./tabsscreen.dart";
+import 'tabs_screen.dart';
 
 class FlashcardsFinishedScreen extends StatelessWidget {
   static const routeName = "/finished";
