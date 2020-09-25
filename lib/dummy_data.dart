@@ -9,6 +9,7 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -17,6 +18,7 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Basic",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -25,14 +27,16 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
     question: 'What are comps?',
     answer: "Complications",
     category: "Process",
-    subcategory: "comps",
+    subcategory: "Comps",
     complexity: "Advanced",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -42,6 +46,7 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "LBO",
     complexity: "Basic",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -50,6 +55,7 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -58,6 +64,7 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -66,6 +73,7 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Basic",
+    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -74,5 +82,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
+    viewed: "Not viewed",
   ),
 ];

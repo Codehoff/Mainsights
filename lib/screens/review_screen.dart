@@ -7,21 +7,33 @@ import "../widgets/main_drawer.dart";
 
 class Reviewscreen extends StatefulWidget {
   static const routeName = "/reviewscreen";
-  final String dropdownValue;
+  final String dropdownValue1;
+  final String dropdownValue2;
+  final String dropdownValue3;
+  final String dropdownValue4;
 
-  const Reviewscreen({this.dropdownValue});
+  const Reviewscreen(
+      {this.dropdownValue1,
+      this.dropdownValue2,
+      this.dropdownValue3,
+      this.dropdownValue4});
 
   @override
-  _ReviewscreenState createState() => _ReviewscreenState(dropdownValue);
+  _ReviewscreenState createState() => _ReviewscreenState(
+      dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4);
 }
 
 class _ReviewscreenState extends State<Reviewscreen> {
   var _isInit = true;
   var _isLoading = false;
 
-  String dropdownValue;
+  String dropdownValue1;
+  String dropdownValue2;
+  String dropdownValue3;
+  String dropdownValue4;
 
-  _ReviewscreenState(this.dropdownValue);
+  _ReviewscreenState(this.dropdownValue1, this.dropdownValue2,
+      this.dropdownValue3, this.dropdownValue4);
 
   @override
   void initState() {
@@ -35,7 +47,8 @@ class _ReviewscreenState extends State<Reviewscreen> {
         _isLoading = true;
       });
       Provider.of<LocalFlashcards>(context)
-          .fetchAndSetLocalFlashcards(dropdownValue)
+          .fetchAndSetLocalFlashcards(
+              dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4)
           .then((_) {
         setState(() {
           _isLoading = false;

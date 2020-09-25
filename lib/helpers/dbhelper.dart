@@ -5,10 +5,10 @@ import 'package:sqflite/sqlite_api.dart';
 class DBHelper {
   static Future<Database> database() async {
     final dbPath = await sql.getDatabasesPath();
-    return sql.openDatabase(path.join(dbPath, 'places.db'),
+    return sql.openDatabase(path.join(dbPath, 'flashcards.db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT UNIQUE, answer TEXT, category TEXT, complexity TEXT, points INTEGER)');
+          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT UNIQUE, answer TEXT, category TEXT, subcategory TEXT, complexity TEXT, points INTEGER)');
     }, version: 1);
   }
 

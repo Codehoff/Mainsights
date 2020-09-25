@@ -1,17 +1,5 @@
 import "package:flutter/foundation.dart";
 
-enum Complexity {
-  Basic,
-  Indermediate,
-  Advanced,
-}
-
-enum Category {
-  Valuation,
-  Accounting,
-  Process,
-}
-
 class Flashcard {
   String id;
   final String question;
@@ -19,6 +7,7 @@ class Flashcard {
   final String category;
   final String subcategory;
   final String complexity;
+  final String viewed;
   int points;
 
   Flashcard({
@@ -28,6 +17,7 @@ class Flashcard {
     @required this.category,
     @required this.subcategory,
     @required this.complexity,
+    @required this.viewed,
     this.points = 0,
   });
 }

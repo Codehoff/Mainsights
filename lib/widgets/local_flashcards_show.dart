@@ -60,7 +60,8 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
           complexity: flashcards[counter].complexity,
           points: flashcards[counter].points,
           question: flashcards[counter].question,
-          answer: flashcards[counter].answer);
+          answer: flashcards[counter].answer,
+          viewed: flashcards[counter].viewed);
       Provider.of<LocalFlashcards>(context)
           .updateFlashcard(flashcards[counter].id, _editedFlashcard);
       print(flashcards[counter].points);
@@ -80,7 +81,8 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
           complexity: flashcards[counter].complexity,
           points: flashcards[counter].points,
           question: flashcards[counter].question,
-          answer: flashcards[counter].answer);
+          answer: flashcards[counter].answer,
+          viewed: flashcards[counter].viewed);
       Provider.of<LocalFlashcards>(context)
           .updateFlashcard(flashcards[counter].id, _editedFlashcard);
       print(flashcards[counter].points);

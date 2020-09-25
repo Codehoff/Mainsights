@@ -41,6 +41,7 @@ class Flashcards with ChangeNotifier {
           "category": element.category,
           "subcategory": element.subcategory,
           "points": element.points,
+          "viewed": element.viewed,
           "creatorId": userId,
         }),
       );
@@ -63,6 +64,7 @@ class Flashcards with ChangeNotifier {
         subcategory: flashcardData["subcategory"],
         complexity: flashcardData["complexity"],
         points: flashcardData["points"],
+        viewed: flashcardData["viewed"],
       ));
     });
     _items = loadedFlashcards;
