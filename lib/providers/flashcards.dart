@@ -39,6 +39,7 @@ class Flashcards with ChangeNotifier {
           "answer": element.answer,
           "complexity": element.complexity,
           "category": element.category,
+          "subcategory": element.subcategory,
           "points": element.points,
           "creatorId": userId,
         }),
@@ -59,6 +60,7 @@ class Flashcards with ChangeNotifier {
         question: flashcardData["question"],
         answer: flashcardData["answer"],
         category: flashcardData["category"],
+        subcategory: flashcardData["subcategory"],
         complexity: flashcardData["complexity"],
         points: flashcardData["points"],
       ));

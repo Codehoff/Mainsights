@@ -17,6 +17,7 @@ class Flashcard {
   final String question;
   final String answer;
   final String category;
+  final String subcategory;
   final String complexity;
   int points;
 
@@ -25,6 +26,7 @@ class Flashcard {
     @required this.question,
     @required this.answer,
     @required this.category,
+    @required this.subcategory,
     @required this.complexity,
     this.points = 0,
   });

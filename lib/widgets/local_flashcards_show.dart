@@ -56,6 +56,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
       var _editedFlashcard = Flashcard(
           id: flashcards[counter].id,
           category: flashcards[counter].category,
+          subcategory: flashcards[counter].subcategory,
           complexity: flashcards[counter].complexity,
           points: flashcards[counter].points,
           question: flashcards[counter].question,
@@ -75,6 +76,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
       var _editedFlashcard = Flashcard(
           id: flashcards[counter].id,
           category: flashcards[counter].category,
+          subcategory: flashcards[counter].subcategory,
           complexity: flashcards[counter].complexity,
           points: flashcards[counter].points,
           question: flashcards[counter].question,

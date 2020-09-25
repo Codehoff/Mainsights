@@ -39,6 +39,7 @@ class LocalFlashcards with ChangeNotifier {
             question: item['question'],
             answer: item['answer'],
             category: item["category"],
+            subcategory: item["subcategory"],
             complexity: item["complexity"],
             points: item["points"],
           ),
