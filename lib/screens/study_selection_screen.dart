@@ -2,17 +2,15 @@ import "package:flutter/material.dart";
 
 import "../widgets/main_drawer.dart";
 import "../category_repo.dart";
-import 'review_screen.dart';
+import "../screens/study_list_screen.dart";
 
-class ReviewChooseCategoryScreen extends StatefulWidget {
-  static const routeName = "/reviewchoosecategory";
+class StudySelectionScreen extends StatefulWidget {
+  static const routeName = "/Studyselection";
   @override
-  _ReviewChooseCategoryScreenState createState() =>
-      _ReviewChooseCategoryScreenState();
+  _StudySelectionScreenState createState() => _StudySelectionScreenState();
 }
 
-class _ReviewChooseCategoryScreenState
-    extends State<ReviewChooseCategoryScreen> {
+class _StudySelectionScreenState extends State<StudySelectionScreen> {
   List<String> _categories = ["Choose category"];
   List<String> _subcategories = ["All"];
   String _selectedCategories = "Choose category";
@@ -27,7 +25,7 @@ class _ReviewChooseCategoryScreenState
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => Reviewscreen(
+        builder: (context) => StudyListScreen(
             dropdownValue1: dropdownValue1,
             dropdownValue2: dropdownValue2,
             dropdownValue3: dropdownValue3,
@@ -46,7 +44,7 @@ class _ReviewChooseCategoryScreenState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Review Mode"),
+        title: Text("Study"),
         elevation: 0.1,
       ),
       drawer: Drawer(

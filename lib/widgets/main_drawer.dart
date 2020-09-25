@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
+import "../screens/study_selection_screen.dart";
 import '../screens/review_choose_category_screen.dart';
-import "../screens/study_screen.dart";
+import '../screens/study_list_screen.dart';
 import "../screens/search_screen.dart";
 import "../screens/settings_screen.dart";
 
@@ -54,7 +55,8 @@ class MainDrawer extends StatelessWidget {
             Navigator.of(context).pushReplacementNamed(Searchscreen.routeName);
           }),
           buildListTile('Study', Icons.laptop_chromebook, () {
-            Navigator.of(context).pushReplacementNamed(Studyscreen.routeName);
+            Navigator.of(context)
+                .pushReplacementNamed(StudySelectionScreen.routeName);
           }),
           buildListTile('Review', Icons.playlist_add_check, () {
             Navigator.of(context)

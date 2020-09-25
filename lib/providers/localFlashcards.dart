@@ -50,18 +50,6 @@ class LocalFlashcards with ChangeNotifier {
         )
         .toList();
 
-    dropdownValue2 == "All"
-        ? _items = _extractedItems
-            .where((element) => element.category == dropdownValue1)
-            .toList()
-        : _items = _extractedItems
-            .where((element) =>
-                element.category == dropdownValue1 &&
-                element.subcategory == dropdownValue2)
-            .toList();
-
-    notifyListeners();
-
     if (dropdownValue2 == "All" &&
         dropdownValue3 == "All" &&
         dropdownValue4 == "All") {

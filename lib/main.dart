@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/providers/flashcards.dart';
 import 'package:flutter_complete_guide/screens/auth_screen.dart';
 import 'package:flutter_complete_guide/screens/settings_screen.dart';
+import 'package:flutter_complete_guide/screens/study_selection_screen.dart';
 import 'package:provider/provider.dart';
 
 import "./screens/splash_screen.dart";
 import './providers/auth.dart';
 import 'screens/review_screen.dart';
 import 'screens/search_screen.dart';
-import 'screens/study_screen.dart';
+import 'screens/study_list_screen.dart';
 import "./screens/flashcards_finished_screen.dart";
 import 'screens/review_choose_category_screen.dart';
 import "./providers/localFlashcards.dart";
@@ -51,9 +52,10 @@ class MyApp extends StatelessWidget {
                               : AuthScreen(),
                     ),
               routes: {
+                StudySelectionScreen.routeName: (ctx) => StudySelectionScreen(),
                 ReviewChooseCategoryScreen.routeName: (ctx) =>
                     ReviewChooseCategoryScreen(),
-                Studyscreen.routeName: (ctx) => Studyscreen(),
+                StudyListScreen.routeName: (ctx) => StudyListScreen(),
                 Searchscreen.routeName: (ctx) => Searchscreen(),
                 Reviewscreen.routeName: (ctx) => Reviewscreen(),
                 FlashcardsFinishedScreen.routeName: (ctx) =>
