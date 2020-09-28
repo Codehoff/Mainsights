@@ -7,7 +7,7 @@ class Flashcard {
   final String category;
   final String subcategory;
   final String complexity;
-  final String viewed;
+  String viewed;
   int points;
 
   Flashcard({
@@ -17,7 +17,7 @@ class Flashcard {
     @required this.category,
     @required this.subcategory,
     @required this.complexity,
-    @required this.viewed,
+    this.viewed = "not viewed",
     this.points = 0,
   });
 }

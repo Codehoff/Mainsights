@@ -5,8 +5,8 @@ import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 import "../providers/localFlashcards.dart";
 import "../screens/study_single_flashcard_screen.dart";
 
-class StudyListScreen extends StatefulWidget {
-  static const routeName = "/StudyListScreen";
+class SearchListScreen extends StatefulWidget {
+  static const routeName = "/SearchListScreen";
 
   final String dropdownValue1;
   final String dropdownValue2;
@@ -15,7 +15,7 @@ class StudyListScreen extends StatefulWidget {
 
   final String id;
 
-  const StudyListScreen(
+  const SearchListScreen(
       {this.id,
       this.dropdownValue1,
       this.dropdownValue2,
@@ -23,11 +23,11 @@ class StudyListScreen extends StatefulWidget {
       this.dropdownValue4});
 
   @override
-  _StudyListScreenState createState() => _StudyListScreenState(
+  _SearchListScreenState createState() => _SearchListScreenState(
       id, dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4);
 }
 
-class _StudyListScreenState extends State<StudyListScreen> {
+class _SearchListScreenState extends State<SearchListScreen> {
   var _isInit = true;
   var _isLoading = false;
   String dropdownValue1;
@@ -36,7 +36,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
   String dropdownValue4;
   String id;
 
-  _StudyListScreenState(this.id, this.dropdownValue1, this.dropdownValue2,
+  _SearchListScreenState(this.id, this.dropdownValue1, this.dropdownValue2,
       this.dropdownValue3, this.dropdownValue4);
 
   @override
@@ -70,7 +70,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Study Mode'),
+        title: Text('Search Mode'),
       ),
       drawer: Drawer(
         child: MainDrawer(),

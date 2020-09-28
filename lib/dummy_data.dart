@@ -9,7 +9,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -18,7 +17,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -27,7 +25,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -36,7 +33,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Comps",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -46,7 +42,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "LBO",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -55,7 +50,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -64,7 +58,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -73,7 +66,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -82,7 +74,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -91,7 +82,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Comps",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -100,7 +90,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "LBO",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -109,7 +98,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -118,7 +106,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -127,7 +114,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -136,7 +122,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -146,7 +131,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -155,7 +139,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -164,7 +147,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -173,7 +155,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Comps",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -183,7 +164,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "LBO",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -192,7 +172,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -201,7 +180,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -210,7 +188,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -219,7 +196,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -228,7 +204,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Comps",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -237,7 +212,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "LBO",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -246,7 +220,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -255,7 +228,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -264,7 +236,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -273,7 +244,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -283,7 +253,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -292,7 +261,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -301,7 +269,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -310,7 +277,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Comps",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -320,7 +286,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "LBO",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -329,7 +294,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -338,7 +302,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -347,7 +310,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -356,7 +318,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -365,7 +326,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Comps",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -374,7 +334,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "LBO",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -383,7 +342,6 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Intermediate",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q1',
@@ -392,7 +350,6 @@ var dummyFlashcards = [
     category: "Process",
     subcategory: "Merger Model",
     complexity: "Advanced",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q3',
@@ -401,7 +358,6 @@ var dummyFlashcards = [
     category: "Valuation",
     subcategory: "DCF",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
   Flashcard(
     id: 'q4',
@@ -410,6 +366,5 @@ var dummyFlashcards = [
     category: "Accounting",
     subcategory: "General",
     complexity: "Basic",
-    viewed: "Not viewed",
   ),
 ];

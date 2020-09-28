@@ -13,8 +13,8 @@ class LocalFlashcards with ChangeNotifier {
     return [..._items];
   }
 
-  Flashcard findLocalById(String id) {
-    return _items.firstWhere((element) => element.id == id);
+  Flashcard findById(String id) {
+    return _items.firstWhere((flashcard) => flashcard.id == id);
   }
 
   Future<void> pushLocalFlashcard() async {
@@ -49,6 +49,10 @@ class LocalFlashcards with ChangeNotifier {
           ),
         )
         .toList();
+
+    dropdownValue4 == "Viewed"
+        ? dropdownValue4 = "Has been viewed"
+        : dropdownValue4 = "not viewed";
 
     if (dropdownValue2 == "All" &&
         dropdownValue3 == "All" &&
@@ -109,6 +113,13 @@ class LocalFlashcards with ChangeNotifier {
   Future<void> updateFlashcard(id, newFlashcard) async {
     final flashcardIndex = _items.indexWhere((element) => element.id == id);
     await DBHelper.updateDB(id, newFlashcard);
+    _items[flashcardIndex] = newFlashcard;
+    notifyListeners();
+  }
+
+  Future<void> setFlashcardasViewed(id, newFlashcard) async {
+    final flashcardIndex = _items.indexWhere((element) => element.id == id);
+    await DBHelper.setFlashcardAsViewed(id, newFlashcard);
     _items[flashcardIndex] = newFlashcard;
     notifyListeners();
   }

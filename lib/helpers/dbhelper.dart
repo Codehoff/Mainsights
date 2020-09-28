@@ -36,4 +36,10 @@ class DBHelper {
     db.rawQuery(
         'UPDATE flashcards SET points = ${editedFlashcard.points} WHERE id = "$id";');
   }
+
+  static Future<void> setFlashcardAsViewed(id, editedFlashcard) async {
+    final db = await DBHelper.database();
+    db.rawQuery(
+        'UPDATE flashcards SET viewed = "Has been viewed" WHERE id = "$id";');
+  }
 }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import "../screens/study_selection_screen.dart";
 import '../screens/review_choose_category_screen.dart';
-import '../screens/study_list_screen.dart';
-import "../screens/search_screen.dart";
+import '../screens/search_list_screen.dart';
+import '../screens/search_selection_screen.dart';
 import "../screens/settings_screen.dart";
 
 class MainDrawer extends StatelessWidget {
@@ -52,7 +52,8 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           buildListTile('Search', Icons.find_in_page, () {
-            Navigator.of(context).pushReplacementNamed(Searchscreen.routeName);
+            Navigator.of(context)
+                .pushReplacementNamed(SearchListScreen.routeName);
           }),
           buildListTile('Study', Icons.laptop_chromebook, () {
             Navigator.of(context)
