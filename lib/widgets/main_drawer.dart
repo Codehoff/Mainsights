@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import "../screens/study_selection_screen.dart";
-import '../screens/review_choose_category_screen.dart';
+import '../screens/review_selection_screen.dart';
 import '../screens/search_list_screen.dart';
 import '../screens/search_selection_screen.dart';
 import "../screens/settings_screen.dart";
@@ -53,7 +53,7 @@ class MainDrawer extends StatelessWidget {
           ),
           buildListTile('Search', Icons.find_in_page, () {
             Navigator.of(context)
-                .pushReplacementNamed(SearchListScreen.routeName);
+                .pushReplacementNamed(SearchSelectionScreen.routeName);
           }),
           buildListTile('Study', Icons.laptop_chromebook, () {
             Navigator.of(context)
@@ -61,7 +61,7 @@ class MainDrawer extends StatelessWidget {
           }),
           buildListTile('Review', Icons.playlist_add_check, () {
             Navigator.of(context)
-                .pushReplacementNamed(ReviewChooseCategoryScreen.routeName);
+                .pushReplacementNamed(ReviewSelectionScreen.routeName);
           }),
           buildListTile('Settings', Icons.settings, () {
             Navigator.of(context)

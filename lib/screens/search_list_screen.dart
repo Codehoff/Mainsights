@@ -3,7 +3,7 @@ import "package:provider/provider.dart";
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 import "../providers/localFlashcards.dart";
-import "../screens/study_single_flashcard_screen.dart";
+import "../screens/search_single_flashcard.dart";
 
 class SearchListScreen extends StatefulWidget {
   static const routeName = "/SearchListScreen";
@@ -12,6 +12,7 @@ class SearchListScreen extends StatefulWidget {
   final String dropdownValue2;
   final String dropdownValue3;
   final String dropdownValue4;
+  final String searchValue;
 
   final String id;
 
@@ -20,11 +21,17 @@ class SearchListScreen extends StatefulWidget {
       this.dropdownValue1,
       this.dropdownValue2,
       this.dropdownValue3,
-      this.dropdownValue4});
+      this.dropdownValue4,
+      this.searchValue});
 
   @override
   _SearchListScreenState createState() => _SearchListScreenState(
-      id, dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4);
+      id,
+      dropdownValue1,
+      dropdownValue2,
+      dropdownValue3,
+      dropdownValue4,
+      searchValue);
 }
 
 class _SearchListScreenState extends State<SearchListScreen> {
@@ -34,10 +41,11 @@ class _SearchListScreenState extends State<SearchListScreen> {
   String dropdownValue2;
   String dropdownValue3;
   String dropdownValue4;
+  String searchValue;
   String id;
 
   _SearchListScreenState(this.id, this.dropdownValue1, this.dropdownValue2,
-      this.dropdownValue3, this.dropdownValue4);
+      this.dropdownValue3, this.dropdownValue4, this.searchValue);
 
   @override
   void initState() {
@@ -51,8 +59,8 @@ class _SearchListScreenState extends State<SearchListScreen> {
         _isLoading = true;
       });
       Provider.of<LocalFlashcards>(context)
-          .fetchAndSetLocalFlashcards(
-              dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4)
+          .fetchAndSetLocalFlashcards(dropdownValue1, dropdownValue2,
+              dropdownValue3, dropdownValue4, searchValue)
           .then((_) {
         setState(() {
           _isLoading = false;
@@ -211,7 +219,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
                         child: ListTile(
                           onTap: () {
                             Navigator.of(context).pushNamed(
-                                StudySingleFlashcardScreen.routeName,
+                                SearchSingleFlashcardScreen.routeName,
                                 arguments: flashcards[index].id);
                           },
                           trailing: flashcards[index].viewed == "not viewed"

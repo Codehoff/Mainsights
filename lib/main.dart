@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/providers/flashcards.dart';
 import 'package:flutter_complete_guide/screens/auth_screen.dart';
+import 'package:flutter_complete_guide/screens/search_selection_screen.dart';
 import 'package:flutter_complete_guide/screens/settings_screen.dart';
 import 'package:flutter_complete_guide/screens/study_selection_screen.dart';
 import 'package:flutter_complete_guide/screens/study_single_flashcard_screen.dart';
@@ -12,8 +13,9 @@ import 'screens/review_screen.dart';
 import 'screens/search_list_screen.dart';
 import 'screens/study_list_screen.dart';
 import "./screens/flashcards_finished_screen.dart";
-import 'screens/review_choose_category_screen.dart';
+import 'screens/review_selection_screen.dart';
 import "./providers/localFlashcards.dart";
+import "./screens/search_single_flashcard.dart";
 
 void main() => runApp(MyApp());
 
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               home: auth.isAuth
-                  ? ReviewChooseCategoryScreen()
+                  ? ReviewSelectionScreen()
                   : FutureBuilder(
                       future: auth.tryAutoLogin(),
                       builder: (ctx, authResultSnapshot) =>
@@ -53,9 +55,11 @@ class MyApp extends StatelessWidget {
                               : AuthScreen(),
                     ),
               routes: {
+                SearchSelectionScreen.routeName: (ctx) =>
+                    SearchSelectionScreen(),
                 StudySelectionScreen.routeName: (ctx) => StudySelectionScreen(),
-                ReviewChooseCategoryScreen.routeName: (ctx) =>
-                    ReviewChooseCategoryScreen(),
+                ReviewSelectionScreen.routeName: (ctx) =>
+                    ReviewSelectionScreen(),
                 StudyListScreen.routeName: (ctx) => StudyListScreen(),
                 SearchListScreen.routeName: (ctx) => SearchListScreen(),
                 Reviewscreen.routeName: (ctx) => Reviewscreen(),
@@ -64,6 +68,8 @@ class MyApp extends StatelessWidget {
                 SettingsScreen.routeName: (ctx) => SettingsScreen(),
                 StudySingleFlashcardScreen.routeName: (ctx) =>
                     StudySingleFlashcardScreen(),
+                SearchSingleFlashcardScreen.routeName: (ctx) =>
+                    SearchSingleFlashcardScreen(),
               }),
         ));
   }

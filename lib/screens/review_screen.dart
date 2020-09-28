@@ -47,8 +47,7 @@ class _ReviewscreenState extends State<Reviewscreen> {
         _isLoading = true;
       });
       Provider.of<LocalFlashcards>(context)
-          .fetchAndSetLocalFlashcards(
-              dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4)
+          .fetchAndSetLocalFlashcardsForReview()
           .then((_) {
         setState(() {
           _isLoading = false;

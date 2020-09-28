@@ -33,7 +33,169 @@ class LocalFlashcards with ChangeNotifier {
   }
 
   Future<void> fetchAndSetLocalFlashcards(
-      dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4) async {
+      dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4,
+      [dropdownValue5]) async {
+    final dataList = await DBHelper.getData('flashcards');
+    final _extractedItems = dataList
+        .map(
+          (item) => Flashcard(
+            id: item['id'],
+            question: item['question'],
+            answer: item['answer'],
+            category: item["category"],
+            subcategory: item["subcategory"],
+            complexity: item["complexity"],
+            points: item["points"],
+            viewed: item["viewed"],
+          ),
+        )
+        .toList();
+    print(dropdownValue5);
+
+    dropdownValue4 == "Viewed"
+        ? dropdownValue4 = "Has been viewed"
+        : dropdownValue4 = "not viewed";
+
+    if (dropdownValue5 == null) {
+      if (dropdownValue2 == "All" &&
+          dropdownValue3 == "All" &&
+          dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) => element.category == dropdownValue1)
+            .toList();
+      } else if (dropdownValue2 == "All" && dropdownValue3 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.category == dropdownValue1 &&
+                element.viewed == dropdownValue4)
+            .toList();
+      } else if (dropdownValue2 == "All" && dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.category == dropdownValue1 &&
+                element.complexity == dropdownValue3)
+            .toList();
+      } else if (dropdownValue3 == "All" && dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2)
+            .toList();
+      } else if (dropdownValue2 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.category == dropdownValue1 &&
+                element.complexity == dropdownValue3 &&
+                element.viewed == dropdownValue4)
+            .toList();
+      } else if (dropdownValue3 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2 &&
+                element.viewed == dropdownValue4)
+            .toList();
+      } else if (dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2 &&
+                element.complexity == dropdownValue3)
+            .toList();
+      } else
+        _items = _extractedItems
+            .where((element) =>
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2 &&
+                element.complexity == dropdownValue3 &&
+                element.viewed == dropdownValue4)
+            .toList();
+      notifyListeners();
+    } else {
+      if (dropdownValue2 == "All" &&
+          dropdownValue3 == "All" &&
+          dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1)
+            .toList();
+      } else if (dropdownValue2 == "All" && dropdownValue3 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1 &&
+                element.viewed == dropdownValue4)
+            .toList();
+      } else if (dropdownValue2 == "All" && dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1 &&
+                element.complexity == dropdownValue3)
+            .toList();
+      } else if (dropdownValue3 == "All" && dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2)
+            .toList();
+      } else if (dropdownValue2 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1 &&
+                element.complexity == dropdownValue3 &&
+                element.viewed == dropdownValue4)
+            .toList();
+      } else if (dropdownValue3 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2 &&
+                element.viewed == dropdownValue4)
+            .toList();
+      } else if (dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2 &&
+                element.complexity == dropdownValue3)
+            .toList();
+      } else
+        _items = _extractedItems
+            .where((element) =>
+                element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) &&
+                element.category == dropdownValue1 &&
+                element.subcategory == dropdownValue2 &&
+                element.complexity == dropdownValue3 &&
+                element.viewed == dropdownValue4)
+            .toList();
+
+      notifyListeners();
+    }
+  }
+
+  Future<void> fetchAndSetLocalFlashcardsForReview() async {
     final dataList = await DBHelper.getData('flashcards');
     final _extractedItems = dataList
         .map(
@@ -50,63 +212,9 @@ class LocalFlashcards with ChangeNotifier {
         )
         .toList();
 
-    dropdownValue4 == "Viewed"
-        ? dropdownValue4 = "Has been viewed"
-        : dropdownValue4 = "not viewed";
-
-    if (dropdownValue2 == "All" &&
-        dropdownValue3 == "All" &&
-        dropdownValue4 == "All") {
-      _items = _extractedItems
-          .where((element) => element.category == dropdownValue1)
-          .toList();
-    } else if (dropdownValue2 == "All" && dropdownValue3 == "All") {
-      _items = _extractedItems
-          .where((element) =>
-              element.category == dropdownValue1 &&
-              element.viewed == dropdownValue4)
-          .toList();
-    } else if (dropdownValue2 == "All" && dropdownValue4 == "All") {
-      _items = _extractedItems
-          .where((element) =>
-              element.category == dropdownValue1 &&
-              element.complexity == dropdownValue3)
-          .toList();
-    } else if (dropdownValue3 == "All" && dropdownValue4 == "All") {
-      _items = _extractedItems
-          .where((element) =>
-              element.category == dropdownValue1 &&
-              element.subcategory == dropdownValue2)
-          .toList();
-    } else if (dropdownValue2 == "All") {
-      _items = _extractedItems
-          .where((element) =>
-              element.category == dropdownValue1 &&
-              element.complexity == dropdownValue3 &&
-              element.viewed == dropdownValue4)
-          .toList();
-    } else if (dropdownValue3 == "All") {
-      _items = _extractedItems
-          .where((element) =>
-              element.category == dropdownValue1 &&
-              element.subcategory == dropdownValue2 &&
-              element.viewed == dropdownValue4)
-          .toList();
-    } else if (dropdownValue4 == "All") {
-      _items = _extractedItems
-          .where((element) =>
-              element.category == dropdownValue1 &&
-              element.subcategory == dropdownValue2 &&
-              element.complexity == dropdownValue3)
-          .toList();
-    } else
-      _items = _extractedItems
-          .where((element) =>
-              element.category == dropdownValue1 &&
-              element.subcategory == dropdownValue2 &&
-              element.complexity == dropdownValue3 &&
-              element.viewed == dropdownValue4)
-          .toList();
+    _items = _extractedItems
+        .where((element) => element.viewed != "not viewed")
+        .toList();
     notifyListeners();
   }
 

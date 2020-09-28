@@ -1,7 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 
-import "../screens/review_choose_category_screen.dart";
+import 'review_selection_screen.dart';
 
 class FlashcardsFinishedScreen extends StatelessWidget {
   static const routeName = "/finished";
@@ -12,7 +12,7 @@ class FlashcardsFinishedScreen extends StatelessWidget {
     void _goBack() {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => ReviewChooseCategoryScreen()),
+        MaterialPageRoute(builder: (context) => ReviewSelectionScreen()),
       );
     }
 
