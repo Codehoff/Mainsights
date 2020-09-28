@@ -61,7 +61,7 @@ class Flashcard {
         DateTime.now().difference(DateTime.parse(this.lastReviewed)).inDays >
             28) {
       return true;
-    } else if (this.lastReviewed == DateTime.utc(2020, 01, 01).toString()) {
+    } else if (this.lastReviewed == DateTime(2020, 01, 01).toString()) {
       return true;
     } else {
       return false;

@@ -50,11 +50,11 @@ class LocalFlashcards with ChangeNotifier {
           ),
         )
         .toList();
-    print(dropdownValue5);
+    var dropdownViewed = "";
 
     dropdownValue4 == "Viewed"
-        ? dropdownValue4 = "Has been viewed"
-        : dropdownValue4 = "not viewed";
+        ? dropdownViewed = "Has been viewed"
+        : dropdownViewed = "not viewed";
 
     if (dropdownValue5 == null) {
       if (dropdownValue2 == "All" &&
@@ -67,7 +67,7 @@ class LocalFlashcards with ChangeNotifier {
         _items = _extractedItems
             .where((element) =>
                 element.category == dropdownValue1 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
             .toList();
       } else if (dropdownValue2 == "All" && dropdownValue4 == "All") {
         _items = _extractedItems
@@ -86,14 +86,14 @@ class LocalFlashcards with ChangeNotifier {
             .where((element) =>
                 element.category == dropdownValue1 &&
                 element.complexity == dropdownValue3 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
             .toList();
       } else if (dropdownValue3 == "All") {
         _items = _extractedItems
             .where((element) =>
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
             .toList();
       } else if (dropdownValue4 == "All") {
         _items = _extractedItems
@@ -108,7 +108,7 @@ class LocalFlashcards with ChangeNotifier {
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
                 element.complexity == dropdownValue3 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
             .toList();
       notifyListeners();
     } else {

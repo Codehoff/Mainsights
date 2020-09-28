@@ -29,7 +29,7 @@ class FlashcardsFinishedScreen extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.center,
-            child: Text("Congratulations, you completed all cards!"),
+            child: Text("Congratulations, you completed this set of cards!"),
           ),
           SizedBox(
             height: 30,

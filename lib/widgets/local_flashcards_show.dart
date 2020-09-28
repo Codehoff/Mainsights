@@ -20,7 +20,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
   @override
   Widget build(BuildContext context) {
     final loadedFlashcards = Provider.of<LocalFlashcards>(context);
-    final flashcards = loadedFlashcards.items;
+    final flashcards = loadedFlashcards.items.take(10).toList();
 
     void _switchAnswer() {
       setState(() {
