@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/screens/review_selection_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:swipedetector/swipedetector.dart';
 
-import "../providers/localFlashcards.dart";
-import "../models/flashcard.dart";
 import "../widgets/main_drawer.dart";
 
 class IncorrectFlashcardsShow extends StatefulWidget {

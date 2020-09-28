@@ -3,13 +3,12 @@ import 'package:flutter_complete_guide/widgets/incorrect_flashcards_show.dart';
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 
 import 'review_selection_screen.dart';
-import "../models/flashcard.dart";
 
 class FlashcardsFinishedScreen extends StatefulWidget {
   static const routeName = "/finished";
 
-  List incorrectFlashcards;
-  int flashcardsLength;
+  final List incorrectFlashcards;
+  final int flashcardsLength;
 
   FlashcardsFinishedScreen(this.incorrectFlashcards, this.flashcardsLength);
 
@@ -19,8 +18,8 @@ class FlashcardsFinishedScreen extends StatefulWidget {
 }
 
 class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
-  List incorrectFlashcards;
-  int flashcardsLength;
+  final List incorrectFlashcards;
+  final int flashcardsLength;
 
   _FlashcardsFinishedScreenState(
       this.incorrectFlashcards, this.flashcardsLength);
@@ -63,7 +62,7 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
           Container(
             alignment: Alignment.center,
             child: Text(
-                "You answered ${flashcardsLength - _flashcards.length} questions correctly!"),
+                "You answered ${flashcardsLength - _flashcards.length} out of $flashcardsLength questions correctly!"),
           ),
           SizedBox(
             height: 30,
