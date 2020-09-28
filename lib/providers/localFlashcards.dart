@@ -208,13 +208,16 @@ class LocalFlashcards with ChangeNotifier {
             complexity: item["complexity"],
             points: item["points"],
             viewed: item["viewed"],
+            lastReviewed: item["lastReviewed"],
           ),
         )
         .toList();
 
     _items = _extractedItems
-        .where((element) => element.viewed != "not viewed")
+        .where((element) =>
+            element.viewed != "not viewed" && element.toBeReviewedToday == true)
         .toList();
+
     notifyListeners();
   }
 

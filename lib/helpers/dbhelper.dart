@@ -8,7 +8,7 @@ class DBHelper {
     return sql.openDatabase(path.join(dbPath, 'flashcards.db'),
         onCreate: (db, version) {
       return db.execute(
-          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT UNIQUE, answer TEXT, category TEXT, subcategory TEXT, complexity TEXT, points INTEGER, viewed TEXT)');
+          'CREATE TABLE flashcards(id TEXT PRIMARY KEY, question TEXT UNIQUE, answer TEXT, category TEXT, subcategory TEXT, complexity TEXT, points INTEGER, viewed TEXT, lastReviewed TEXT)');
     }, version: 1);
   }
 
@@ -34,12 +34,12 @@ class DBHelper {
   static Future<void> updateDB(id, editedFlashcard) async {
     final db = await DBHelper.database();
     db.rawQuery(
-        'UPDATE flashcards SET points = ${editedFlashcard.points} WHERE id = "$id";');
+        'UPDATE flashcards SET points = ${editedFlashcard.points}, lastReviewed = "${editedFlashcard.lastReviewed}" WHERE id = "$id";');
   }
 
   static Future<void> setFlashcardAsViewed(id, editedFlashcard) async {
     final db = await DBHelper.database();
     db.rawQuery(
-        'UPDATE flashcards SET viewed = "Has been viewed" WHERE id = "$id";');
+        'UPDATE flashcards SET viewed = "Has been viewed", lastReviewed = "${editedFlashcard.lastReviewed}" WHERE id = "$id";');
   }
 }

@@ -52,7 +52,8 @@ class _StudySingleFlashcardScreenState
                   points: loadedFlashcard.points,
                   question: loadedFlashcard.question,
                   answer: loadedFlashcard.answer,
-                  viewed: loadedFlashcard.viewed);
+                  viewed: loadedFlashcard.viewed,
+                  lastReviewed: DateTime.utc(2020, 01, 01).toString());
               Provider.of<LocalFlashcards>(context)
                   .setFlashcardasViewed(flashcardId, _editedFlashcard);
             },

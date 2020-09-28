@@ -26,6 +26,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
       setState(() {
         switched == true ? switched = false : switched = true;
       });
+      print(flashcards[counter].toBeReviewedToday);
     }
 
     void _increaseCounter() {
@@ -53,6 +54,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
       flashcards[counter].points == null
           ? flashcards[counter].points = 6
           : flashcards[counter].points += 6;
+      flashcards[counter].lastReviewed = DateTime.now().toString();
       var _editedFlashcard = Flashcard(
           id: flashcards[counter].id,
           category: flashcards[counter].category,
@@ -61,10 +63,10 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
           points: flashcards[counter].points,
           question: flashcards[counter].question,
           answer: flashcards[counter].answer,
-          viewed: flashcards[counter].viewed);
+          viewed: flashcards[counter].viewed,
+          lastReviewed: flashcards[counter].lastReviewed);
       Provider.of<LocalFlashcards>(context)
           .updateFlashcard(flashcards[counter].id, _editedFlashcard);
-      print(flashcards[counter].points);
       _increaseCounter();
     }
 
@@ -85,7 +87,6 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
           viewed: flashcards[counter].viewed);
       Provider.of<LocalFlashcards>(context)
           .updateFlashcard(flashcards[counter].id, _editedFlashcard);
-      print(flashcards[counter].points);
       _increaseCounter();
     }
 
