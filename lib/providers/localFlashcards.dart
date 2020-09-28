@@ -7,6 +7,8 @@ import "../dummy_data.dart";
 import "../helpers/dbhelper.dart";
 
 class LocalFlashcards with ChangeNotifier {
+  List<Flashcard> incorrectFlashcards = [];
+
   List<Flashcard> _items = [];
 
   List<Flashcard> get items {
@@ -47,6 +49,7 @@ class LocalFlashcards with ChangeNotifier {
             complexity: item["complexity"],
             points: item["points"],
             viewed: item["viewed"],
+            lastReviewed: item["lastReviewed"],
           ),
         )
         .toList();

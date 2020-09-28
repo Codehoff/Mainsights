@@ -63,8 +63,6 @@ class MyApp extends StatelessWidget {
                 StudyListScreen.routeName: (ctx) => StudyListScreen(),
                 SearchListScreen.routeName: (ctx) => SearchListScreen(),
                 Reviewscreen.routeName: (ctx) => Reviewscreen(),
-                FlashcardsFinishedScreen.routeName: (ctx) =>
-                    FlashcardsFinishedScreen(),
                 SettingsScreen.routeName: (ctx) => SettingsScreen(),
                 StudySingleFlashcardScreen.routeName: (ctx) =>
                     StudySingleFlashcardScreen(),

@@ -16,6 +16,7 @@ class LocalFlashcardsShow extends StatefulWidget {
 class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
   var switched = false;
   var counter = 0;
+  List _incorrectFlashcards = [];
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,6 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
       setState(() {
         switched == true ? switched = false : switched = true;
       });
-      print(flashcards[counter].toBeReviewedToday);
     }
 
     void _increaseCounter() {
@@ -36,7 +36,8 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
             : Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FlashcardsFinishedScreen(),
+                  builder: (context) => FlashcardsFinishedScreen(
+                      _incorrectFlashcards, flashcards.length),
                 ),
               );
         switched = false;
@@ -51,42 +52,61 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
     }
 
     void _increasePoints() {
+      print(DateTime.now()
+          .difference(DateTime.parse(flashcards[counter].lastReviewed))
+          .inDays);
       flashcards[counter].points == null
           ? flashcards[counter].points = 6
-          : flashcards[counter].points += 6;
+          : DateTime.now()
+                      .difference(
+                          DateTime.parse(flashcards[counter].lastReviewed))
+                      .inDays >
+                  1
+              ? flashcards[counter].points += 6
+              : flashcards[counter].points += 0;
       flashcards[counter].lastReviewed = DateTime.now().toString();
       var _editedFlashcard = Flashcard(
-          id: flashcards[counter].id,
-          category: flashcards[counter].category,
-          subcategory: flashcards[counter].subcategory,
-          complexity: flashcards[counter].complexity,
-          points: flashcards[counter].points,
-          question: flashcards[counter].question,
-          answer: flashcards[counter].answer,
-          viewed: flashcards[counter].viewed,
-          lastReviewed: flashcards[counter].lastReviewed);
+        id: flashcards[counter].id,
+        category: flashcards[counter].category,
+        subcategory: flashcards[counter].subcategory,
+        complexity: flashcards[counter].complexity,
+        points: flashcards[counter].points,
+        question: flashcards[counter].question,
+        answer: flashcards[counter].answer,
+        viewed: flashcards[counter].viewed,
+        lastReviewed: flashcards[counter].lastReviewed,
+      );
       Provider.of<LocalFlashcards>(context)
           .updateFlashcard(flashcards[counter].id, _editedFlashcard);
       _increaseCounter();
     }
 
     void _decreasePoints() {
-      flashcards[counter].points == null
-          ? flashcards[counter].points = 0
-          : flashcards[counter].points < 4
+      DateTime.now()
+                  .difference(DateTime.parse(flashcards[counter].lastReviewed))
+                  .inDays <
+              1
+          ? flashcards[counter].points += 0
+          : flashcards[counter].points == null
               ? flashcards[counter].points = 0
-              : flashcards[counter].points -= 4;
+              : flashcards[counter].points < 4
+                  ? flashcards[counter].points = 0
+                  : flashcards[counter].points -= 4;
+      flashcards[counter].lastReviewed = DateTime.now().toString();
       var _editedFlashcard = Flashcard(
-          id: flashcards[counter].id,
-          category: flashcards[counter].category,
-          subcategory: flashcards[counter].subcategory,
-          complexity: flashcards[counter].complexity,
-          points: flashcards[counter].points,
-          question: flashcards[counter].question,
-          answer: flashcards[counter].answer,
-          viewed: flashcards[counter].viewed);
+        id: flashcards[counter].id,
+        category: flashcards[counter].category,
+        subcategory: flashcards[counter].subcategory,
+        complexity: flashcards[counter].complexity,
+        points: flashcards[counter].points,
+        question: flashcards[counter].question,
+        answer: flashcards[counter].answer,
+        viewed: flashcards[counter].viewed,
+        lastReviewed: flashcards[counter].lastReviewed,
+      );
       Provider.of<LocalFlashcards>(context)
           .updateFlashcard(flashcards[counter].id, _editedFlashcard);
+      _incorrectFlashcards.add(_editedFlashcard);
       _increaseCounter();
     }
 
