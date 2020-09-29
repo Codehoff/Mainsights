@@ -86,7 +86,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                   height: 50,
                 ),
                 Text(
-                  "These are the questions based on your selection criteria:",
+                  "There are ${flashcards.length} questions based on your selection criteria:",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -210,9 +210,10 @@ class _StudyListScreenState extends State<StudyListScreen> {
                         ),
                         child: ListTile(
                           onTap: () {
-                            Navigator.of(context).pushNamed(
-                                StudySingleFlashcardScreen.routeName,
-                                arguments: flashcards[index].id);
+                            Navigator.of(context).push(MaterialPageRoute(
+                                builder: (context) =>
+                                    StudySingleFlashcardScreen(
+                                        flashcards, index)));
                           },
                           trailing: flashcards[index].viewed == "not viewed"
                               ? Text("")

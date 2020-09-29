@@ -52,9 +52,6 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
     }
 
     void _increasePoints() {
-      print(DateTime.now()
-          .difference(DateTime.parse(flashcards[counter].lastReviewed))
-          .inDays);
       flashcards[counter].points == null
           ? flashcards[counter].points = 6
           : DateTime.now()

@@ -23,52 +23,49 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider.value(
-            value: Auth(),
-          ),
-          ChangeNotifierProvider.value(
-            value: LocalFlashcards(),
-          ),
-          ChangeNotifierProxyProvider<Auth, Flashcards>(
-            create: null,
-            update: (ctx, auth, previousFlashcards) => Flashcards(
-                auth.token,
-                auth.userId,
-                previousFlashcards == null ? [] : previousFlashcards.items),
-          ),
-        ],
-        child: Consumer<Auth>(
-          builder: (ctx, auth, _) => MaterialApp(
-              title: 'Mainsights',
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
-              home: auth.isAuth
-                  ? ReviewSelectionScreen()
-                  : FutureBuilder(
-                      future: auth.tryAutoLogin(),
-                      builder: (ctx, authResultSnapshot) =>
-                          authResultSnapshot.connectionState ==
-                                  ConnectionState.waiting
-                              ? SplashScreen()
-                              : AuthScreen(),
-                    ),
-              routes: {
-                SearchSelectionScreen.routeName: (ctx) =>
-                    SearchSelectionScreen(),
-                StudySelectionScreen.routeName: (ctx) => StudySelectionScreen(),
-                ReviewSelectionScreen.routeName: (ctx) =>
-                    ReviewSelectionScreen(),
-                StudyListScreen.routeName: (ctx) => StudyListScreen(),
-                SearchListScreen.routeName: (ctx) => SearchListScreen(),
-                Reviewscreen.routeName: (ctx) => Reviewscreen(),
-                SettingsScreen.routeName: (ctx) => SettingsScreen(),
-                StudySingleFlashcardScreen.routeName: (ctx) =>
-                    StudySingleFlashcardScreen(),
-                SearchSingleFlashcardScreen.routeName: (ctx) =>
-                    SearchSingleFlashcardScreen(),
-              }),
-        ));
+      providers: [
+        ChangeNotifierProvider.value(
+          value: Auth(),
+        ),
+        ChangeNotifierProvider.value(
+          value: LocalFlashcards(),
+        ),
+        ChangeNotifierProxyProvider<Auth, Flashcards>(
+          create: null,
+          update: (ctx, auth, previousFlashcards) => Flashcards(
+              auth.token,
+              auth.userId,
+              previousFlashcards == null ? [] : previousFlashcards.items),
+        ),
+      ],
+      child: Consumer<Auth>(
+        builder: (ctx, auth, _) => MaterialApp(
+            title: 'Mainsights',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: auth.isAuth
+                ? ReviewSelectionScreen()
+                : FutureBuilder(
+                    future: auth.tryAutoLogin(),
+                    builder: (ctx, authResultSnapshot) =>
+                        authResultSnapshot.connectionState ==
+                                ConnectionState.waiting
+                            ? SplashScreen()
+                            : AuthScreen(),
+                  ),
+            routes: {
+              SearchSelectionScreen.routeName: (ctx) => SearchSelectionScreen(),
+              StudySelectionScreen.routeName: (ctx) => StudySelectionScreen(),
+              ReviewSelectionScreen.routeName: (ctx) => ReviewSelectionScreen(),
+              StudyListScreen.routeName: (ctx) => StudyListScreen(),
+              SearchListScreen.routeName: (ctx) => SearchListScreen(),
+              Reviewscreen.routeName: (ctx) => Reviewscreen(),
+              SettingsScreen.routeName: (ctx) => SettingsScreen(),
+              SearchSingleFlashcardScreen.routeName: (ctx) =>
+                  SearchSingleFlashcardScreen(),
+            }),
+      ),
+    );
   }
 }
