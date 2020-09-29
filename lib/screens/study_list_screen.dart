@@ -86,7 +86,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                   height: 50,
                 ),
                 Text(
-                  "There are ${flashcards.length} questions based on your selection criteria:",
+                  "There are ${flashcards.length} questions that match your selection criteria:",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(

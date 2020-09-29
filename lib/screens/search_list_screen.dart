@@ -94,7 +94,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
                   height: 50,
                 ),
                 Text(
-                  "These are the questions based on your selection criteria:",
+                  "There are ${flashcards.length} questions that match your selection criteria:",
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
