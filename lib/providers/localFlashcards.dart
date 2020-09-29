@@ -115,49 +115,76 @@ class LocalFlashcards with ChangeNotifier {
             .toList();
       notifyListeners();
     } else {
-      if (dropdownValue2 == "All" &&
+      if (dropdownValue1 == "All" &&
+          dropdownValue2 == "All" &&
+          dropdownValue3 == "All" &&
+          dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) => (element.question
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) ||
+                element.answer
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase())))
+            .toList();
+      } else if (dropdownValue2 == "All" &&
           dropdownValue3 == "All" &&
           dropdownValue4 == "All") {
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1)
             .toList();
       } else if (dropdownValue2 == "All" && dropdownValue3 == "All") {
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.viewed == dropdownValue4)
             .toList();
       } else if (dropdownValue2 == "All" && dropdownValue4 == "All") {
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.complexity == dropdownValue3)
             .toList();
       } else if (dropdownValue3 == "All" && dropdownValue4 == "All") {
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2)
             .toList();
       } else if (dropdownValue2 == "All") {
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.complexity == dropdownValue3 &&
                 element.viewed == dropdownValue4)
@@ -165,9 +192,12 @@ class LocalFlashcards with ChangeNotifier {
       } else if (dropdownValue3 == "All") {
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
                 element.viewed == dropdownValue4)
@@ -175,9 +205,12 @@ class LocalFlashcards with ChangeNotifier {
       } else if (dropdownValue4 == "All") {
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
                 element.complexity == dropdownValue3)
@@ -185,9 +218,12 @@ class LocalFlashcards with ChangeNotifier {
       } else
         _items = _extractedItems
             .where((element) =>
-                element.question
-                    .toLowerCase()
-                    .contains(dropdownValue5.toLowerCase()) &&
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
                 element.complexity == dropdownValue3 &&

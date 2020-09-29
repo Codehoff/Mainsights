@@ -11,13 +11,13 @@ class SearchSelectionScreen extends StatefulWidget {
 }
 
 class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
-  List<String> _categories = ["Choose category"];
+  List<String> _categories = ["All"];
   List<String> _subcategories = ["All"];
-  String _selectedCategories = "Choose category";
+  String _selectedCategories = "All";
   String _selectedSubcategory = "All";
 
   String searchValue = "Test";
-  String dropdownValue1 = "Accounting";
+  String dropdownValue1 = "All";
   String dropdownValue2 = "All";
   String dropdownValue3 = "All";
   String dropdownValue4 = "All";

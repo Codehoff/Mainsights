@@ -16,7 +16,7 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
   String _selectedCategories = "Choose category";
   String _selectedSubcategory = "All";
 
-  String dropdownValue1 = "Accounting";
+  String dropdownValue1 = "Choose category";
   String dropdownValue2 = "All";
   String dropdownValue3 = "All";
   String dropdownValue4 = "All";
