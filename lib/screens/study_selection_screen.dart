@@ -58,7 +58,13 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
               SizedBox(
                 height: 50,
               ),
-              Text("Choose categories"),
+              Text(
+                "Category",
+                style: TextStyle(fontSize: 16),
+              ),
+              SizedBox(
+                height: 10,
+              ),
               DropdownButton<String>(
                 isExpanded: true,
                 items: _categories.map((String dropdownValue1) {
@@ -73,6 +79,13 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
                 },
                 value: _selectedCategories,
               ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Subcategory",
+                style: TextStyle(fontSize: 16),
+              ),
               DropdownButton<String>(
                 isExpanded: true,
                 items: _subcategories.map((String dropdownValue2) {
@@ -86,6 +99,13 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
                   dropdownValue2 = value;
                 },
                 value: _selectedSubcategory,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Difficulty",
+                style: TextStyle(fontSize: 16),
               ),
               DropdownButton<String>(
                 isExpanded: true,
@@ -102,6 +122,13 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
                   });
                 },
                 value: dropdownValue3,
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                "Viewed/Not viewed",
+                style: TextStyle(fontSize: 16),
               ),
               DropdownButton<String>(
                 isExpanded: true,
