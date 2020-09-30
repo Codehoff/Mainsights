@@ -59,6 +59,9 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
             alignment: Alignment.center,
             child: Text("Congratulations, you completed this set of cards!"),
           ),
+          SizedBox(
+            height: 20,
+          ),
           Container(
             alignment: Alignment.center,
             child: Text(
@@ -67,31 +70,33 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
           SizedBox(
             height: 30,
           ),
-          GestureDetector(
-            onTap: _changePage,
-            child: Container(
-              margin: EdgeInsets.all(20),
-              alignment: Alignment.center,
-              width: 200,
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(3),
-              ),
-              padding: EdgeInsets.all(5),
-              child: Text("Review incorrect questions"),
-            ),
-          ),
+          incorrectFlashcards.length == 0
+              ? Text("")
+              : GestureDetector(
+                  onTap: _changePage,
+                  child: Container(
+                    margin: EdgeInsets.all(20),
+                    alignment: Alignment.center,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).primaryColor,
+                      borderRadius: BorderRadius.circular(3),
+                    ),
+                    padding: EdgeInsets.all(5),
+                    child: Text("Review incorrect questions"),
+                  ),
+                ),
           GestureDetector(
             onTap: _goBack,
             child: Container(
               alignment: Alignment.center,
-              width: 100,
+              width: 150,
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(3),
               ),
               padding: EdgeInsets.all(5),
-              child: Text("Go Back"),
+              child: Text("Back to review overview"),
             ),
           ),
         ],
