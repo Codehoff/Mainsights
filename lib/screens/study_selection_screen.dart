@@ -57,7 +57,7 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
             children: <Widget>[
               Container(
                 margin: EdgeInsets.symmetric(horizontal: 10),
-                padding: EdgeInsets.all(15),
+                padding: EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   color: Theme.of(context).primaryColorLight,
                   borderRadius: BorderRadius.circular(10),
