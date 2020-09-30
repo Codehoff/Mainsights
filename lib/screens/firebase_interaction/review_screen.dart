@@ -1,4 +1,10 @@
-/* import "package:flutter/material.dart";
+/* 
+
+//////////////////////////////////////////////////
+/////Use  later for database synchronization//////
+//////////////////////////////////////////////////
+
+import "package:flutter/material.dart";
 import 'package:flutter_complete_guide/widgets/flashcards_show.dart';
 import 'package:provider/provider.dart';
 
