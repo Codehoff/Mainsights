@@ -11,12 +11,12 @@ class StudySelectionScreen extends StatefulWidget {
 }
 
 class _StudySelectionScreenState extends State<StudySelectionScreen> {
-  List<String> _categories = ["Choose category"];
+  List<String> _categories = ["All"];
   List<String> _subcategories = ["All"];
-  String _selectedCategories = "Choose category";
+  String _selectedCategories = "All";
   String _selectedSubcategory = "All";
 
-  String dropdownValue1 = "Choose category";
+  String dropdownValue1 = "All";
   String dropdownValue2 = "All";
   String dropdownValue3 = "All";
   String dropdownValue4 = "All";
