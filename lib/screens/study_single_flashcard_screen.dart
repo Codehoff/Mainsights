@@ -106,13 +106,21 @@ class _StudySingleFlashcardScreenState
                   margin: EdgeInsets.all(5),
                   height: 450,
                   decoration: BoxDecoration(
-                    border: Border.all(
-                      color: flashcards[counter].complexity == "Basic"
-                          ? Colors.green[300]
-                          : flashcards[counter].complexity == "Intermediate"
-                              ? Colors.orange[300]
-                              : Colors.red[300],
-                      width: 5,
+                    border: Border(
+                      top: BorderSide(
+                          color: flashcards[counter].complexity == "Basic"
+                              ? Colors.green[300]
+                              : flashcards[counter].complexity == "Intermediate"
+                                  ? Colors.orange[300]
+                                  : Colors.red[300],
+                          width: 8),
+                      bottom: BorderSide(
+                          color: flashcards[counter].complexity == "Basic"
+                              ? Colors.green[300]
+                              : flashcards[counter].complexity == "Intermediate"
+                                  ? Colors.orange[300]
+                                  : Colors.red[300],
+                          width: 8),
                     ),
                   ),
                   child: Column(
