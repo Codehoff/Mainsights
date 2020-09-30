@@ -1,4 +1,8 @@
-/* import 'package:flutter/material.dart';
+/* 
+//////////////////////////////////////////////////
+/////Use  later for database synchronization//////
+//////////////////////////////////////////////////
+import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/screens/flashcards_finished_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:swipedetector/swipedetector.dart';
