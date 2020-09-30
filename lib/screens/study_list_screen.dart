@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import "package:provider/provider.dart";
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
@@ -220,28 +221,30 @@ class _StudyListScreenState extends State<StudyListScreen> {
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (ctx, index) {
-                      return Container(
-                        height: 150,
-                        margin: new EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        decoration: new BoxDecoration(
-                          border: new Border(
-                            bottom: new BorderSide(),
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => StudySingleFlashcardScreen(
+                                  flashcards, index)));
+                          HapticFeedback.lightImpact();
+                        },
+                        child: Container(
+                          height: 150,
+                          margin: new EdgeInsets.all(10),
+                          alignment: Alignment.center,
+                          decoration: new BoxDecoration(
+                            border: new Border(
+                              bottom: new BorderSide(),
+                            ),
                           ),
-                        ),
-                        child: ListTile(
-                          onTap: () {
-                            Navigator.of(context).push(MaterialPageRoute(
-                                builder: (context) =>
-                                    StudySingleFlashcardScreen(
-                                        flashcards, index)));
-                          },
-                          trailing: flashcards[index].viewed == "not viewed"
-                              ? Text("")
-                              : Icon(Icons.check),
-                          title: Text(
-                            flashcards[index].question,
-                            style: TextStyle(fontSize: 18),
+                          child: ListTile(
+                            trailing: flashcards[index].viewed == "not viewed"
+                                ? Text("")
+                                : Icon(Icons.check),
+                            title: Text(
+                              flashcards[index].question,
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
                         ),
                       );
