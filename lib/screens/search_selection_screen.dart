@@ -54,27 +54,57 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
       ),
       body: Column(
         children: [
-          Container(
-            child:
-                Text("Enter your search terms to start looking for questions"),
+          SizedBox(
+            height: 25,
           ),
-          TextFormField(
-              initialValue: "",
-              textInputAction: TextInputAction.next,
-              onChanged: (value) {
-                print(searchValue);
-                searchValue = value;
-                print(searchValue);
-              }),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColorLight,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  "Choose your search criteria below",
+                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "In case you want to specify your search results, choose the respective chapter",
+                  style: TextStyle(fontSize: 14),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            alignment: Alignment.center,
+            child: TextFormField(
+                decoration: InputDecoration(hintText: "e.g. comps"),
+                initialValue: "",
+                textInputAction: TextInputAction.next,
+                onChanged: (value) {
+                  searchValue = value;
+                }),
+          ),
           SafeArea(
             child: Container(
               padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
               child: Column(
                 children: <Widget>[
-                  SizedBox(
-                    height: 50,
+                  Text(
+                    "Category",
+                    style: TextStyle(fontSize: 16),
                   ),
-                  Text("Choose categories"),
+                  SizedBox(
+                    height: 10,
+                  ),
                   DropdownButton<String>(
                     isExpanded: true,
                     items: _categories.map((String dropdownValue1) {
@@ -89,6 +119,13 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
                     },
                     value: _selectedCategories,
                   ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Subcategory",
+                    style: TextStyle(fontSize: 16),
+                  ),
                   DropdownButton<String>(
                     isExpanded: true,
                     items: _subcategories.map((String dropdownValue2) {
@@ -102,6 +139,13 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
                       dropdownValue2 = value;
                     },
                     value: _selectedSubcategory,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Difficulty",
+                    style: TextStyle(fontSize: 16),
                   ),
                   DropdownButton<String>(
                     isExpanded: true,
@@ -118,6 +162,13 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
                       });
                     },
                     value: dropdownValue3,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    "Viewed / Not viewed",
+                    style: TextStyle(fontSize: 16),
                   ),
                   DropdownButton<String>(
                     isExpanded: true,
@@ -136,7 +187,7 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
                     value: dropdownValue4,
                   ),
                   SizedBox(
-                    height: 80,
+                    height: 25,
                   ),
                   FloatingActionButton(
                     onPressed: () => changePage(dropdownValue1, dropdownValue2),

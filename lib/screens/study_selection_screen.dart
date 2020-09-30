@@ -55,6 +55,32 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
           padding: EdgeInsets.symmetric(horizontal: 50, vertical: 30),
           child: Column(
             children: <Widget>[
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 10),
+                padding: EdgeInsets.all(15),
+                decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColorLight,
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Enter your search terms below",
+                      style: TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "In case you want to specify your search results, choose the respective chapter",
+                      style: TextStyle(fontSize: 14),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
               SizedBox(
                 height: 50,
               ),

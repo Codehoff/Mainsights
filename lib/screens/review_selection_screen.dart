@@ -62,6 +62,34 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
       body: Column(
         children: <Widget>[
           SizedBox(
+            height: 20,
+          ),
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: 10),
+            padding: EdgeInsets.all(15),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColorLight,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: [
+                Text(
+                  "Review the questions you have studied before",
+                  style: TextStyle(fontSize: 20),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  "The more you answer a question correctly, the less often you have to review it",
+                  style: TextStyle(fontSize: 14),
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
             height: 30,
           ),
           Container(
@@ -70,7 +98,12 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                     child: CircularProgressIndicator(),
                   )
                 : Text(
-                    "You've got ${_loadedFlashcards.items.length} questions to review"),
+                    "You've got ${_loadedFlashcards.items.length} questions to review",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 20,
+                    ),
+                  ),
           ),
           SizedBox(
             height: 30,
@@ -88,7 +121,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                       ),
                     ),
                     SizedBox(
-                      height: 40,
+                      height: 20,
                     ),
                     Container(
                       alignment: Alignment.center,
@@ -145,19 +178,15 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                           : Text(""),
                     ),
                     SizedBox(
-                      height: 20,
+                      height: 50,
                     ),
                   ],
                 ),
           Center(
-            child: RaisedButton(
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
+            child: FloatingActionButton(
               onPressed: _loadedFlashcards.items.length == 0
                   ? () {}
                   : () => changePage(),
-              textColor: Colors.white,
-              color: Theme.of(context).primaryColor,
               splashColor: Colors.white,
               child: Text(
                 "Go",
