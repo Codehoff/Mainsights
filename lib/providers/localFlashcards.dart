@@ -66,6 +66,18 @@ class LocalFlashcards with ChangeNotifier {
         _items = _extractedItems
             .where((element) => element.category == dropdownValue1)
             .toList();
+      } else if (dropdownValue1 == "All" &&
+          dropdownValue2 == "All" &&
+          dropdownValue3 == "All") {
+        _items = _extractedItems
+            .where((element) => element.viewed == dropdownViewed)
+            .toList();
+      } else if (dropdownValue1 == "All" &&
+          dropdownValue2 == "All" &&
+          dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) => element.complexity == dropdownValue3)
+            .toList();
       } else if (dropdownValue2 == "All" && dropdownValue3 == "All") {
         _items = _extractedItems
             .where((element) =>
