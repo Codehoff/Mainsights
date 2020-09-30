@@ -103,14 +103,15 @@ class _StudySingleFlashcardScreenState
               },
               child: Center(
                 child: Container(
+                  margin: EdgeInsets.all(5),
                   height: 450,
                   decoration: BoxDecoration(
                     border: Border.all(
                       color: flashcards[counter].complexity == "Basic"
-                          ? Colors.green
+                          ? Colors.green[300]
                           : flashcards[counter].complexity == "Intermediate"
-                              ? Colors.orange
-                              : Colors.red,
+                              ? Colors.orange[300]
+                              : Colors.red[300],
                       width: 5,
                     ),
                   ),
@@ -119,7 +120,7 @@ class _StudySingleFlashcardScreenState
                       SizedBox(
                         height: 100,
                       ),
-                      SizedBox(
+                      Container(
                         child: switched == false
                             ? Text(
                                 "Question:",
@@ -157,13 +158,19 @@ class _StudySingleFlashcardScreenState
             SizedBox(
               height: 50,
             ),
-            Container(
-              height: 80,
-              decoration: BoxDecoration(border: new Border.all(width: 3)),
-              alignment: Alignment.center,
-              child: Text(
-                "You're in chapter ${flashcards[counter].category}",
-                style: TextStyle(fontSize: 20),
+            Expanded(
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Container(
+                  margin: EdgeInsets.all(5),
+                  height: 80,
+                  decoration: BoxDecoration(border: new Border.all(width: 3)),
+                  alignment: Alignment.center,
+                  child: Text(
+                    "You're in chapter: ${flashcards[counter].category}",
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
               ),
             ),
           ],
