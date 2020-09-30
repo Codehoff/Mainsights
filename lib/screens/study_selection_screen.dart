@@ -127,7 +127,7 @@ class _StudySelectionScreenState extends State<StudySelectionScreen> {
                 height: 10,
               ),
               Text(
-                "Viewed/Not viewed",
+                "Viewed / Not viewed",
                 style: TextStyle(fontSize: 16),
               ),
               DropdownButton<String>(
