@@ -56,7 +56,7 @@ class LocalFlashcards with ChangeNotifier {
     var dropdownViewed = "";
 
     dropdownValue4 == "Viewed"
-        ? dropdownViewed = "Has been viewed"
+        ? dropdownViewed = "has been viewed"
         : dropdownViewed = "not viewed";
 
     if (dropdownValue5 == null) {
@@ -152,6 +152,44 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1)
             .toList();
+      } else if (dropdownValue1 == "All" &&
+          dropdownValue2 == "All" &&
+          dropdownValue3 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
+                element.viewed == dropdownViewed)
+            .toList();
+      } else if (dropdownValue1 == "All" &&
+          dropdownValue2 == "All" &&
+          dropdownValue4 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
+                element.complexity == dropdownValue3)
+            .toList();
       } else if (dropdownValue2 == "All" && dropdownValue3 == "All") {
         _items = _extractedItems
             .where((element) =>
@@ -168,7 +206,25 @@ class LocalFlashcards with ChangeNotifier {
                         .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
+            .toList();
+      } else if (dropdownValue1 == "All" && dropdownValue2 == "All") {
+        _items = _extractedItems
+            .where((element) =>
+                (element.question
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase())) &&
+                element.complexity == dropdownValue3 &&
+                element.viewed == dropdownViewed)
             .toList();
       } else if (dropdownValue2 == "All" && dropdownValue4 == "All") {
         _items = _extractedItems
@@ -223,7 +279,7 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.complexity == dropdownValue3 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
             .toList();
       } else if (dropdownValue3 == "All") {
         _items = _extractedItems
@@ -242,7 +298,7 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
             .toList();
       } else if (dropdownValue4 == "All") {
         _items = _extractedItems
@@ -281,7 +337,7 @@ class LocalFlashcards with ChangeNotifier {
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
                 element.complexity == dropdownValue3 &&
-                element.viewed == dropdownValue4)
+                element.viewed == dropdownViewed)
             .toList();
 
       notifyListeners();

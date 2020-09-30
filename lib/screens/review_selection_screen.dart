@@ -53,7 +53,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
     final firstThreeFlashcards = _loadedFlashcards.items.take(3).toList();
     return Scaffold(
       appBar: AppBar(
-        title: Text("Review Mode"),
+        title: Text("Review"),
         elevation: 0.1,
       ),
       drawer: Drawer(
@@ -127,15 +127,16 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: Border.all(
-                            color: Theme.of(context).primaryColor, width: 3),
+                            color: Theme.of(context).primaryColorLight,
+                            width: 3),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      height: 80,
-                      width: 300,
+                      height: 100,
+                      width: 360,
                       child: firstThreeFlashcards.length > 0
                           ? Text(
                               firstThreeFlashcards[0].question,
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 14),
                             )
                           : Text(""),
                     ),
@@ -146,15 +147,16 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: Border.all(
-                            color: Theme.of(context).primaryColor, width: 3),
+                            color: Theme.of(context).primaryColorLight,
+                            width: 3),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      height: 80,
-                      width: 300,
+                      height: 100,
+                      width: 360,
                       child: firstThreeFlashcards.length >= 2
                           ? Text(
                               firstThreeFlashcards[1].question,
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 14),
                             )
                           : Text(""),
                     ),
@@ -165,20 +167,21 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: Border.all(
-                            color: Theme.of(context).primaryColor, width: 3),
+                            color: Theme.of(context).primaryColorLight,
+                            width: 3),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      height: 80,
-                      width: 300,
+                      height: 100,
+                      width: 360,
                       child: firstThreeFlashcards.length >= 3
                           ? Text(
                               firstThreeFlashcards[2].question,
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(fontSize: 14),
                             )
                           : Text(""),
                     ),
                     SizedBox(
-                      height: 50,
+                      height: 20,
                     ),
                   ],
                 ),

@@ -91,117 +91,141 @@ class _SearchListScreenState extends State<SearchListScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 50,
+                  height: 25,
                 ),
-                Text(
-                  "There are ${flashcards.length} questions that match your selection criteria:",
-                  textAlign: TextAlign.center,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColorLight,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "There are ${flashcards.length} questions that match your selection criteria:",
+                        style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Click on a question to see the answer",
+                        style: TextStyle(fontSize: 14),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Column(
-                        children: [
-                          Text(
-                            "Category 1",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 90,
-                            padding: EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(8),
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: 5),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Column(
+                          children: [
+                            Text(
+                              "Category 1",
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            child: Text(
-                              dropdownValue1,
-                              style: TextStyle(fontSize: 12),
+                            SizedBox(
+                              height: 6,
                             ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "Category 2",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 90,
-                            padding: EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(8),
+                            Container(
+                              alignment: Alignment.center,
+                              width: 90,
+                              padding: EdgeInsets.all(7),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColorLight,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                dropdownValue1,
+                                style: TextStyle(fontSize: 12),
+                              ),
                             ),
-                            child: Text(
-                              dropdownValue2,
-                              style: TextStyle(fontSize: 12),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Category 2",
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "Difficulty",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 90,
-                            padding: EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(8),
+                            SizedBox(
+                              height: 6,
                             ),
-                            child: Text(
-                              dropdownValue3,
-                              style: TextStyle(fontSize: 12),
+                            Container(
+                              alignment: Alignment.center,
+                              width: 90,
+                              padding: EdgeInsets.all(7),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColorLight,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                dropdownValue2,
+                                style: TextStyle(fontSize: 12),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            "Viewed",
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            height: 6,
-                          ),
-                          Container(
-                            alignment: Alignment.center,
-                            width: 90,
-                            padding: EdgeInsets.all(7),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
-                              borderRadius: BorderRadius.circular(8),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Difficulty",
+                              style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            child: Text(
-                              dropdownValue4,
-                              style: TextStyle(fontSize: 12),
+                            SizedBox(
+                              height: 6,
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            Container(
+                              alignment: Alignment.center,
+                              width: 90,
+                              padding: EdgeInsets.all(7),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColorLight,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                dropdownValue3,
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: [
+                            Text(
+                              "Viewed",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(
+                              height: 6,
+                            ),
+                            Container(
+                              alignment: Alignment.center,
+                              width: 90,
+                              padding: EdgeInsets.all(7),
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).primaryColorLight,
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Text(
+                                dropdownValue4,
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ),
                 Expanded(

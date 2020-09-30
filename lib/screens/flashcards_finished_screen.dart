@@ -80,10 +80,13 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
                     width: 200,
                     decoration: BoxDecoration(
                       color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(3),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     padding: EdgeInsets.all(5),
-                    child: Text("Review incorrect questions"),
+                    child: Text(
+                      "Review incorrect questions",
+                      textAlign: TextAlign.center,
+                    ),
                   ),
                 ),
           GestureDetector(
@@ -93,10 +96,13 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
               width: 150,
               decoration: BoxDecoration(
                 color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(3),
+                borderRadius: BorderRadius.circular(10),
               ),
               padding: EdgeInsets.all(5),
-              child: Text("Back to review overview"),
+              child: Text(
+                "Back to review overview",
+                textAlign: TextAlign.center,
+              ),
             ),
           ),
         ],
