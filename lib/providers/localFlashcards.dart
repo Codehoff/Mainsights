@@ -125,6 +125,12 @@ class LocalFlashcards with ChangeNotifier {
                     .contains(dropdownValue5.toLowerCase()) ||
                 element.answer
                     .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) ||
+                element.category
+                    .toLowerCase()
+                    .contains(dropdownValue5.toLowerCase()) ||
+                element.subcategory
+                    .toLowerCase()
                     .contains(dropdownValue5.toLowerCase())))
             .toList();
       } else if (dropdownValue2 == "All" &&
@@ -137,6 +143,12 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
                         .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1)
             .toList();
@@ -147,6 +159,12 @@ class LocalFlashcards with ChangeNotifier {
                         .toLowerCase()
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
                         .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
@@ -160,6 +178,12 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
                         .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.complexity == dropdownValue3)
@@ -172,6 +196,12 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
                         .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2)
@@ -183,6 +213,12 @@ class LocalFlashcards with ChangeNotifier {
                         .toLowerCase()
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
                         .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
@@ -197,6 +233,12 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
                         .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
@@ -210,6 +252,12 @@ class LocalFlashcards with ChangeNotifier {
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
                         .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
+                        .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
                 element.subcategory == dropdownValue2 &&
@@ -222,6 +270,12 @@ class LocalFlashcards with ChangeNotifier {
                         .toLowerCase()
                         .contains(dropdownValue5.toLowerCase()) ||
                     element.answer
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.category
+                        .toLowerCase()
+                        .contains(dropdownValue5.toLowerCase()) ||
+                    element.subcategory
                         .toLowerCase()
                         .contains(dropdownValue5.toLowerCase())) &&
                 element.category == dropdownValue1 &&
