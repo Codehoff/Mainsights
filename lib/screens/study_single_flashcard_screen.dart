@@ -75,7 +75,7 @@ class _StudySingleFlashcardScreenState
               child: Center(
                 child: Text(
                   "Question ${counter + 1} of ${flashcards.length}",
-                  style: TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 22),
                 ),
               ),
             ),
@@ -170,7 +170,7 @@ class _StudySingleFlashcardScreenState
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  margin: EdgeInsets.all(5),
+                  margin: EdgeInsets.all(15),
                   height: 80,
                   decoration: BoxDecoration(
                     border: new Border.all(
