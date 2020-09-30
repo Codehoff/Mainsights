@@ -54,7 +54,7 @@ class _StudySingleFlashcardScreenState
 
     return Scaffold(
       appBar: AppBar(
-        title: Text("Single Flashcard"),
+        title: Text("Study"),
       ),
       drawer: Drawer(
         child: MainDrawer(),
