@@ -172,7 +172,12 @@ class _StudySingleFlashcardScreenState
                 child: Container(
                   margin: EdgeInsets.all(5),
                   height: 80,
-                  decoration: BoxDecoration(border: new Border.all(width: 3)),
+                  decoration: BoxDecoration(
+                    border: new Border.all(
+                      width: 3,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                  ),
                   alignment: Alignment.center,
                   child: Text(
                     "You're in chapter: ${flashcards[counter].category}",
