@@ -85,12 +85,33 @@ class _StudyListScreenState extends State<StudyListScreen> {
                 SizedBox(
                   height: 50,
                 ),
-                Text(
-                  "There are ${flashcards.length} questions that match your selection criteria:",
-                  textAlign: TextAlign.center,
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  padding: EdgeInsets.all(15),
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).primaryColorLight,
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        "There are ${flashcards.length} questions that match your selection criteria:",
+                        style: TextStyle(fontSize: 20),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Click on a question to see the answer",
+                        style: TextStyle(fontSize: 14),
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 20,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 5),
@@ -111,7 +132,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                             width: 90,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -135,7 +156,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                             width: 90,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -159,7 +180,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                             width: 90,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
@@ -183,7 +204,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
                             width: 90,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
-                              color: Theme.of(context).primaryColor,
+                              color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
                             child: Text(
