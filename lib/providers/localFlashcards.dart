@@ -60,7 +60,12 @@ class LocalFlashcards with ChangeNotifier {
         : dropdownViewed = "not viewed";
 
     if (dropdownValue5 == null) {
-      if (dropdownValue2 == "All" &&
+      if (dropdownValue1 == "All" &&
+          dropdownValue2 == "All" &&
+          dropdownValue3 == "All" &&
+          dropdownValue4 == "All") {
+        _items = _extractedItems.toList();
+      } else if (dropdownValue2 == "All" &&
           dropdownValue3 == "All" &&
           dropdownValue4 == "All") {
         _items = _extractedItems
