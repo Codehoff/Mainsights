@@ -86,12 +86,13 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
             margin: EdgeInsets.symmetric(horizontal: 20),
             alignment: Alignment.center,
             child: TextFormField(
-                decoration: InputDecoration(hintText: "e.g. comps"),
-                initialValue: "",
-                textInputAction: TextInputAction.next,
-                onChanged: (value) {
-                  searchValue = value;
-                }),
+              decoration: InputDecoration(hintText: "e.g. comps"),
+              initialValue: "",
+              textInputAction: TextInputAction.next,
+              onChanged: (value) {
+                searchValue = value;
+              },
+            ),
           ),
           SafeArea(
             child: Container(
