@@ -48,7 +48,7 @@ class _SearchSingleFlashcardScreenState
                 points: loadedFlashcard.points,
                 question: loadedFlashcard.question,
                 answer: loadedFlashcard.answer,
-                viewed: loadedFlashcard.viewed);
+                viewed: loadedFlashcard.viewed),;
             Provider.of<LocalFlashcards>(context)
                 .setFlashcardasViewed(flashcardId, _editedFlashcard);
           },

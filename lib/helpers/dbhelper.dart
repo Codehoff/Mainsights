@@ -28,7 +28,7 @@ class DBHelper {
 
   static Future<List<Map<String, dynamic>>> dropDB() async {
     final db = await DBHelper.database();
-    await db.rawQuery("DROP table flashcards");
+    return await db.rawQuery("DROP table flashcards");
   }
 
   static Future<void> updateDB(id, editedFlashcard) async {
