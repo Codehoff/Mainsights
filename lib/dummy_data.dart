@@ -1,5 +1,4 @@
 import "./models/flashcard.dart";
-import "dart:math";
 
 final List _flashcards = [
   Flashcard(
