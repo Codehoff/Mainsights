@@ -22,11 +22,11 @@ class CategoryRepo {
     },
     {
       "name": "Process",
-      "subcategories": ["Merger Model", "Comps"],
+      "subcategories": ["General", "Merger Model", "Comps"],
     },
     {
       "name": "Valuation",
-      "subcategories": ["DCF", "LBO"],
+      "subcategories": ["General", "DCF", "LBO"],
     }
   ];
 }

@@ -1,7 +1,50 @@
 import "./models/flashcard.dart";
 import "dart:math";
 
-final List categories = ["Process", "Valuation", "Accounting"];
+final List _flashcards = [
+  Flashcard(
+    id: "1",
+    question: "What is Equity Value?",
+    answer:
+        "The Equity Value, also called Market Capitalization or Market Cap refers to the market value of the the shareholders' interest in the company. Commonly, the shareholders' interest is just called equity and refers to the issued shares of the company.",
+    complexity: "Basic",
+    category: "Valuation",
+    subcategory: "General",
+  ),
+  Flashcard(
+    id: "2",
+    question: "How do you calculate Equity Value?",
+    answer:
+        "The Equity Value is calculated by multiplying the shares outstanding by the share price observed in the market.",
+    complexity: "Basic",
+    category: "Valuation",
+    subcategory: "General",
+  ),
+  Flashcard(
+    id: "3",
+    question: "What is Shareholders' Equity?",
+    answer:
+        "Shareholders' Equity is a balance sheet position which quantifies the remaining (residual) claim on the company's assets after servicing debt investors. ",
+    complexity: "Basic",
+    category: "Valuation",
+    subcategory: "General",
+  ),
+  Flashcard(
+    id: "4",
+    question: "What is Enterprise Value?",
+    answer:
+        "Enterprise Value is the value assigned to a company attributable to all investors (traditionally, both equity and debt investors).",
+    complexity: "Basic",
+    category: "Valuation",
+    subcategory: "General",
+  ),
+];
+
+List get dummyFlashcards {
+  return _flashcards;
+}
+
+/* final List categories = ["Process", "Valuation", "Accounting"];
 final List subcategories = ["LBO", "DCF", "Comps", "Merger Model", "General"];
 final List complexity = ["Basic", "Intermediate", "Advanced"];
 
@@ -42,9 +85,4 @@ void generateLotsOfTextSeeds() {
     _dummyFlashcards.add(_editedFlashcard);
   }
 }
-
-List get dummyFlashcards {
-  generateSeeds();
-  generateLotsOfTextSeeds();
-  return _dummyFlashcards;
-}
+ */
