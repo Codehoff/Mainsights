@@ -93,17 +93,13 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
             height: 30,
           ),
           Container(
-            child: _isLoading
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
-                : Text(
-                    "You've got ${_loadedFlashcards.items.length} questions to review",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w400,
-                      fontSize: 20,
-                    ),
-                  ),
+            child: Text(
+              "You've got ${_loadedFlashcards.items.length} questions to review",
+              style: TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 20,
+              ),
+            ),
           ),
           SizedBox(
             height: 30,
@@ -185,6 +181,9 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                     ),
                   ],
                 ),
+          SizedBox(
+            height: 10,
+          ),
           Center(
             child: FloatingActionButton(
               onPressed: _loadedFlashcards.items.length == 0

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/screens/review_selection_screen.dart';
 import 'package:swipedetector/swipedetector.dart';
+import "package:auto_size_text/auto_size_text.dart";
 
 import "../widgets/main_drawer.dart";
 
@@ -129,8 +130,9 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )
-                        : Text(
+                        : AutoSizeText(
                             flashcards[counter].answer,
+                            maxLines: 10,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
