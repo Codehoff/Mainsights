@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+import "package:auto_size_text/auto_size_text.dart";
 
 import "../providers/localFlashcards.dart";
 import "../widgets/main_drawer.dart";
@@ -48,12 +49,13 @@ class _SearchSingleFlashcardScreenState
                 points: loadedFlashcard.points,
                 question: loadedFlashcard.question,
                 answer: loadedFlashcard.answer,
-                viewed: loadedFlashcard.viewed),;
+                viewed: loadedFlashcard.viewed);
             Provider.of<LocalFlashcards>(context)
                 .setFlashcardasViewed(flashcardId, _editedFlashcard);
           },
           child: Center(
             child: Container(
+              padding: EdgeInsets.all(10),
               height: 450,
               decoration: BoxDecoration(
                 border: Border.all(
@@ -94,8 +96,9 @@ class _SearchSingleFlashcardScreenState
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )
-                        : Text(
+                        : AutoSizeText(
                             loadedFlashcard.answer,
+                            maxLines: 10,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
