@@ -56,7 +56,7 @@ class LocalFlashcards with ChangeNotifier {
     var dropdownViewed = "";
 
     dropdownValue4 == "Viewed"
-        ? dropdownViewed = "has been viewed"
+        ? dropdownViewed = "Has been viewed"
         : dropdownViewed = "not viewed";
 
     if (dropdownValue5 == null) {

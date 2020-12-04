@@ -88,7 +88,7 @@ class _StudySingleFlashcardScreenState
                 setState(() {
                   switched == true ? switched = false : switched = true;
                 });
-                flashcards[counter].viewed = "yes";
+                flashcards[counter].viewed = "viewed";
                 var _editedFlashcard = Flashcard(
                     id: flashcards[counter].id,
                     category: flashcards[counter].category,

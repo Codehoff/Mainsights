@@ -182,7 +182,7 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
                     ),
                     DropdownButton<String>(
                       isExpanded: true,
-                      items: <String>["All", "Not viewed", "Viewed"]
+                      items: <String>["All", "Not Viewed", "Viewed"]
                           .map((String dropdownValue4) {
                         return DropdownMenuItem<String>(
                           value: dropdownValue4,
