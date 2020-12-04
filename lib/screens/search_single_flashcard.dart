@@ -58,13 +58,21 @@ class _SearchSingleFlashcardScreenState
               padding: EdgeInsets.all(10),
               height: 450,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: loadedFlashcard.complexity == "Basic"
-                      ? Colors.green
-                      : loadedFlashcard.complexity == "Intermediate"
-                          ? Colors.orange
-                          : Colors.red,
-                  width: 5,
+                border: Border(
+                  top: BorderSide(
+                      color: loadedFlashcard.complexity == "Basic"
+                          ? Colors.green[300]
+                          : loadedFlashcard.complexity == "Intermediate"
+                              ? Colors.orange[300]
+                              : Colors.red[300],
+                      width: 8),
+                  bottom: BorderSide(
+                      color: loadedFlashcard.complexity == "Basic"
+                          ? Colors.green[300]
+                          : loadedFlashcard.complexity == "Intermediate"
+                              ? Colors.orange[300]
+                              : Colors.red[300],
+                      width: 8),
                 ),
               ),
               child: Column(
@@ -91,14 +99,15 @@ class _SearchSingleFlashcardScreenState
                   Align(
                     alignment: Alignment.center,
                     child: switched == false
-                        ? Text(
+                        ? AutoSizeText(
                             loadedFlashcard.question,
+                            maxLines: 6,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )
                         : AutoSizeText(
                             loadedFlashcard.answer,
-                            maxLines: 10,
+                            maxLines: 6,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),

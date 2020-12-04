@@ -134,13 +134,21 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
               padding: EdgeInsets.all(10),
               height: 450,
               decoration: BoxDecoration(
-                border: Border.all(
-                  color: flashcards[counter].complexity == "Basic"
-                      ? Colors.green
-                      : flashcards[counter].complexity == "Intermediate"
-                          ? Colors.orange
-                          : Colors.red,
-                  width: 5,
+                border: Border(
+                  top: BorderSide(
+                      color: flashcards[counter].complexity == "Basic"
+                          ? Colors.green[300]
+                          : flashcards[counter].complexity == "Intermediate"
+                              ? Colors.orange[300]
+                              : Colors.red[300],
+                      width: 8),
+                  bottom: BorderSide(
+                      color: flashcards[counter].complexity == "Basic"
+                          ? Colors.green[300]
+                          : flashcards[counter].complexity == "Intermediate"
+                              ? Colors.orange[300]
+                              : Colors.red[300],
+                      width: 8),
                 ),
               ),
               child: Column(
@@ -167,14 +175,15 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                   Align(
                     alignment: Alignment.center,
                     child: switched == false
-                        ? Text(
+                        ? AutoSizeText(
                             flashcards[counter].question,
+                            maxLines: 6,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )
                         : AutoSizeText(
                             flashcards[counter].answer,
-                            maxLines: 10,
+                            maxLines: 6,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),

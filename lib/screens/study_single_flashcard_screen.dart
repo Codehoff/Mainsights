@@ -148,14 +148,15 @@ class _StudySingleFlashcardScreenState
                       Align(
                         alignment: Alignment.center,
                         child: switched == false
-                            ? Text(
+                            ? AutoSizeText(
                                 flashcards[counter].question,
+                                maxLines: 6,
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               )
                             : AutoSizeText(
                                 flashcards[counter].answer,
-                                maxLines: 10,
+                                maxLines: 6,
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               ),
