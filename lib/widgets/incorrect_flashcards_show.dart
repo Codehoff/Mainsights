@@ -71,7 +71,7 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
       body: Column(
         children: [
           SizedBox(
-            height: 10,
+            height: 65,
           ),
           SizedBox(
             child: Text(
@@ -91,6 +91,7 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
             ),
             child: Container(
               height: 450,
+              padding: EdgeInsets.all(10),
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
@@ -101,18 +102,19 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
                               : Colors.red[300],
                       width: 8),
                   bottom: BorderSide(
-                      color: flashcards[counter].complexity == "Basic"
-                          ? Colors.green[300]
-                          : flashcards[counter].complexity == "Intermediate"
-                              ? Colors.orange[300]
-                              : Colors.red[300],
-                      width: 8),
+                    color: flashcards[counter].complexity == "Basic"
+                        ? Colors.green[300]
+                        : flashcards[counter].complexity == "Intermediate"
+                            ? Colors.orange[300]
+                            : Colors.red[300],
+                    width: 8,
+                  ),
                 ),
               ),
               child: Column(
                 children: [
                   SizedBox(
-                    height: 100,
+                    height: 20,
                   ),
                   SizedBox(
                     child: switched == false
@@ -128,7 +130,7 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
                           ),
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 40,
                   ),
                   Align(
                     alignment: Alignment.center,
@@ -160,7 +162,10 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
                 width: 120,
                 height: 80,
                 child: FlatButton(
-                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  color: Colors.blue[300],
                   textColor: Colors.white,
                   disabledColor: Colors.grey,
                   disabledTextColor: Colors.black,
@@ -178,7 +183,10 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
                       width: 120,
                       height: 80,
                       child: FlatButton(
-                        color: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        color: Colors.red[300],
                         textColor: Colors.white,
                         disabledColor: Colors.grey,
                         disabledTextColor: Colors.black,
@@ -200,7 +208,10 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
                       width: 120,
                       height: 80,
                       child: FlatButton(
-                        color: Colors.green,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        color: Colors.green[300],
                         textColor: Colors.white,
                         disabledColor: Colors.grey,
                         disabledTextColor: Colors.black,

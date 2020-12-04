@@ -78,7 +78,7 @@ class _SearchSingleFlashcardScreenState
               child: Column(
                 children: [
                   SizedBox(
-                    height: 100,
+                    height: 20,
                   ),
                   SizedBox(
                     child: switched == false
@@ -94,20 +94,20 @@ class _SearchSingleFlashcardScreenState
                           ),
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 40,
                   ),
                   Align(
                     alignment: Alignment.center,
                     child: switched == false
                         ? AutoSizeText(
                             loadedFlashcard.question,
-                            maxLines: 6,
+                            maxLines: 10,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )
                         : AutoSizeText(
                             loadedFlashcard.answer,
-                            maxLines: 6,
+                            maxLines: 10,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),

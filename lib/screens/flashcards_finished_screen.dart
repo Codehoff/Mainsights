@@ -79,13 +79,17 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
                     alignment: Alignment.center,
                     width: 200,
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor,
-                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.blue[300],
+                      borderRadius: BorderRadius.circular(5),
                     ),
                     padding: EdgeInsets.all(5),
                     child: Text(
                       "Review incorrect questions",
                       textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
                   ),
                 ),
@@ -93,15 +97,19 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
             onTap: _goBack,
             child: Container(
               alignment: Alignment.center,
-              width: 150,
+              width: 200,
               decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.circular(10),
+                color: Colors.blue[300],
+                borderRadius: BorderRadius.circular(5),
               ),
               padding: EdgeInsets.all(5),
               child: Text(
                 "Back to review overview",
                 textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ),

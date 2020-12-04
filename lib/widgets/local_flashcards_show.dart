@@ -112,7 +112,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
       child: Column(
         children: [
           SizedBox(
-            height: 10,
+            height: 65,
           ),
           SizedBox(
             child: Text(
@@ -154,7 +154,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 100,
+                    height: 20,
                   ),
                   SizedBox(
                     child: switched == false
@@ -170,20 +170,20 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                           ),
                   ),
                   SizedBox(
-                    height: 100,
+                    height: 40,
                   ),
                   Align(
                     alignment: Alignment.center,
                     child: switched == false
                         ? AutoSizeText(
                             flashcards[counter].question,
-                            maxLines: 6,
+                            maxLines: 10,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           )
                         : AutoSizeText(
                             flashcards[counter].answer,
-                            maxLines: 6,
+                            maxLines: 10,
                             style: TextStyle(
                                 fontSize: 25, fontWeight: FontWeight.bold),
                           ),
@@ -202,7 +202,10 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                 width: 120,
                 height: 80,
                 child: FlatButton(
-                  color: Colors.blue,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8.0),
+                  ),
+                  color: Colors.blue[300],
                   textColor: Colors.white,
                   disabledColor: Colors.grey,
                   disabledTextColor: Colors.black,
@@ -220,7 +223,10 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                       width: 120,
                       height: 80,
                       child: FlatButton(
-                        color: Colors.red,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        color: Colors.red[300],
                         textColor: Colors.white,
                         disabledColor: Colors.grey,
                         disabledTextColor: Colors.black,
@@ -242,7 +248,10 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                       width: 120,
                       height: 80,
                       child: FlatButton(
-                        color: Colors.green,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                        ),
+                        color: Colors.green[300],
                         textColor: Colors.white,
                         disabledColor: Colors.grey,
                         disabledTextColor: Colors.black,
@@ -258,7 +267,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                   : SizedBox(
                       height: 80,
                       width: 120,
-                    )
+                    ),
             ],
           ),
         ],

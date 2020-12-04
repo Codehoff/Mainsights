@@ -104,7 +104,7 @@ class _StudySingleFlashcardScreenState
               },
               child: Center(
                 child: Container(
-                  margin: EdgeInsets.all(5),
+                  padding: EdgeInsets.all(10),
                   height: 450,
                   decoration: BoxDecoration(
                     border: Border(
@@ -127,7 +127,7 @@ class _StudySingleFlashcardScreenState
                   child: Column(
                     children: [
                       SizedBox(
-                        height: 100,
+                        height: 20,
                       ),
                       Container(
                         child: switched == false
@@ -143,20 +143,20 @@ class _StudySingleFlashcardScreenState
                               ),
                       ),
                       SizedBox(
-                        height: 100,
+                        height: 40,
                       ),
                       Align(
                         alignment: Alignment.center,
                         child: switched == false
                             ? AutoSizeText(
                                 flashcards[counter].question,
-                                maxLines: 6,
+                                maxLines: 10,
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               )
                             : AutoSizeText(
                                 flashcards[counter].answer,
-                                maxLines: 6,
+                                maxLines: 10,
                                 style: TextStyle(
                                     fontSize: 25, fontWeight: FontWeight.bold),
                               ),
@@ -178,7 +178,7 @@ class _StudySingleFlashcardScreenState
                   decoration: BoxDecoration(
                     border: new Border.all(
                       width: 3,
-                      color: Theme.of(context).primaryColor,
+                      color: Colors.blue[300],
                     ),
                   ),
                   alignment: Alignment.center,
