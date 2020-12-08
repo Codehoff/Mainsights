@@ -58,7 +58,48 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         borderRadius: BorderRadius.circular(6),
         color: Colors.blue[100],
       ),
+      padding: EdgeInsets.all(10),
+      alignment: Alignment.center,
       height: 300,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              "There are three modes - Search, Study, and Review \n \n asd",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    ),
+    Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        color: Colors.blue[100],
+      ),
+      padding: EdgeInsets.all(10),
+      alignment: Alignment.center,
+      height: 300,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              "There are three modes - Search, Study, and Review \n \n asd",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
     ),
   ];
 
