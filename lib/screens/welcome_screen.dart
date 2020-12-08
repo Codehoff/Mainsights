@@ -66,7 +66,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         children: [
           Center(
             child: Text(
-              "There are three modes - Search, Study, and Review \n \n asd",
+              "There are three modes - Study, Review, and Search",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -90,7 +90,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         children: [
           Center(
             child: Text(
-              "There are three modes - Search, Study, and Review \n \n asd",
+              "Study Mode: \n \n Here you can choose from different categories and difficulties to systematically study what you need",
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20,
@@ -107,10 +107,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Home"),
-      ),
-      drawer: Drawer(
-        child: MainDrawer(),
+        title: Text("Introduction"),
       ),
       body: Column(
         children: [
@@ -132,7 +129,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           CarouselIndicator(
             height: 10,
-            count: 2,
+            count: 3,
             index: pageIndex,
             activeColor: Colors.blue[300],
             color: Colors.grey[300],
