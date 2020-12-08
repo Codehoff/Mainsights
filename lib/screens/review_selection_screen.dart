@@ -140,6 +140,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                       height: 20,
                     ),
                     Container(
+                      padding: EdgeInsets.all(5),
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
                         border: Border.all(
