@@ -4,7 +4,6 @@ import 'package:flutter_complete_guide/screens/auth_screen.dart';
 import 'package:flutter_complete_guide/screens/search_selection_screen.dart';
 import 'package:flutter_complete_guide/screens/settings_screen.dart';
 import 'package:flutter_complete_guide/screens/study_selection_screen.dart';
-import 'package:flutter_complete_guide/screens/study_single_flashcard_screen.dart';
 import 'package:provider/provider.dart';
 
 import "./screens/splash_screen.dart";
@@ -12,10 +11,10 @@ import './providers/auth.dart';
 import 'screens/review_screen.dart';
 import 'screens/search_list_screen.dart';
 import 'screens/study_list_screen.dart';
-import "./screens/flashcards_finished_screen.dart";
 import 'screens/review_selection_screen.dart';
 import "./providers/localFlashcards.dart";
 import "./screens/search_single_flashcard.dart";
+import "./screens/welcome_screen.dart";
 
 void main() => runApp(MyApp());
 
@@ -45,14 +44,14 @@ class MyApp extends StatelessWidget {
               primarySwatch: Colors.blue,
             ),
             home: auth.isAuth
-                ? ReviewSelectionScreen()
+                ? StudySelectionScreen()
                 : FutureBuilder(
                     future: auth.tryAutoLogin(),
                     builder: (ctx, authResultSnapshot) =>
                         authResultSnapshot.connectionState ==
                                 ConnectionState.waiting
                             ? SplashScreen()
-                            : AuthScreen(),
+                            : WelcomeScreen(),
                   ),
             routes: {
               SearchSelectionScreen.routeName: (ctx) => SearchSelectionScreen(),
