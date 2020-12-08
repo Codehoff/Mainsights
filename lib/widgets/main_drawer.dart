@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import "package:provider/provider.dart";
 
 import "../screens/study_selection_screen.dart";
 import '../screens/review_selection_screen.dart';
-import '../screens/search_list_screen.dart';
 import '../screens/search_selection_screen.dart';
 import "../screens/settings_screen.dart";
+import "../providers/auth.dart";
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -66,6 +67,10 @@ class MainDrawer extends StatelessWidget {
           buildListTile('Settings', Icons.settings, () {
             Navigator.of(context)
                 .pushReplacementNamed(SettingsScreen.routeName);
+          }),
+          buildListTile('Logout', Icons.exit_to_app, () {
+            Navigator.of(context).pop();
+            Provider.of<Auth>(context, listen: false).logout();
           }),
         ],
       ),
