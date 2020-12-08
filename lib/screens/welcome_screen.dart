@@ -6,6 +6,7 @@ import "package:provider/provider.dart";
 
 import "../widgets/main_drawer.dart";
 import "../providers/localFlashcards.dart";
+import "../widgets/intro_cards.dart";
 
 class WelcomeScreen extends StatefulWidget {
   WelcomeScreen({Key key}) : super(key: key);
@@ -28,8 +29,37 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   int pageIndex = 0;
 
   List<Widget> _demo = [
-    Container(height: 300, color: Colors.amber),
-    Container(height: 300, color: Colors.black),
+    Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        color: Colors.blue[100],
+      ),
+      padding: EdgeInsets.all(10),
+      alignment: Alignment.center,
+      height: 300,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Center(
+            child: Text(
+              "Welcome to Mainsights! \n This short introduction slideshow will help get you started. If you know your way around, you can just skip it by pressing \n 'Get Started'",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        ],
+      ),
+    ),
+    Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(6),
+        color: Colors.blue[100],
+      ),
+      height: 300,
+    ),
   ];
 
   @override
