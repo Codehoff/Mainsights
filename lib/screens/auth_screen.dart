@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
+import "../providers/localFlashcards.dart";
 import '../models/http_exception.dart';
 import "./welcome_screen.dart";
 
