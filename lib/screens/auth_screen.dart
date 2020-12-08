@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
 import '../models/http_exception.dart';
+import "./welcome_screen.dart";
 
 enum AuthMode { Signup, Login }
 
@@ -170,6 +171,12 @@ class _AuthCardState extends State<AuthCard>
         await Provider.of<Auth>(context, listen: false).signup(
           _authData['email'],
           _authData['password'],
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => WelcomeScreen(),
+          ),
         );
       }
     } on HttpException catch (error) {
