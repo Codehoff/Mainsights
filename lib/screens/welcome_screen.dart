@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter_complete_guide/screens/study_selection_screen.dart';
 import "package:provider/provider.dart";
 
@@ -24,7 +25,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     );
   }
 
-  int _current = 0;
+  int pageIndex = 0;
+
+  List<Widget> _demo = [
+    Container(height: 300, color: Colors.amber),
+    Container(height: 300, color: Colors.black),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -45,46 +51,23 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: 520.0,
               enlargeCenterPage: true,
               onPageChanged: (index, reason) => setState(() {
-                _current = index;
+                pageIndex = index;
               }),
             ),
-            items: [1, 2, 3].map((i) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 5.0),
-                    decoration: BoxDecoration(
-                      color: Colors.blue[300],
-                    ),
-                    child: Center(
-                      child: Text(
-                        'text $i',
-                        style: TextStyle(fontSize: 16.0),
-                      ),
-                    ),
-                  );
-                },
-              );
-            }).toList(),
+            items: _demo,
           ),
           SizedBox(
             height: 10,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 8.0,
-                height: 8.0,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: _current == 2
-                        ? Color.fromRGBO(0, 0, 0, 0.9)
-                        : Color.fromRGBO(0, 0, 0, 0.4)),
-              ),
-            ],
+          CarouselIndicator(
+            height: 10,
+            count: 2,
+            index: pageIndex,
+            activeColor: Colors.blue[300],
+            color: Colors.grey[300],
+          ),
+          SizedBox(
+            height: 30,
           ),
           GestureDetector(
             onTap: _pushLocalFlashcards,
