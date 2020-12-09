@@ -93,7 +93,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                   FittedBox(
                     child: Text(
                       "The more you answer a question correctly, the less often you have to review it",
-                      style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: 18),
                       textAlign: TextAlign.center,
                     ),
                   ),
@@ -129,7 +129,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                           child: Text(
                             "Upcoming questions:",
                             style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold),
+                                fontSize: 20, fontWeight: FontWeight.w500),
                           ),
                         ),
                         SizedBox(
@@ -150,9 +150,11 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                               0.15,
                           width: (MediaQuery.of(context).size.width) * 0.9,
                           child: firstThreeFlashcards.length > 0
-                              ? Text(
-                                  firstThreeFlashcards[0].question,
-                                  style: TextStyle(fontSize: 14),
+                              ? FittedBox(
+                                  child: Text(
+                                    firstThreeFlashcards[0].question,
+                                    style: TextStyle(fontSize: 14),
+                                  ),
                                 )
                               : Text(""),
                         ),
@@ -175,9 +177,11 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                               0.15,
                           width: (MediaQuery.of(context).size.width) * 0.9,
                           child: firstThreeFlashcards.length >= 2
-                              ? Text(
-                                  firstThreeFlashcards[1].question,
-                                  style: TextStyle(fontSize: 14),
+                              ? FittedBox(
+                                  child: Text(
+                                    firstThreeFlashcards[1].question,
+                                    style: TextStyle(fontSize: 14),
+                                  ),
                                 )
                               : Text(""),
                         ),
@@ -199,16 +203,18 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                               0.15,
                           width: (MediaQuery.of(context).size.width) * 0.9,
                           child: firstThreeFlashcards.length >= 3
-                              ? Text(
-                                  firstThreeFlashcards[2].question,
-                                  style: TextStyle(fontSize: 14),
+                              ? FittedBox(
+                                  child: Text(
+                                    firstThreeFlashcards[2].question,
+                                    style: TextStyle(fontSize: 14),
+                                  ),
                                 )
                               : Text(""),
                         ),
                         SizedBox(
                           height: (MediaQuery.of(context).size.height -
                                   appBar.preferredSize.height) *
-                              0.02,
+                              0.015,
                         ),
                       ],
                     ),

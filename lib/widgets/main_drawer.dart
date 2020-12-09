@@ -32,7 +32,7 @@ class MainDrawer extends StatelessWidget {
       child: Column(
         children: <Widget>[
           SizedBox(
-            height: 25,
+            height: 20,
           ),
           Container(
             height: 100,
