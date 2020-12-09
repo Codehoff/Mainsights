@@ -243,6 +243,11 @@ class _StudyListScreenState extends State<StudyListScreen> {
                     ],
                   ),
                 ),
+                SizedBox(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.02,
+                ),
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (ctx, index) {

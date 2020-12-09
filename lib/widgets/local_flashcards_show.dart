@@ -183,21 +183,24 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                   SizedBox(
                     height: 40,
                   ),
-                  Align(
-                    alignment: Alignment.center,
-                    child: switched == false
-                        ? AutoSizeText(
-                            flashcards[counter].question,
-                            maxLines: 10,
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          )
-                        : AutoSizeText(
-                            flashcards[counter].answer,
-                            maxLines: 10,
-                            style: TextStyle(
-                                fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
+                  Container(
+                    height: 200,
+                    child: Align(
+                      alignment: Alignment.center,
+                      child: switched == false
+                          ? AutoSizeText(
+                              flashcards[counter].question,
+                              maxLines: 10,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          : AutoSizeText(
+                              flashcards[counter].answer,
+                              maxLines: 10,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
+                    ),
                   ),
                 ],
               ),

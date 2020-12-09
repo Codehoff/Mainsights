@@ -53,10 +53,12 @@ class _StudySingleFlashcardScreenState
       });
     }
 
+    final appBar = AppBar(
+      title: Text("Study"),
+    );
+
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Study"),
-      ),
+      appBar: appBar,
       drawer: Drawer(
         child: MainDrawer(),
       ),
@@ -81,7 +83,9 @@ class _StudySingleFlashcardScreenState
               ),
             ),
             SizedBox(
-              height: 50,
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.02,
             ),
             GestureDetector(
               onTap: () {
@@ -102,78 +106,83 @@ class _StudySingleFlashcardScreenState
                 Provider.of<LocalFlashcards>(context).setFlashcardasViewed(
                     flashcards[counter].id, _editedFlashcard);
               },
-              child: Center(
-                child: Container(
-                  padding: EdgeInsets.all(10),
-                  height: 450,
-                  decoration: BoxDecoration(
-                    border: Border(
-                      top: BorderSide(
-                          color: flashcards[counter].complexity == "Basic"
-                              ? Colors.green[300]
-                              : flashcards[counter].complexity == "Intermediate"
-                                  ? Colors.orange[300]
-                                  : Colors.red[300],
-                          width: 8),
-                      bottom: BorderSide(
-                          color: flashcards[counter].complexity == "Basic"
-                              ? Colors.green[300]
-                              : flashcards[counter].complexity == "Intermediate"
-                                  ? Colors.orange[300]
-                                  : Colors.red[300],
-                          width: 8),
+              child: Container(
+                padding: EdgeInsets.all(10),
+                height: (MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height) *
+                    0.65,
+                decoration: BoxDecoration(
+                  border: Border(
+                    top: BorderSide(
+                        color: flashcards[counter].complexity == "Basic"
+                            ? Colors.green[300]
+                            : flashcards[counter].complexity == "Intermediate"
+                                ? Colors.orange[300]
+                                : Colors.red[300],
+                        width: 8),
+                    bottom: BorderSide(
+                        color: flashcards[counter].complexity == "Basic"
+                            ? Colors.green[300]
+                            : flashcards[counter].complexity == "Intermediate"
+                                ? Colors.orange[300]
+                                : Colors.red[300],
+                        width: 8),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  child: Column(
-                    children: [
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        child: switched == false
-                            ? Text(
-                                "Question:",
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              )
-                            : Text(
-                                "Answer:",
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                      ),
-                      SizedBox(
-                        height: 40,
-                      ),
-                      Align(
-                        alignment: Alignment.center,
-                        child: switched == false
-                            ? AutoSizeText(
-                                flashcards[counter].question,
-                                maxLines: 10,
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              )
-                            : AutoSizeText(
-                                flashcards[counter].answer,
-                                maxLines: 10,
-                                style: TextStyle(
-                                    fontSize: 25, fontWeight: FontWeight.bold),
-                              ),
-                      ),
-                    ],
-                  ),
+                    SizedBox(
+                      child: switched == false
+                          ? Text(
+                              "Question:",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          : Text(
+                              "Answer:",
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
+                    ),
+                    SizedBox(
+                      height: 40,
+                    ),
+                    Container(
+                      height: (MediaQuery.of(context).size.height -
+                              appBar.preferredSize.height) *
+                          0.35,
+                      alignment: Alignment.center,
+                      child: switched == false
+                          ? AutoSizeText(
+                              flashcards[counter].question,
+                              maxLines: 10,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            )
+                          : AutoSizeText(
+                              flashcards[counter].answer,
+                              maxLines: 10,
+                              style: TextStyle(
+                                  fontSize: 25, fontWeight: FontWeight.bold),
+                            ),
+                    ),
+                  ],
                 ),
               ),
             ),
             SizedBox(
-              height: 50,
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.02,
             ),
             Expanded(
               child: Align(
                 alignment: Alignment.bottomCenter,
                 child: Container(
-                  margin: EdgeInsets.all(15),
+                  margin: EdgeInsets.all(10),
                   height: 80,
                   decoration: BoxDecoration(
                     border: new Border.all(
@@ -182,9 +191,11 @@ class _StudySingleFlashcardScreenState
                     ),
                   ),
                   alignment: Alignment.center,
-                  child: Text(
-                    "You're in chapter: ${flashcards[counter].category}",
-                    style: TextStyle(fontSize: 20),
+                  child: FittedBox(
+                    child: Text(
+                      "You're in chapter: ${flashcards[counter].category}",
+                      style: TextStyle(fontSize: 20),
+                    ),
                   ),
                 ),
               ),
