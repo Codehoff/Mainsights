@@ -68,11 +68,12 @@ class _StudyListScreenState extends State<StudyListScreen> {
   Widget build(BuildContext context) {
     final loadedFlashcards = Provider.of<LocalFlashcards>(context);
     final flashcards = loadedFlashcards.items;
+    final appBar = AppBar(
+      title: Text('Study Mode'),
+    );
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Study Mode'),
-      ),
+      appBar: appBar,
       drawer: Drawer(
         child: MainDrawer(),
       ),
@@ -84,7 +85,9 @@ class _StudyListScreenState extends State<StudyListScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 50,
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.02,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10),
@@ -95,18 +98,22 @@ class _StudyListScreenState extends State<StudyListScreen> {
                   ),
                   child: Column(
                     children: [
-                      Text(
-                        "There are ${flashcards.length} questions that match your selection criteria:",
-                        style: TextStyle(fontSize: 20),
-                        textAlign: TextAlign.center,
+                      FittedBox(
+                        child: Text(
+                          "There are ${flashcards.length} questions that match your selection criteria:",
+                          style: TextStyle(fontSize: 20),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Click on a question to see the answer",
-                        style: TextStyle(fontSize: 14),
-                        textAlign: TextAlign.center,
+                      FittedBox(
+                        child: Text(
+                          "Click on a question to see the answer",
+                          style: TextStyle(fontSize: 14),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ],
                   ),
@@ -121,96 +128,114 @@ class _StudyListScreenState extends State<StudyListScreen> {
                     children: [
                       Column(
                         children: [
-                          Text(
-                            "Category 1",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          FittedBox(
+                            child: Text(
+                              "Category 1",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                           SizedBox(
                             height: 6,
                           ),
                           Container(
                             alignment: Alignment.center,
-                            width: 90,
+                            width: MediaQuery.of(context).size.width * 0.22,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
                               color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Text(
-                              dropdownValue1,
-                              style: TextStyle(fontSize: 12),
+                            child: FittedBox(
+                              child: Text(
+                                dropdownValue1,
+                                style: TextStyle(fontSize: 12),
+                              ),
                             ),
                           ),
                         ],
                       ),
                       Column(
                         children: [
-                          Text(
-                            "Category 2",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          FittedBox(
+                            child: Text(
+                              "Category 2",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                           SizedBox(
                             height: 6,
                           ),
                           Container(
                             alignment: Alignment.center,
-                            width: 90,
+                            width: MediaQuery.of(context).size.width * 0.22,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
                               color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Text(
-                              dropdownValue2,
-                              style: TextStyle(fontSize: 12),
+                            child: FittedBox(
+                              child: Text(
+                                dropdownValue2,
+                                style: TextStyle(fontSize: 12),
+                              ),
                             ),
                           ),
                         ],
                       ),
                       Column(
                         children: [
-                          Text(
-                            "Difficulty",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          FittedBox(
+                            child: Text(
+                              "Difficulty",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
                           ),
                           SizedBox(
                             height: 6,
                           ),
                           Container(
                             alignment: Alignment.center,
-                            width: 90,
+                            width: MediaQuery.of(context).size.width * 0.22,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
                               color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Text(
-                              dropdownValue3,
-                              style: TextStyle(fontSize: 12),
+                            child: FittedBox(
+                              child: Text(
+                                dropdownValue3,
+                                style: TextStyle(fontSize: 12),
+                              ),
                             ),
                           ),
                         ],
                       ),
                       Column(
                         children: [
-                          Text(
-                            "Viewed",
-                            style: TextStyle(fontWeight: FontWeight.bold),
+                          FittedBox(
+                            child: FittedBox(
+                              child: Text(
+                                "Viewed",
+                                style: TextStyle(fontWeight: FontWeight.bold),
+                              ),
+                            ),
                           ),
                           SizedBox(
                             height: 6,
                           ),
                           Container(
                             alignment: Alignment.center,
-                            width: 90,
+                            width: MediaQuery.of(context).size.width * 0.22,
                             padding: EdgeInsets.all(7),
                             decoration: BoxDecoration(
                               color: Theme.of(context).primaryColorLight,
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: Text(
-                              dropdownValue4,
-                              style: TextStyle(fontSize: 12),
+                            child: FittedBox(
+                              child: Text(
+                                dropdownValue4,
+                                style: TextStyle(fontSize: 12),
+                              ),
                             ),
                           ),
                         ],

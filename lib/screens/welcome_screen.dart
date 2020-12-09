@@ -4,9 +4,7 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter_complete_guide/screens/study_selection_screen.dart';
 import "package:provider/provider.dart";
 
-import "../widgets/main_drawer.dart";
 import "../providers/localFlashcards.dart";
-import "../widgets/intro_cards.dart";
 
 class WelcomeScreen extends StatefulWidget {
   WelcomeScreen({Key key}) : super(key: key);
@@ -36,7 +34,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
       padding: EdgeInsets.all(10),
       alignment: Alignment.center,
-      height: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -60,7 +57,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
       padding: EdgeInsets.all(10),
       alignment: Alignment.center,
-      height: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -84,7 +80,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       ),
       padding: EdgeInsets.all(10),
       alignment: Alignment.center,
-      height: 300,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -154,9 +149,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Introduction"),
-      ),
       body: Column(
         children: [
           SizedBox(
@@ -164,7 +156,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           CarouselSlider(
             options: CarouselOptions(
-              height: 520.0,
+              height: MediaQuery.of(context).size.height * 0.7,
               enlargeCenterPage: true,
               onPageChanged: (index, reason) => setState(() {
                 pageIndex = index;

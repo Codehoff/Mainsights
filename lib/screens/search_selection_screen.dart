@@ -44,23 +44,26 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      title: Text("Search"),
+      elevation: 0.1,
+    );
     return GestureDetector(
       onTap: () {
         FocusScope.of(context).requestFocus(new FocusNode());
       },
       child: Scaffold(
         resizeToAvoidBottomInset: false,
-        appBar: AppBar(
-          title: Text("Search"),
-          elevation: 0.1,
-        ),
+        appBar: appBar,
         drawer: Drawer(
           child: MainDrawer(),
         ),
         body: Column(
           children: [
             SizedBox(
-              height: 25,
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.05,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 10),
