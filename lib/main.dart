@@ -61,8 +61,6 @@ class MyApp extends StatelessWidget {
               SearchListScreen.routeName: (ctx) => SearchListScreen(),
               Reviewscreen.routeName: (ctx) => Reviewscreen(),
               SettingsScreen.routeName: (ctx) => SettingsScreen(),
-              SearchSingleFlashcardScreen.routeName: (ctx) =>
-                  SearchSingleFlashcardScreen(),
             }),
       ),
     );

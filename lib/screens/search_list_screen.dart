@@ -261,9 +261,9 @@ class _SearchListScreenState extends State<SearchListScreen> {
                     itemBuilder: (ctx, index) {
                       return GestureDetector(
                         onTap: () {
-                          Navigator.of(context).pushNamed(
-                              SearchSingleFlashcardScreen.routeName,
-                              arguments: flashcards[index].id);
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => SearchSingleFlashcardScreen(
+                                  flashcards, index)));
                           HapticFeedback.lightImpact();
                         },
                         child: Container(
