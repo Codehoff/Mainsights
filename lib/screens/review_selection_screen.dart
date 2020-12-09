@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+import "package:auto_size_text/auto_size_text.dart";
 
 import '../widgets/main_drawer.dart';
 import 'review_screen.dart';
@@ -154,11 +155,12 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                             0.15,
                         width: (MediaQuery.of(context).size.width) * 0.9,
                         child: firstThreeFlashcards.length > 0
-                            ? FittedBox(
-                                child: Text(
-                                  firstThreeFlashcards[0].question,
-                                  style: TextStyle(fontSize: 14),
+                            ? AutoSizeText(
+                                firstThreeFlashcards[0].question,
+                                style: TextStyle(
+                                  fontSize: 14,
                                 ),
+                                textAlign: TextAlign.center,
                               )
                             : Text(""),
                       ),
@@ -181,11 +183,12 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                             0.15,
                         width: (MediaQuery.of(context).size.width) * 0.9,
                         child: firstThreeFlashcards.length >= 2
-                            ? FittedBox(
-                                child: Text(
-                                  firstThreeFlashcards[1].question,
-                                  style: TextStyle(fontSize: 14),
+                            ? AutoSizeText(
+                                firstThreeFlashcards[1].question,
+                                style: TextStyle(
+                                  fontSize: 14,
                                 ),
+                                textAlign: TextAlign.center,
                               )
                             : Text(""),
                       ),
@@ -208,11 +211,12 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                             0.15,
                         width: (MediaQuery.of(context).size.width) * 0.9,
                         child: firstThreeFlashcards.length >= 3
-                            ? FittedBox(
-                                child: Text(
-                                  firstThreeFlashcards[2].question,
-                                  style: TextStyle(fontSize: 14),
+                            ? AutoSizeText(
+                                firstThreeFlashcards[2].question,
+                                style: TextStyle(
+                                  fontSize: 14,
                                 ),
+                                textAlign: TextAlign.center,
                               )
                             : Text(""),
                       ),
