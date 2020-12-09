@@ -60,10 +60,11 @@ class _ReviewscreenState extends State<Reviewscreen> {
 
   @override
   Widget build(BuildContext context) {
+    final appBar = AppBar(
+      title: Text('Review Mode'),
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Review Mode'),
-      ),
+      appBar: appBar,
       drawer: Drawer(
         child: MainDrawer(),
       ),
@@ -71,7 +72,11 @@ class _ReviewscreenState extends State<Reviewscreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : LocalFlashcardsShow(),
+          : Container(
+              height: MediaQuery.of(context).size.height -
+                  appBar.preferredSize.height,
+              child: LocalFlashcardsShow(),
+            ),
     );
   }
 }

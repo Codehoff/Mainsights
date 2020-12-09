@@ -108,11 +108,18 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
       _increaseCounter();
     }
 
+    final appBar = AppBar(
+      title: Text('Review Mode'),
+    );
+
     return Container(
+      height: MediaQuery.of(context).size.height - appBar.preferredSize.height,
       child: Column(
         children: [
           SizedBox(
-            height: 65,
+            height: (MediaQuery.of(context).size.height -
+                    appBar.preferredSize.height) *
+                0.05,
           ),
           SizedBox(
             child: Text(
@@ -121,7 +128,9 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
             ),
           ),
           SizedBox(
-            height: 10,
+            height: (MediaQuery.of(context).size.height -
+                    appBar.preferredSize.height) *
+                0.05,
           ),
           SwipeDetector(
             onSwipeLeft: _increaseCounter,
@@ -132,7 +141,9 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
             ),
             child: Container(
               padding: EdgeInsets.all(10),
-              height: 450,
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.65,
               decoration: BoxDecoration(
                 border: Border(
                   top: BorderSide(
@@ -193,82 +204,89 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
             ),
           ),
           SizedBox(
-            height: 20,
+            height: (MediaQuery.of(context).size.height -
+                    appBar.preferredSize.height) *
+                0.02,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              SizedBox(
-                width: 120,
-                height: 80,
-                child: FlatButton(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                  ),
-                  color: Colors.blue[300],
-                  textColor: Colors.white,
-                  disabledColor: Colors.grey,
-                  disabledTextColor: Colors.black,
-                  padding: EdgeInsets.all(8.0),
-                  splashColor: Colors.blueAccent,
-                  onPressed: _switchAnswer,
-                  child: Text(
-                    "Flip card",
-                    style: TextStyle(fontSize: 15.0),
+          Container(
+            height: (MediaQuery.of(context).size.height -
+                    appBar.preferredSize.height) *
+                0.15,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                SizedBox(
+                  width: (MediaQuery.of(context).size.width) * 0.3,
+                  height: 80,
+                  child: FlatButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                    ),
+                    color: Colors.blue[300],
+                    textColor: Colors.white,
+                    disabledColor: Colors.grey,
+                    disabledTextColor: Colors.black,
+                    padding: EdgeInsets.all(8.0),
+                    splashColor: Colors.blueAccent,
+                    onPressed: _switchAnswer,
+                    child: Text(
+                      "Flip card",
+                      style: TextStyle(fontSize: 15.0),
+                    ),
                   ),
                 ),
-              ),
-              switched == true
-                  ? SizedBox(
-                      width: 120,
-                      height: 80,
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                switched == true
+                    ? SizedBox(
+                        width: (MediaQuery.of(context).size.width) * 0.3,
+                        height: 80,
+                        child: FlatButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          color: Colors.red[300],
+                          textColor: Colors.white,
+                          disabledColor: Colors.grey,
+                          disabledTextColor: Colors.black,
+                          padding: EdgeInsets.all(8.0),
+                          splashColor: Colors.blueAccent,
+                          onPressed: _decreasePoints,
+                          child: Text(
+                            "Did not know",
+                            style: TextStyle(fontSize: 15.0),
+                          ),
                         ),
-                        color: Colors.red[300],
-                        textColor: Colors.white,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(8.0),
-                        splashColor: Colors.blueAccent,
-                        onPressed: _decreasePoints,
-                        child: Text(
-                          "Did not know",
-                          style: TextStyle(fontSize: 15.0),
-                        ),
+                      )
+                    : SizedBox(
+                        height: 80,
+                        width: 120,
                       ),
-                    )
-                  : SizedBox(
-                      height: 80,
-                      width: 120,
-                    ),
-              switched == true
-                  ? SizedBox(
-                      width: 120,
-                      height: 80,
-                      child: FlatButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8.0),
+                switched == true
+                    ? SizedBox(
+                        width: (MediaQuery.of(context).size.width) * 0.3,
+                        height: 80,
+                        child: FlatButton(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                          ),
+                          color: Colors.green[300],
+                          textColor: Colors.white,
+                          disabledColor: Colors.grey,
+                          disabledTextColor: Colors.black,
+                          padding: EdgeInsets.all(8.0),
+                          splashColor: Colors.blueAccent,
+                          onPressed: _increasePoints,
+                          child: Text(
+                            "I knew it",
+                            style: TextStyle(fontSize: 15.0),
+                          ),
                         ),
-                        color: Colors.green[300],
-                        textColor: Colors.white,
-                        disabledColor: Colors.grey,
-                        disabledTextColor: Colors.black,
-                        padding: EdgeInsets.all(8.0),
-                        splashColor: Colors.blueAccent,
-                        onPressed: _increasePoints,
-                        child: Text(
-                          "I knew it",
-                          style: TextStyle(fontSize: 15.0),
-                        ),
+                      )
+                    : SizedBox(
+                        height: 80,
+                        width: 120,
                       ),
-                    )
-                  : SizedBox(
-                      height: 80,
-                      width: 120,
-                    ),
-            ],
+              ],
+            ),
           ),
         ],
       ),

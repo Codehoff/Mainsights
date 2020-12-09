@@ -51,153 +51,187 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
   Widget build(BuildContext context) {
     final _loadedFlashcards = Provider.of<LocalFlashcards>(context);
     final firstThreeFlashcards = _loadedFlashcards.items.take(3).toList();
+    final appBar = AppBar(
+      title: Text("Review"),
+      elevation: 0.1,
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Review"),
-        elevation: 0.1,
-      ),
+      appBar: appBar,
       drawer: Drawer(
         child: MainDrawer(),
       ),
-      body: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 10),
-            padding: EdgeInsets.all(15),
-            decoration: BoxDecoration(
-              color: Theme.of(context).primaryColorLight,
-              borderRadius: BorderRadius.circular(10),
+      body: Container(
+        height:
+            MediaQuery.of(context).size.height - appBar.preferredSize.height,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.02,
             ),
-            child: Column(
-              children: [
-                Text(
-                  "Review the questions you have studied before",
-                  style: TextStyle(fontSize: 20),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                  "The more you answer a question correctly, the less often you have to review it",
-                  style: TextStyle(fontSize: 14),
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          Container(
-            child: Text(
-              "You've got ${_loadedFlashcards.items.length} questions to review",
-              style: TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 20,
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 10),
+              padding: EdgeInsets.all(15),
+              decoration: BoxDecoration(
+                color: Theme.of(context).primaryColorLight,
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Column(
+                children: [
+                  FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      "Review the questions you have studied before",
+                      style: TextStyle(fontSize: 20),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  FittedBox(
+                    child: Text(
+                      "The more you answer a question correctly, the less often you have to review it",
+                      style: TextStyle(fontSize: 14),
+                      textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
               ),
             ),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          _isLoading
-              ? Center(
-                  child: CircularProgressIndicator(),
-                )
-              : Column(
-                  children: [
-                    Container(
-                      child: Text(
-                        "Upcoming questions:",
-                        style: TextStyle(fontSize: 20),
-                      ),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).primaryColorLight,
-                            width: 3),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      height: 100,
-                      width: 360,
-                      child: firstThreeFlashcards.length > 0
-                          ? Text(
-                              firstThreeFlashcards[0].question,
-                              style: TextStyle(fontSize: 14),
-                            )
-                          : Text(""),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      padding: EdgeInsets.all(5),
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).primaryColorLight,
-                            width: 3),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      height: 100,
-                      width: 360,
-                      child: firstThreeFlashcards.length >= 2
-                          ? Text(
-                              firstThreeFlashcards[1].question,
-                              style: TextStyle(fontSize: 14),
-                            )
-                          : Text(""),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                            color: Theme.of(context).primaryColorLight,
-                            width: 3),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      height: 100,
-                      width: 360,
-                      child: firstThreeFlashcards.length >= 3
-                          ? Text(
-                              firstThreeFlashcards[2].question,
-                              style: TextStyle(fontSize: 14),
-                            )
-                          : Text(""),
-                    ),
-                    SizedBox(
-                      height: 20,
-                    ),
-                  ],
-                ),
-          SizedBox(
-            height: 10,
-          ),
-          Center(
-            child: FloatingActionButton(
-              onPressed: _loadedFlashcards.items.length == 0
-                  ? () {}
-                  : () => changePage(),
-              splashColor: Colors.white,
+            SizedBox(
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.02,
+            ),
+            Container(
               child: Text(
-                "Go",
-                style: TextStyle(fontSize: 16.0),
+                "You've got ${_loadedFlashcards.items.length} questions to review",
+                style: TextStyle(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.02,
+            ),
+            _isLoading
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : FittedBox(
+                    child: Column(
+                      children: [
+                        Container(
+                          child: Text(
+                            "Upcoming questions:",
+                            style: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                          ),
+                        ),
+                        SizedBox(
+                          height: (MediaQuery.of(context).size.height -
+                                  appBar.preferredSize.height) *
+                              0.02,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Theme.of(context).primaryColorLight,
+                                width: 3),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          height: (MediaQuery.of(context).size.height -
+                                  appBar.preferredSize.height) *
+                              0.15,
+                          width: (MediaQuery.of(context).size.width) * 0.9,
+                          child: firstThreeFlashcards.length > 0
+                              ? Text(
+                                  firstThreeFlashcards[0].question,
+                                  style: TextStyle(fontSize: 14),
+                                )
+                              : Text(""),
+                        ),
+                        SizedBox(
+                          height: (MediaQuery.of(context).size.height -
+                                  appBar.preferredSize.height) *
+                              0.02,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Theme.of(context).primaryColorLight,
+                                width: 3),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          height: (MediaQuery.of(context).size.height -
+                                  appBar.preferredSize.height) *
+                              0.15,
+                          width: (MediaQuery.of(context).size.width) * 0.9,
+                          child: firstThreeFlashcards.length >= 2
+                              ? Text(
+                                  firstThreeFlashcards[1].question,
+                                  style: TextStyle(fontSize: 14),
+                                )
+                              : Text(""),
+                        ),
+                        SizedBox(
+                          height: (MediaQuery.of(context).size.height -
+                                  appBar.preferredSize.height) *
+                              0.02,
+                        ),
+                        Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            border: Border.all(
+                                color: Theme.of(context).primaryColorLight,
+                                width: 3),
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          height: (MediaQuery.of(context).size.height -
+                                  appBar.preferredSize.height) *
+                              0.15,
+                          width: (MediaQuery.of(context).size.width) * 0.9,
+                          child: firstThreeFlashcards.length >= 3
+                              ? Text(
+                                  firstThreeFlashcards[2].question,
+                                  style: TextStyle(fontSize: 14),
+                                )
+                              : Text(""),
+                        ),
+                        SizedBox(
+                          height: (MediaQuery.of(context).size.height -
+                                  appBar.preferredSize.height) *
+                              0.02,
+                        ),
+                      ],
+                    ),
+                  ),
+            SizedBox(
+              height: (MediaQuery.of(context).size.height -
+                      appBar.preferredSize.height) *
+                  0.005,
+            ),
+            Center(
+              child: FloatingActionButton(
+                onPressed: _loadedFlashcards.items.length == 0
+                    ? () {}
+                    : () => changePage(),
+                splashColor: Colors.white,
+                child: Text(
+                  "Go",
+                  style: TextStyle(fontSize: 16.0),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
