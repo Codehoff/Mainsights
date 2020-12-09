@@ -167,7 +167,9 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
               child: Column(
                 children: [
                   SizedBox(
-                    height: 20,
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height) *
+                        0.02,
                   ),
                   SizedBox(
                     child: switched == false
@@ -183,9 +185,14 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                           ),
                   ),
                   SizedBox(
-                    height: 40,
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height) *
+                        0.04,
                   ),
-                  Align(
+                  Container(
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height) *
+                        0.45,
                     alignment: Alignment.center,
                     child: switched == false
                         ? AutoSizeText(
@@ -208,12 +215,9 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
           SizedBox(
             height: (MediaQuery.of(context).size.height -
                     appBar.preferredSize.height) *
-                0.02,
+                0.06,
           ),
           Container(
-            height: (MediaQuery.of(context).size.height -
-                    appBar.preferredSize.height) *
-                0.15,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
@@ -221,7 +225,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                   width: (MediaQuery.of(context).size.width) * 0.3,
                   height: (MediaQuery.of(context).size.height -
                           appBar.preferredSize.height) *
-                      0.14,
+                      0.11,
                   child: FlatButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
@@ -246,7 +250,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                         width: (MediaQuery.of(context).size.width) * 0.3,
                         height: (MediaQuery.of(context).size.height -
                                 appBar.preferredSize.height) *
-                            0.14,
+                            0.11,
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
@@ -268,14 +272,16 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                       )
                     : SizedBox(
                         width: (MediaQuery.of(context).size.width) * 0.3,
-                        height: 80,
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.11,
                       ),
                 switched == true
                     ? SizedBox(
                         width: (MediaQuery.of(context).size.width) * 0.3,
                         height: (MediaQuery.of(context).size.height -
                                 appBar.preferredSize.height) *
-                            0.14,
+                            0.11,
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
@@ -299,7 +305,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                         width: (MediaQuery.of(context).size.width) * 0.3,
                         height: (MediaQuery.of(context).size.height -
                                 appBar.preferredSize.height) *
-                            0.14,
+                            0.11,
                       ),
               ],
             ),
