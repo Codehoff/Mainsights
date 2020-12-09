@@ -52,6 +52,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
     final _loadedFlashcards = Provider.of<LocalFlashcards>(context);
     final firstThreeFlashcards = _loadedFlashcards.items.take(3).toList();
     final appBar = AppBar(
+      toolbarHeight: MediaQuery.of(context).size.height * 0.08,
       title: Text("Review"),
       elevation: 0.1,
     );
@@ -80,7 +81,8 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
               child: Column(
                 children: [
                   FittedBox(
-                    fit: BoxFit.scaleDown,
+                    fit: BoxFit.fill,
+                    alignment: Alignment.center,
                     child: Text(
                       "Review the questions you have studied before",
                       style: TextStyle(fontSize: 20),
@@ -88,7 +90,9 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                     ),
                   ),
                   SizedBox(
-                    height: 10,
+                    height: (MediaQuery.of(context).size.height -
+                            appBar.preferredSize.height) *
+                        0.015,
                   ),
                   FittedBox(
                     child: Text(
@@ -122,102 +126,102 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
                 ? Center(
                     child: CircularProgressIndicator(),
                   )
-                : FittedBox(
-                    child: Column(
-                      children: [
-                        Container(
-                          child: Text(
-                            "Upcoming questions:",
-                            style: TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.w500),
-                          ),
+                : Column(
+                    children: [
+                      Container(
+                        child: Text(
+                          "Upcoming questions:",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.w500),
                         ),
-                        SizedBox(
-                          height: (MediaQuery.of(context).size.height -
-                                  appBar.preferredSize.height) *
-                              0.02,
+                      ),
+                      SizedBox(
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.02,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Theme.of(context).primaryColorLight,
+                              width: 3),
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColorLight,
-                                width: 3),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          height: (MediaQuery.of(context).size.height -
-                                  appBar.preferredSize.height) *
-                              0.15,
-                          width: (MediaQuery.of(context).size.width) * 0.9,
-                          child: firstThreeFlashcards.length > 0
-                              ? FittedBox(
-                                  child: Text(
-                                    firstThreeFlashcards[0].question,
-                                    style: TextStyle(fontSize: 14),
-                                  ),
-                                )
-                              : Text(""),
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.15,
+                        width: (MediaQuery.of(context).size.width) * 0.9,
+                        child: firstThreeFlashcards.length > 0
+                            ? FittedBox(
+                                child: Text(
+                                  firstThreeFlashcards[0].question,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              )
+                            : Text(""),
+                      ),
+                      SizedBox(
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.02,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Theme.of(context).primaryColorLight,
+                              width: 3),
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        SizedBox(
-                          height: (MediaQuery.of(context).size.height -
-                                  appBar.preferredSize.height) *
-                              0.02,
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.15,
+                        width: (MediaQuery.of(context).size.width) * 0.9,
+                        child: firstThreeFlashcards.length >= 2
+                            ? FittedBox(
+                                child: Text(
+                                  firstThreeFlashcards[1].question,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              )
+                            : Text(""),
+                      ),
+                      SizedBox(
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.02,
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(5),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Theme.of(context).primaryColorLight,
+                              width: 3),
+                          borderRadius: BorderRadius.circular(8),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColorLight,
-                                width: 3),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          height: (MediaQuery.of(context).size.height -
-                                  appBar.preferredSize.height) *
-                              0.15,
-                          width: (MediaQuery.of(context).size.width) * 0.9,
-                          child: firstThreeFlashcards.length >= 2
-                              ? FittedBox(
-                                  child: Text(
-                                    firstThreeFlashcards[1].question,
-                                    style: TextStyle(fontSize: 14),
-                                  ),
-                                )
-                              : Text(""),
-                        ),
-                        SizedBox(
-                          height: (MediaQuery.of(context).size.height -
-                                  appBar.preferredSize.height) *
-                              0.02,
-                        ),
-                        Container(
-                          alignment: Alignment.center,
-                          decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColorLight,
-                                width: 3),
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          height: (MediaQuery.of(context).size.height -
-                                  appBar.preferredSize.height) *
-                              0.15,
-                          width: (MediaQuery.of(context).size.width) * 0.9,
-                          child: firstThreeFlashcards.length >= 3
-                              ? FittedBox(
-                                  child: Text(
-                                    firstThreeFlashcards[2].question,
-                                    style: TextStyle(fontSize: 14),
-                                  ),
-                                )
-                              : Text(""),
-                        ),
-                        SizedBox(
-                          height: (MediaQuery.of(context).size.height -
-                                  appBar.preferredSize.height) *
-                              0.015,
-                        ),
-                      ],
-                    ),
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.15,
+                        width: (MediaQuery.of(context).size.width) * 0.9,
+                        child: firstThreeFlashcards.length >= 3
+                            ? FittedBox(
+                                child: Text(
+                                  firstThreeFlashcards[2].question,
+                                  style: TextStyle(fontSize: 14),
+                                ),
+                              )
+                            : Text(""),
+                      ),
+                      SizedBox(
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.015,
+                      ),
+                    ],
                   ),
             SizedBox(
               height: (MediaQuery.of(context).size.height -

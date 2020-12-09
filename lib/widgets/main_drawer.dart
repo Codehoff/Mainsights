@@ -35,22 +35,24 @@ class MainDrawer extends StatelessWidget {
             height: 20,
           ),
           Container(
-            height: 100,
+            height: MediaQuery.of(context).size.height * 0.15,
             width: double.infinity,
             padding: EdgeInsets.all(20),
             alignment: Alignment.bottomLeft,
             color: Theme.of(context).accentColor,
-            child: Text(
-              "TODO: Username",
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 25,
-                color: Colors.white,
+            child: FittedBox(
+              child: Text(
+                "TODO: Username",
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 25,
+                  color: Colors.white,
+                ),
               ),
             ),
           ),
           SizedBox(
-            height: 20,
+            height: MediaQuery.of(context).size.height * 0.02,
           ),
           buildListTile('Search', Icons.find_in_page, () {
             Navigator.of(context)
