@@ -4,7 +4,6 @@ import "package:auto_size_text/auto_size_text.dart";
 
 import "../providers/localFlashcards.dart";
 import "../widgets/main_drawer.dart";
-import "../models/flashcard.dart";
 
 class SearchSingleFlashcardScreen extends StatefulWidget {
   static const String routeName = "/Searchsingle";

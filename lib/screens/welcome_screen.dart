@@ -149,56 +149,58 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          SizedBox(
-            height: 40,
-          ),
-          CarouselSlider(
-            options: CarouselOptions(
-              height: MediaQuery.of(context).size.height * 0.7,
-              enlargeCenterPage: true,
-              onPageChanged: (index, reason) => setState(() {
-                pageIndex = index;
-              }),
+      body: Center(
+        child: Column(
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.1,
             ),
-            items: _demo,
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          CarouselIndicator(
-            height: 10,
-            count: 5,
-            index: pageIndex,
-            activeColor: Colors.blue[300],
-            color: Colors.grey[300],
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          GestureDetector(
-            onTap: _pushLocalFlashcards,
-            child: Container(
-              alignment: Alignment.center,
-              width: 200,
-              height: 50,
-              decoration: BoxDecoration(
-                color: Colors.blue[300],
-                borderRadius: BorderRadius.circular(20),
+            CarouselSlider(
+              options: CarouselOptions(
+                height: MediaQuery.of(context).size.height * 0.7,
+                enlargeCenterPage: true,
+                onPageChanged: (index, reason) => setState(() {
+                  pageIndex = index;
+                }),
               ),
-              padding: EdgeInsets.all(5),
-              child: Text(
-                "Get Started",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+              items: _demo,
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.015,
+            ),
+            CarouselIndicator(
+              height: 10,
+              count: 5,
+              index: pageIndex,
+              activeColor: Colors.blue[300],
+              color: Colors.grey[300],
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.03,
+            ),
+            GestureDetector(
+              onTap: _pushLocalFlashcards,
+              child: Container(
+                alignment: Alignment.center,
+                width: MediaQuery.of(context).size.width * 0.4,
+                height: MediaQuery.of(context).size.height * 0.07,
+                decoration: BoxDecoration(
+                  color: Colors.blue[300],
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  "Get Started",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

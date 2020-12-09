@@ -119,18 +119,20 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
           SizedBox(
             height: (MediaQuery.of(context).size.height -
                     appBar.preferredSize.height) *
-                0.05,
+                0.02,
           ),
           SizedBox(
-            child: Text(
-              "Question ${counter + 1}/${flashcards.length}",
-              style: TextStyle(fontSize: 20),
+            child: FittedBox(
+              child: Text(
+                "Question ${counter + 1}/${flashcards.length}",
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
           SizedBox(
             height: (MediaQuery.of(context).size.height -
                     appBar.preferredSize.height) *
-                0.05,
+                0.02,
           ),
           SwipeDetector(
             onSwipeLeft: _increaseCounter,
@@ -217,7 +219,9 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
               children: [
                 SizedBox(
                   width: (MediaQuery.of(context).size.width) * 0.3,
-                  height: 80,
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.14,
                   child: FlatButton(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(8.0),
@@ -229,16 +233,20 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                     padding: EdgeInsets.all(8.0),
                     splashColor: Colors.blueAccent,
                     onPressed: _switchAnswer,
-                    child: Text(
-                      "Flip card",
-                      style: TextStyle(fontSize: 15.0),
+                    child: FittedBox(
+                      child: Text(
+                        "Flip card",
+                        style: TextStyle(fontSize: 15.0),
+                      ),
                     ),
                   ),
                 ),
                 switched == true
                     ? SizedBox(
                         width: (MediaQuery.of(context).size.width) * 0.3,
-                        height: 80,
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.14,
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
@@ -250,20 +258,24 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                           padding: EdgeInsets.all(8.0),
                           splashColor: Colors.blueAccent,
                           onPressed: _decreasePoints,
-                          child: Text(
-                            "Did not know",
-                            style: TextStyle(fontSize: 15.0),
+                          child: FittedBox(
+                            child: Text(
+                              "Did not know",
+                              style: TextStyle(fontSize: 15.0),
+                            ),
                           ),
                         ),
                       )
                     : SizedBox(
+                        width: (MediaQuery.of(context).size.width) * 0.3,
                         height: 80,
-                        width: 120,
                       ),
                 switched == true
                     ? SizedBox(
                         width: (MediaQuery.of(context).size.width) * 0.3,
-                        height: 80,
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.14,
                         child: FlatButton(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8.0),
@@ -275,15 +287,19 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
                           padding: EdgeInsets.all(8.0),
                           splashColor: Colors.blueAccent,
                           onPressed: _increasePoints,
-                          child: Text(
-                            "I knew it",
-                            style: TextStyle(fontSize: 15.0),
+                          child: FittedBox(
+                            child: Text(
+                              "I knew it",
+                              style: TextStyle(fontSize: 15.0),
+                            ),
                           ),
                         ),
                       )
                     : SizedBox(
-                        height: 80,
-                        width: 120,
+                        width: (MediaQuery.of(context).size.width) * 0.3,
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.14,
                       ),
               ],
             ),
