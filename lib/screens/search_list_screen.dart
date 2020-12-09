@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+import 'package:flutter/services.dart';
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 import "../providers/localFlashcards.dart";
@@ -75,11 +76,12 @@ class _SearchListScreenState extends State<SearchListScreen> {
   Widget build(BuildContext context) {
     final loadedFlashcards = Provider.of<LocalFlashcards>(context);
     final flashcards = loadedFlashcards.items;
+    final appBar = AppBar(
+      title: Text('Search Mode'),
+    );
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Search Mode'),
-      ),
+      appBar: appBar,
       drawer: Drawer(
         child: MainDrawer(),
       ),
@@ -91,7 +93,9 @@ class _SearchListScreenState extends State<SearchListScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 SizedBox(
-                  height: 25,
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.02,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 10),
@@ -102,156 +106,183 @@ class _SearchListScreenState extends State<SearchListScreen> {
                   ),
                   child: Column(
                     children: [
-                      Text(
-                        "There are ${flashcards.length} questions that match your selection criteria:",
-                        style: TextStyle(fontSize: 20),
-                        textAlign: TextAlign.center,
+                      FittedBox(
+                        child: Text(
+                          "There are ${flashcards.length} questions that match your selection criteria:",
+                          style: TextStyle(fontSize: 20),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                       SizedBox(
                         height: 10,
                       ),
-                      Text(
-                        "Click on a question to see the answer",
-                        style: TextStyle(fontSize: 14),
-                        textAlign: TextAlign.center,
+                      FittedBox(
+                        child: Text(
+                          "Click on a question to see the answer",
+                          style: TextStyle(fontSize: 14),
+                          textAlign: TextAlign.center,
+                        ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(
-                  height: 15,
+                  height: 20,
                 ),
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 5),
-                  child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 5),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
+                        children: [
+                          FittedBox(
+                            child: Text(
                               "Category 1",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              height: 6,
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width * 0.22,
+                            padding: EdgeInsets.all(7),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColorLight,
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              width: 90,
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColorLight,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
+                            child: FittedBox(
                               child: Text(
                                 dropdownValue1,
                                 style: TextStyle(fontSize: 12),
                               ),
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          FittedBox(
+                            child: Text(
                               "Category 2",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              height: 6,
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width * 0.22,
+                            padding: EdgeInsets.all(7),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColorLight,
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              width: 90,
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColorLight,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
+                            child: FittedBox(
                               child: Text(
                                 dropdownValue2,
                                 style: TextStyle(fontSize: 12),
                               ),
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          FittedBox(
+                            child: Text(
                               "Difficulty",
                               style: TextStyle(fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(
-                              height: 6,
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width * 0.22,
+                            padding: EdgeInsets.all(7),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColorLight,
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            Container(
-                              alignment: Alignment.center,
-                              width: 90,
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColorLight,
-                                borderRadius: BorderRadius.circular(8),
-                              ),
+                            child: FittedBox(
                               child: Text(
                                 dropdownValue3,
                                 style: TextStyle(fontSize: 12),
                               ),
                             ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              "Viewed",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            SizedBox(
-                              height: 6,
-                            ),
-                            Container(
-                              alignment: Alignment.center,
-                              width: 90,
-                              padding: EdgeInsets.all(7),
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).primaryColorLight,
-                                borderRadius: BorderRadius.circular(8),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: [
+                          FittedBox(
+                            child: FittedBox(
+                              child: Text(
+                                "Viewed",
+                                style: TextStyle(fontWeight: FontWeight.bold),
                               ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 6,
+                          ),
+                          Container(
+                            alignment: Alignment.center,
+                            width: MediaQuery.of(context).size.width * 0.22,
+                            padding: EdgeInsets.all(7),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).primaryColorLight,
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: FittedBox(
                               child: Text(
                                 dropdownValue4,
                                 style: TextStyle(fontSize: 12),
                               ),
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                ),
+                SizedBox(
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.02,
                 ),
                 Expanded(
                   child: ListView.builder(
                     itemBuilder: (ctx, index) {
-                      return Container(
-                        height: 150,
-                        margin: new EdgeInsets.all(10),
-                        alignment: Alignment.center,
-                        decoration: new BoxDecoration(
-                          border: new Border(
-                            bottom: new BorderSide(),
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).pushNamed(
+                              SearchSingleFlashcardScreen.routeName,
+                              arguments: flashcards[index].id);
+                          HapticFeedback.lightImpact();
+                        },
+                        child: Container(
+                          height: 150,
+                          margin: new EdgeInsets.all(10),
+                          alignment: Alignment.center,
+                          decoration: new BoxDecoration(
+                            border: new Border(
+                              bottom: new BorderSide(),
+                            ),
                           ),
-                        ),
-                        child: ListTile(
-                          onTap: () {
-                            Navigator.of(context).pushNamed(
-                                SearchSingleFlashcardScreen.routeName,
-                                arguments: flashcards[index].id);
-                          },
-                          trailing: flashcards[index].viewed == "not viewed"
-                              ? Text("")
-                              : Icon(Icons.check),
-                          title: Text(
-                            flashcards[index].question,
-                            style: TextStyle(fontSize: 18),
+                          child: ListTile(
+                            trailing: flashcards[index].viewed == "not viewed"
+                                ? Text("")
+                                : Icon(Icons.check),
+                            title: Text(
+                              flashcards[index].question,
+                              style: TextStyle(fontSize: 18),
+                            ),
                           ),
                         ),
                       );
