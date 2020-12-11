@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_complete_guide/screens/auth_screen.dart';
 import "package:provider/provider.dart";
 
 import "../screens/study_selection_screen.dart";
@@ -42,7 +43,7 @@ class MainDrawer extends StatelessWidget {
             color: Theme.of(context).accentColor,
             child: FittedBox(
               child: Text(
-                "TODO: Username",
+                "Mainsights",
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   fontSize: 25,
@@ -71,7 +72,7 @@ class MainDrawer extends StatelessWidget {
                 .pushReplacementNamed(SettingsScreen.routeName);
           }),
           buildListTile('Logout', Icons.exit_to_app, () {
-            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacementNamed(AuthScreen.routeName);
             Provider.of<Auth>(context, listen: false).logout();
           }),
         ],

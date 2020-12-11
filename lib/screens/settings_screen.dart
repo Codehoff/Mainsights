@@ -51,58 +51,15 @@ class SettingsScreen extends StatelessWidget {
               disabledTextColor: Colors.black,
               padding: EdgeInsets.all(8.0),
               splashColor: Colors.blueAccent,
-              onPressed: _pushFlashcards,
+              onPressed: () {},
               child: Text(
-                "Push to Server",
+                "Nothing here yet",
                 style: TextStyle(fontSize: 15.0),
               ),
             ),
           ),
           SizedBox(
             height: 50,
-          ),
-          SizedBox(
-            width: 200,
-            height: 60,
-            child: FlatButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
-              disabledColor: Colors.grey,
-              disabledTextColor: Colors.black,
-              padding: EdgeInsets.all(8.0),
-              splashColor: Colors.blueAccent,
-              onPressed: _pushLocalFlashcards,
-              child: Text(
-                "Push to local ",
-                style: TextStyle(fontSize: 15.0),
-              ),
-            ),
-          ),
-          SizedBox(
-            height: 50,
-          ),
-          SizedBox(
-            width: 200,
-            height: 60,
-            child: FlatButton(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              color: Theme.of(context).primaryColor,
-              textColor: Colors.white,
-              disabledColor: Colors.grey,
-              disabledTextColor: Colors.black,
-              padding: EdgeInsets.all(8.0),
-              splashColor: Colors.blueAccent,
-              onPressed: _dropLocalDB,
-              child: Text(
-                "Drop local DB",
-                style: TextStyle(fontSize: 15.0),
-              ),
-            ),
           ),
         ]),
       ),

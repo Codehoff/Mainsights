@@ -54,6 +54,7 @@ class MyApp extends StatelessWidget {
                             : AuthScreen(),
                   ),
             routes: {
+              AuthScreen.routeName: (ctx) => AuthScreen(),
               SearchSelectionScreen.routeName: (ctx) => SearchSelectionScreen(),
               StudySelectionScreen.routeName: (ctx) => StudySelectionScreen(),
               ReviewSelectionScreen.routeName: (ctx) => ReviewSelectionScreen(),
@@ -61,6 +62,7 @@ class MyApp extends StatelessWidget {
               SearchListScreen.routeName: (ctx) => SearchListScreen(),
               Reviewscreen.routeName: (ctx) => Reviewscreen(),
               SettingsScreen.routeName: (ctx) => SettingsScreen(),
+              SplashScreen.routeName: (ctx) => SplashScreen()
             }),
       ),
     );

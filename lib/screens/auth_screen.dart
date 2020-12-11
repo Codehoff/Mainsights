@@ -1,12 +1,10 @@
-import "dart:math";
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../providers/auth.dart';
-import "../providers/localFlashcards.dart";
 import '../models/http_exception.dart';
 import "./welcome_screen.dart";
+import "./study_selection_screen.dart";
 
 enum AuthMode { Signup, Login }
 
@@ -170,6 +168,12 @@ class _AuthCardState extends State<AuthCard>
         await Provider.of<Auth>(context, listen: false).login(
           _authData['email'],
           _authData['password'],
+        );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => StudySelectionScreen(),
+          ),
         );
       } else {
         // Sign user up
