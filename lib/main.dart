@@ -39,6 +39,7 @@ class MyApp extends StatelessWidget {
       ],
       child: Consumer<Auth>(
         builder: (ctx, auth, _) => MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Mainsights',
             theme: ThemeData(
               primarySwatch: Colors.blue,
