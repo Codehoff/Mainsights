@@ -4,26 +4,16 @@ import 'package:carousel_indicator/carousel_indicator.dart';
 import 'package:flutter_complete_guide/screens/study_selection_screen.dart';
 import "package:provider/provider.dart";
 
-import "../providers/localFlashcards.dart";
+import "../providers/flashcards.dart";
 
 class WelcomeScreen extends StatefulWidget {
-  WelcomeScreen({Key key}) : super(key: key);
+  static const routeName = "/welcome";
 
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
 
 class _WelcomeScreenState extends State<WelcomeScreen> {
-  void _pushLocalFlashcards() {
-    Provider.of<LocalFlashcards>(context).pushLocalFlashcard();
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => StudySelectionScreen(),
-      ),
-    );
-  }
-
   int pageIndex = 0;
 
   List<Widget> _demo = [
@@ -148,6 +138,16 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    void _pushFlashcards() {
+      Provider.of<Flashcards>(context).pushFlashcards();
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => StudySelectionScreen(),
+        ),
+      );
+    }
+
     return Scaffold(
       body: Center(
         child: Column(
@@ -179,7 +179,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
               height: MediaQuery.of(context).size.height * 0.03,
             ),
             GestureDetector(
-              onTap: _pushLocalFlashcards,
+              onTap: _pushFlashcards,
               child: Container(
                 alignment: Alignment.center,
                 width: MediaQuery.of(context).size.width * 0.4,

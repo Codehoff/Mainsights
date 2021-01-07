@@ -4,7 +4,7 @@ import "package:auto_size_text/auto_size_text.dart";
 
 import '../widgets/main_drawer.dart';
 import 'review_screen.dart';
-import "../providers/localFlashcards.dart";
+import "../providers/flashcards.dart";
 
 class ReviewSelectionScreen extends StatefulWidget {
   static const routeName = "/reviewselection";
@@ -36,8 +36,8 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<LocalFlashcards>(context)
-          .fetchAndSetLocalFlashcardsForReview()
+      Provider.of<Flashcards>(context)
+          .fetchAndSetFlashcardsForReview()
           .then((_) {
         setState(() {
           _isLoading = false;
@@ -50,7 +50,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _loadedFlashcards = Provider.of<LocalFlashcards>(context);
+    final _loadedFlashcards = Provider.of<Flashcards>(context);
     final firstThreeFlashcards = _loadedFlashcards.items.take(3).toList();
     final appBar = AppBar(
       toolbarHeight: MediaQuery.of(context).size.height * 0.08,

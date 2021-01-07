@@ -3,7 +3,7 @@ import "package:provider/provider.dart";
 import 'package:flutter/services.dart';
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
-import "../providers/localFlashcards.dart";
+import "../providers/flashcards.dart";
 import "../screens/search_single_flashcard.dart";
 
 class SearchListScreen extends StatefulWidget {
@@ -59,9 +59,9 @@ class _SearchListScreenState extends State<SearchListScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<LocalFlashcards>(context)
-          .fetchAndSetLocalFlashcards(dropdownValue1, dropdownValue2,
-              dropdownValue3, dropdownValue4, searchValue)
+      Provider.of<Flashcards>(context)
+          .fetchAndSetFlashcards(dropdownValue1, dropdownValue2, dropdownValue3,
+              dropdownValue4, searchValue)
           .then((_) {
         setState(() {
           _isLoading = false;
@@ -74,7 +74,7 @@ class _SearchListScreenState extends State<SearchListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loadedFlashcards = Provider.of<LocalFlashcards>(context);
+    final loadedFlashcards = Provider.of<Flashcards>(context);
     final flashcards = loadedFlashcards.items;
     final appBar = AppBar(
       title: Text('Search Mode'),

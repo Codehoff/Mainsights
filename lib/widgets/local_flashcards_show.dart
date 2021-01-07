@@ -4,12 +4,10 @@ import 'package:provider/provider.dart';
 import 'package:swipedetector/swipedetector.dart';
 import "package:auto_size_text/auto_size_text.dart";
 
-import "../providers/localFlashcards.dart";
+import "../providers/flashcards.dart";
 import "../models/flashcard.dart";
 
 class LocalFlashcardsShow extends StatefulWidget {
-  LocalFlashcardsShow({Key key}) : super(key: key);
-
   @override
   _LocalFlashcardsShowState createState() => _LocalFlashcardsShowState();
 }
@@ -21,7 +19,7 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
 
   @override
   Widget build(BuildContext context) {
-    final loadedFlashcards = Provider.of<LocalFlashcards>(context);
+    final loadedFlashcards = Provider.of<Flashcards>(context);
     final flashcards = loadedFlashcards.items.take(10).toList();
 
     void _switchAnswer() {
@@ -74,8 +72,8 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
         viewed: flashcards[counter].viewed,
         lastReviewed: flashcards[counter].lastReviewed,
       );
-      Provider.of<LocalFlashcards>(context)
-          .updateFlashcard(flashcards[counter].id, _editedFlashcard);
+      Provider.of<Flashcards>(context)
+          .updatePoints(flashcards[counter].id, _editedFlashcard);
       _increaseCounter();
     }
 
@@ -102,8 +100,8 @@ class _LocalFlashcardsShowState extends State<LocalFlashcardsShow> {
         viewed: flashcards[counter].viewed,
         lastReviewed: flashcards[counter].lastReviewed,
       );
-      Provider.of<LocalFlashcards>(context)
-          .updateFlashcard(flashcards[counter].id, _editedFlashcard);
+      Provider.of<Flashcards>(context)
+          .updatePoints(flashcards[counter].id, _editedFlashcard);
       _incorrectFlashcards.add(_editedFlashcard);
       _increaseCounter();
     }

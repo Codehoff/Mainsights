@@ -4,7 +4,7 @@ import "package:provider/provider.dart";
 import 'package:swipedetector/swipedetector.dart';
 import "package:auto_size_text/auto_size_text.dart";
 
-import "../providers/localFlashcards.dart";
+import "../providers/flashcards.dart";
 import "../widgets/main_drawer.dart";
 import "../models/flashcard.dart";
 
@@ -102,8 +102,8 @@ class _StudySingleFlashcardScreenState
                     question: flashcards[counter].question,
                     answer: flashcards[counter].answer,
                     viewed: flashcards[counter].viewed,
-                    lastReviewed: DateTime(2020, 01, 01).toString());
-                Provider.of<LocalFlashcards>(context).setFlashcardasViewed(
+                    lastReviewed: DateTime(2000, 01, 01).toString());
+                Provider.of<Flashcards>(context).setFlashcardAsViewed(
                     flashcards[counter].id, _editedFlashcard);
               },
               child: Container(

@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import "package:provider/provider.dart";
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
-import "../providers/localFlashcards.dart";
+import "../providers/flashcards.dart";
 import "../screens/study_single_flashcard_screen.dart";
 
 class StudyListScreen extends StatefulWidget {
@@ -51,8 +51,8 @@ class _StudyListScreenState extends State<StudyListScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<LocalFlashcards>(context)
-          .fetchAndSetLocalFlashcards(
+      Provider.of<Flashcards>(context)
+          .fetchAndSetFlashcards(
               dropdownValue1, dropdownValue2, dropdownValue3, dropdownValue4)
           .then((_) {
         setState(() {
@@ -66,7 +66,7 @@ class _StudyListScreenState extends State<StudyListScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final loadedFlashcards = Provider.of<LocalFlashcards>(context);
+    final loadedFlashcards = Provider.of<Flashcards>(context);
     final flashcards = loadedFlashcards.items;
     final appBar = AppBar(
       title: Text('Study Mode'),

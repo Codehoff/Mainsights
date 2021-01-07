@@ -12,9 +12,7 @@ import 'screens/review_screen.dart';
 import 'screens/search_list_screen.dart';
 import 'screens/study_list_screen.dart';
 import 'screens/review_selection_screen.dart';
-import "./providers/localFlashcards.dart";
-import "./screens/search_single_flashcard.dart";
-import "./screens/welcome_screen.dart";
+import "screens/welcome_screen.dart";
 
 void main() => runApp(MyApp());
 
@@ -25,9 +23,6 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider.value(
           value: Auth(),
-        ),
-        ChangeNotifierProvider.value(
-          value: LocalFlashcards(),
         ),
         ChangeNotifierProxyProvider<Auth, Flashcards>(
           create: null,
@@ -63,6 +58,7 @@ class MyApp extends StatelessWidget {
               SearchListScreen.routeName: (ctx) => SearchListScreen(),
               Reviewscreen.routeName: (ctx) => Reviewscreen(),
               SettingsScreen.routeName: (ctx) => SettingsScreen(),
+              WelcomeScreen.routeName: (ctx) => WelcomeScreen(),
               SplashScreen.routeName: (ctx) => SplashScreen()
             }),
       ),

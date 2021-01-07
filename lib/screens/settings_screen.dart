@@ -51,9 +51,9 @@ class SettingsScreen extends StatelessWidget {
               disabledTextColor: Colors.black,
               padding: EdgeInsets.all(8.0),
               splashColor: Colors.blueAccent,
-              onPressed: () {},
+              onPressed: _pushFlashcards,
               child: Text(
-                "Nothing here yet",
+                "Push to server",
                 style: TextStyle(fontSize: 15.0),
               ),
             ),

@@ -16,7 +16,7 @@ class _SearchSelectionScreenState extends State<SearchSelectionScreen> {
   String _selectedCategories = "All";
   String _selectedSubcategory = "All";
 
-  String searchValue = "Test";
+  String searchValue = "";
   String dropdownValue1 = "All";
   String dropdownValue2 = "All";
   String dropdownValue3 = "All";
