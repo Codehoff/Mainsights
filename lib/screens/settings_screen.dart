@@ -3,8 +3,6 @@ import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 import "package:provider/provider.dart";
 
 import '../providers/flashcards.dart';
-import '../providers/localFlashcards.dart';
-import '../helpers/dbhelper.dart';
 
 class SettingsScreen extends StatelessWidget {
   static const routeName = "/settings";
@@ -14,16 +12,6 @@ class SettingsScreen extends StatelessWidget {
     /////push online/////
     void _pushFlashcards() {
       Provider.of<Flashcards>(context).pushFlashcards();
-    }
-
-    /////push local/////
-    void _pushLocalFlashcards() {
-      Provider.of<LocalFlashcards>(context).pushLocalFlashcard();
-    }
-
-    /////Drop local/////
-    void _dropLocalDB() {
-      DBHelper.dropDB();
     }
 
     return Scaffold(
@@ -51,9 +39,9 @@ class SettingsScreen extends StatelessWidget {
               disabledTextColor: Colors.black,
               padding: EdgeInsets.all(8.0),
               splashColor: Colors.blueAccent,
-              onPressed: _pushFlashcards,
+              onPressed: () {},
               child: Text(
-                "Push to server",
+                "Nothing here yet!",
                 style: TextStyle(fontSize: 15.0),
               ),
             ),

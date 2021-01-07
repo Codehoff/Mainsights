@@ -9,6 +9,7 @@ import '../models/http_exception.dart';
 
 class Auth with ChangeNotifier {
   String _token;
+  String _refreshToken;
   DateTime _expiryDate;
   String _userId;
   Timer _authTimer;
@@ -94,9 +95,12 @@ class Auth with ChangeNotifier {
     if (expiryDate.isBefore(DateTime.now())) {
       return false;
     }
+
     _token = extractedUserData['token'];
+    _refreshToken = extractedUserData['refresh_token'];
     _userId = extractedUserData['userId'];
     _expiryDate = expiryDate;
+
     notifyListeners();
     _autoLogout();
     return true;
@@ -118,6 +122,48 @@ class Auth with ChangeNotifier {
     }
     final timeToExpiry = _expiryDate.difference(DateTime.now()).inSeconds;
     _authTimer = Timer(Duration(seconds: timeToExpiry), logout);
+  }
+
+  Future<void> refreshSession() async {
+    final url =
+        'https://securetoken.googleapis.com/v1/token?key=AIzaSyAKsQswem3CjYVRFI1853hI3uGvSau2wKE';
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: json.encode({
+          'grant_type': 'refresh_token',
+          'refresh_token': '[REFRESH_TOKEN]',
+        }),
+      );
+      final responseData = json.decode(response.body);
+      if (responseData['error'] != null) {
+        throw HttpException(responseData['error']['message']);
+      }
+      _token = responseData['id_token'];
+      _refreshToken = responseData['refresh_token'];
+      _userId = responseData['user_id'];
+      _expiryDate = DateTime.now()
+          .add(Duration(seconds: int.parse(responseData['expires_in'])));
+      _autoLogout();
+
+      notifyListeners();
+
+      final prefs = await SharedPreferences.getInstance();
+      final userData = json.encode({
+        'token': _token,
+        'refresh_token': _refreshToken,
+        'userId': _userId,
+        'expiryDate': _expiryDate.toIso8601String(),
+      });
+      prefs.setString('userData', userData);
+    } catch (error) {
+      throw error;
+    }
   }
 }
 

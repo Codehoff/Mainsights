@@ -75,8 +75,6 @@ class Flashcards with ChangeNotifier {
         ? dropdownValue5 = " "
         : dropdownValue5 = dropdownValue5;
 
-    print(dropdownValue5);
-
     dropdownValue4 == "Viewed"
         ? dropdownViewed = "Has been viewed"
         : dropdownViewed = "not viewed";
