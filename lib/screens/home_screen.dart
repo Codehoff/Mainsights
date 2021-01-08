@@ -97,6 +97,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       "You have reviewed ${reviewedThisWeek.length} Flashcards in the last 7 days, $reviewedString ",
                       style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
+                      "Level Progress:",
+                      style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
@@ -106,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       "Accounting",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -114,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       "Valuation",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
@@ -122,7 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Text(
                       "Process",
                       style: TextStyle(
-                        fontSize: 20,
+                        fontSize: 18,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
