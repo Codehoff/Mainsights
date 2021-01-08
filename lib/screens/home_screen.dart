@@ -90,111 +90,112 @@ class _HomeScreenState extends State<HomeScreen> {
           ? Center(
               child: CircularProgressIndicator(),
             )
-          : SingleChildScrollView(
-              child: Container(
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  color: Colors.blue[50],
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      height: 25,
-                    ),
-                    Text(
-                      "You have reviewed ${reviewedThisWeek.length} Flashcards in the last 7 days, $reviewedString ",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w300),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      "Flashcard Progress:",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Accounting",
-                      solvedAccountingFlashcards.length,
-                      accountingFlashcards.length,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Valuation",
-                      solvedValuationFlashcards.length,
-                      valuationFlashcards.length,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Process",
-                      solvedProcessFlashcards.length,
-                      processFlashcards.length,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Overall",
-                      solvedFlashcards.length,
-                      flashcards.length,
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      "Level Progress:",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "Accounting",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
+          : ListView(
+              children: [
+                Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    color: Colors.blue[50],
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      SizedBox(
+                        height: 25,
                       ),
-                    ),
-                    Chart(accountingFlashcards.toList()),
-                    Text(
-                      "Valuation",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
+                      Text(
+                        "You have reviewed ${reviewedThisWeek.length} Flashcards in the last 7 days, $reviewedString ",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w300),
+                        textAlign: TextAlign.center,
                       ),
-                    ),
-                    Chart(valuationFlashcards.toList()),
-                    Text(
-                      "Process",
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w400,
+                      SizedBox(
+                        height: 30,
                       ),
-                    ),
-                    Chart(processFlashcards.toList()),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Review Ratio:",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-                      textAlign: TextAlign.center,
-                    ),
-                    Container(
+                      Text(
+                        "Flashcard Progress:",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      ChartHorizontal(
+                        "Accounting",
+                        solvedAccountingFlashcards.length,
+                        accountingFlashcards.length,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      ChartHorizontal(
+                        "Valuation",
+                        solvedValuationFlashcards.length,
+                        valuationFlashcards.length,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      ChartHorizontal(
+                        "Process",
+                        solvedProcessFlashcards.length,
+                        processFlashcards.length,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      ChartHorizontal(
+                        "Overall",
+                        solvedFlashcards.length,
+                        flashcards.length,
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text(
+                        "Level Progress:",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: 15,
+                      ),
+                      Text(
+                        "Accounting",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Chart(accountingFlashcards.toList()),
+                      Text(
+                        "Valuation",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Chart(valuationFlashcards.toList()),
+                      Text(
+                        "Process",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      Chart(processFlashcards.toList()),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Review Ratio:",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.w500),
+                        textAlign: TextAlign.center,
+                      ),
+                      Container(
                         padding: EdgeInsets.all(20),
                         child: PieChart(
                           dataMap: pieChart,
@@ -206,10 +207,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             Color(0xff90C2E7),
                             Color(0xff00A9A5)
                           ],
-                        )),
-                  ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
     );
   }
