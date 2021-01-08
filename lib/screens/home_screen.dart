@@ -4,6 +4,7 @@ import "package:provider/provider.dart";
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 import "../providers/flashcards.dart";
+import "../widgets/chart_horizontal.dart";
 
 class HomeScreen extends StatefulWidget {
   static const routeName = "/home";
@@ -136,25 +137,41 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Chart(processFlashcards.toList()),
-                    Center(
-                      child: Text(
-                          "Overall : ${solvedFlashcards.length} / ${flashcards.length}"),
+                    Text(
+                      "Flashcard Progress:",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
                     ),
-                    Center(
-                      child: Text(
-                          "Accounting : ${solvedAccountingFlashcards.length} / ${accountingFlashcards.length}"),
+                    SizedBox(
+                      height: 15,
                     ),
-                    Center(
-                      child: Text(
-                          "Valuation : ${solvedValuationFlashcards.length} / ${valuationFlashcards.length}"),
+                    ChartHorizontal(
+                      "Accounting",
+                      solvedAccountingFlashcards.length /
+                          accountingFlashcards.length,
                     ),
-                    Center(
-                      child: Text(
-                          "Process : ${solvedProcessFlashcards.length} / ${processFlashcards.length}"),
+                    SizedBox(
+                      height: 15,
                     ),
-                    Center(
-                      child: Text(
-                          "Reviewed this week : ${reviewedThisWeek.length}"),
+                    ChartHorizontal(
+                      "Valuation",
+                      solvedValuationFlashcards.length /
+                          valuationFlashcards.length,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ChartHorizontal(
+                      "Process",
+                      solvedProcessFlashcards.length / processFlashcards.length,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ChartHorizontal(
+                      "Overall",
+                      solvedFlashcards.length / flashcards.length,
                     ),
                   ],
                 ),
