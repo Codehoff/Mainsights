@@ -109,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       textAlign: TextAlign.center,
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 30,
                     ),
                     Text(
                       "Flashcard Progress:",
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       flashcards.length,
                     ),
                     SizedBox(
-                      height: 15,
+                      height: 30,
                     ),
                     Text(
                       "Level Progress:",

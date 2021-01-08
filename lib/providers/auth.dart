@@ -24,7 +24,6 @@ class Auth with ChangeNotifier {
         _token != null) {
       return _token;
     }
-    refreshSession();
     return null;
   }
 
