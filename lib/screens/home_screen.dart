@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
 import 'package:flutter_complete_guide/widgets/chart.dart';
 import "package:provider/provider.dart";
+import "package:pie_chart/pie_chart.dart";
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 import "../providers/flashcards.dart";
@@ -66,6 +67,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
     var reviewedString = "";
 
+    Map<String, double> pieChart = {
+      "Accounting": solvedAccountingFlashcards.length.toDouble(),
+      "Valuation": solvedValuationFlashcards.length.toDouble(),
+      "Process": solvedProcessFlashcards.length.toDouble(),
+    };
+
     if (reviewedThisWeek.length > 7) {
       reviewedString = "awesome!";
     } else if (reviewedThisWeek.length > 0) {
@@ -105,6 +112,47 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 15,
                     ),
                     Text(
+                      "Flashcard Progress:",
+                      style:
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+                      textAlign: TextAlign.center,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ChartHorizontal(
+                      "Accounting",
+                      solvedAccountingFlashcards.length,
+                      accountingFlashcards.length,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ChartHorizontal(
+                      "Valuation",
+                      solvedValuationFlashcards.length,
+                      valuationFlashcards.length,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ChartHorizontal(
+                      "Process",
+                      solvedProcessFlashcards.length,
+                      processFlashcards.length,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    ChartHorizontal(
+                      "Overall",
+                      solvedFlashcards.length,
+                      flashcards.length,
+                    ),
+                    SizedBox(
+                      height: 15,
+                    ),
+                    Text(
                       "Level Progress:",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
@@ -137,42 +185,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Chart(processFlashcards.toList()),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Text(
-                      "Flashcard Progress:",
+                      "Review Ratio:",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
                       textAlign: TextAlign.center,
                     ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Accounting",
-                      solvedAccountingFlashcards.length /
-                          accountingFlashcards.length,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Valuation",
-                      solvedValuationFlashcards.length /
-                          valuationFlashcards.length,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Process",
-                      solvedProcessFlashcards.length / processFlashcards.length,
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ChartHorizontal(
-                      "Overall",
-                      solvedFlashcards.length / flashcards.length,
-                    ),
+                    Container(
+                        padding: EdgeInsets.all(20),
+                        child: PieChart(
+                          dataMap: pieChart,
+                          chartValuesOptions: ChartValuesOptions(
+                            showChartValuesInPercentage: true,
+                          ),
+                        )),
                   ],
                 ),
               ),

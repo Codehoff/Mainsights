@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 
 class ChartHorizontal extends StatelessWidget {
   final String category;
-  final double percentage;
+  final int solved;
+  final int total;
 
-  ChartHorizontal(this.category, this.percentage);
+  ChartHorizontal(this.category, this.solved, this.total);
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class ChartHorizontal extends StatelessWidget {
                     ),
                   ),
                   FractionallySizedBox(
-                    widthFactor: percentage,
+                    widthFactor: solved.toDouble() / total,
                     child: Container(
                       decoration: BoxDecoration(
                         color: Theme.of(context).primaryColor,
@@ -58,7 +59,7 @@ class ChartHorizontal extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: Text("${(percentage * 100).toStringAsFixed(2)} %"),
+            child: Text("$solved / $total"),
           ),
         ],
       ),
