@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_complete_guide/providers/flashcards.dart';
 import 'package:flutter_complete_guide/screens/auth_screen.dart';
+import 'package:flutter_complete_guide/screens/home_screen.dart';
 import 'package:flutter_complete_guide/screens/search_selection_screen.dart';
 import 'package:flutter_complete_guide/screens/settings_screen.dart';
 import 'package:flutter_complete_guide/screens/study_selection_screen.dart';
@@ -50,6 +51,7 @@ class MyApp extends StatelessWidget {
                             : AuthScreen(),
                   ),
             routes: {
+              HomeScreen.routeName: (ctx) => HomeScreen(),
               AuthScreen.routeName: (ctx) => AuthScreen(),
               SearchSelectionScreen.routeName: (ctx) => SearchSelectionScreen(),
               StudySelectionScreen.routeName: (ctx) => StudySelectionScreen(),

@@ -9,7 +9,7 @@ import '../models/http_exception.dart';
 
 class Auth with ChangeNotifier {
   String _token;
-  String _refreshToken;
+  String _refresh_token;
   DateTime _expiryDate;
   String _userId;
   Timer _authTimer;
@@ -24,6 +24,7 @@ class Auth with ChangeNotifier {
         _token != null) {
       return _token;
     }
+    refreshSession();
     return null;
   }
 
@@ -51,6 +52,7 @@ class Auth with ChangeNotifier {
         throw HttpException(responseData['error']['message']);
       }
       _token = responseData['idToken'];
+      _refresh_token = responseData["refresh_token"];
       _userId = responseData['localId'];
       _expiryDate = DateTime.now().add(
         Duration(
@@ -65,6 +67,7 @@ class Auth with ChangeNotifier {
       final userData = json.encode(
         {
           'token': _token,
+          'refresh_token': _refresh_token,
           'userId': _userId,
           'expiryDate': _expiryDate.toIso8601String(),
         },
@@ -97,7 +100,7 @@ class Auth with ChangeNotifier {
     }
 
     _token = extractedUserData['token'];
-    _refreshToken = extractedUserData['refresh_token'];
+    _refresh_token = extractedUserData['refresh_token'];
     _userId = extractedUserData['userId'];
     _expiryDate = expiryDate;
 
@@ -108,6 +111,7 @@ class Auth with ChangeNotifier {
 
   Future<void> logout() async {
     _token = null;
+    _refresh_token = null;
     _userId = null;
     _expiryDate = null;
     notifyListeners();
@@ -145,7 +149,7 @@ class Auth with ChangeNotifier {
         throw HttpException(responseData['error']['message']);
       }
       _token = responseData['id_token'];
-      _refreshToken = responseData['refresh_token'];
+      _refresh_token = responseData['refresh_token'];
       _userId = responseData['user_id'];
       _expiryDate = DateTime.now()
           .add(Duration(seconds: int.parse(responseData['expires_in'])));
@@ -156,7 +160,7 @@ class Auth with ChangeNotifier {
       final prefs = await SharedPreferences.getInstance();
       final userData = json.encode({
         'token': _token,
-        'refresh_token': _refreshToken,
+        'refresh_token': _refresh_token,
         'userId': _userId,
         'expiryDate': _expiryDate.toIso8601String(),
       });

@@ -41,11 +41,33 @@ class Flashcards with ChangeNotifier {
           "subcategory": element.subcategory,
           "points": element.points,
           "viewed": element.viewed,
-          "lastReviewed": DateTime(2021, 01, 01).toString(),
+          "lastReviewed": DateTime(1984, 01, 01).toString(),
           "creatorId": userId,
         }),
       );
     });
+  }
+
+  Future<void> fetchAllFlashcards() async {
+    final url =
+        'https://mainsights-1fb71.firebaseio.com/flashcards/$userId.json?auth=$authToken';
+    final response = await http.get(url);
+    final extractedData = json.decode(response.body) as Map<String, dynamic>;
+    final List<Flashcard> _extractedItems = [];
+    extractedData.forEach((flashcardID, flashcardData) {
+      _extractedItems.add(Flashcard(
+        id: flashcardID,
+        question: flashcardData["question"],
+        answer: flashcardData["answer"],
+        category: flashcardData["category"],
+        subcategory: flashcardData["subcategory"],
+        complexity: flashcardData["complexity"],
+        points: flashcardData["points"],
+        lastReviewed: flashcardData["lastReviewed"],
+        viewed: flashcardData["viewed"],
+      ));
+    });
+    _items = _extractedItems.toList();
   }
 
   Future<void> fetchAndSetFlashcards(
