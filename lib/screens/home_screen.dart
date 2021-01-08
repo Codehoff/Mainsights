@@ -201,6 +201,11 @@ class _HomeScreenState extends State<HomeScreen> {
                           chartValuesOptions: ChartValuesOptions(
                             showChartValuesInPercentage: true,
                           ),
+                          colorList: [
+                            Color(0xff075B9A),
+                            Color(0xff90C2E7),
+                            Color(0xff00A9A5)
+                          ],
                         )),
                   ],
                 ),
