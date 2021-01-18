@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_complete_guide/screens/auth_screen.dart';
+import 'package:flutter_complete_guide/providers/auth2.dart';
 import 'package:flutter_complete_guide/screens/home_screen.dart';
 import "package:provider/provider.dart";
 
 import "../screens/study_selection_screen.dart";
 import '../screens/review_selection_screen.dart';
 import '../screens/search_selection_screen.dart';
-import "../screens/settings_screen.dart";
-import "../providers/auth.dart";
+import "../screens/tutorial_screen.dart";
+import "../screens/auth_screen.dart";
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
@@ -71,13 +71,14 @@ class MainDrawer extends StatelessWidget {
             Navigator.of(context)
                 .pushReplacementNamed(ReviewSelectionScreen.routeName);
           }),
-          buildListTile('Settings', Icons.settings, () {
+          buildListTile('How To Use', Icons.settings, () {
             Navigator.of(context)
-                .pushReplacementNamed(SettingsScreen.routeName);
+                .pushReplacementNamed(TutorialScreen.routeName);
           }),
           buildListTile('Logout', Icons.exit_to_app, () {
-            Navigator.of(context).pushReplacementNamed(AuthScreen.routeName);
-            Provider.of<Auth>(context, listen: false).logout();
+            Navigator.of(context).pushReplacementNamed(LogInPage.routeName);
+            Provider.of<AuthenticationProvider>(context, listen: false)
+                .signOut();
           }),
         ],
       ),

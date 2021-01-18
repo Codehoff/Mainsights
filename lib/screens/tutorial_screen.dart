@@ -1,26 +1,18 @@
 import "package:flutter/material.dart";
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_indicator/carousel_indicator.dart';
-import 'package:flutter_complete_guide/screens/home_screen.dart';
-import 'dart:async';
-import "package:provider/provider.dart";
 
-import "../providers/flashcards.dart";
-import "../providers/auth2.dart";
+import "../widgets/main_drawer.dart";
 
-class WelcomeScreen extends StatefulWidget {
-  static const routeName = "/welcome";
+class TutorialScreen extends StatefulWidget {
+  static const routeName = "/Tutorial";
 
   @override
-  _WelcomeScreenState createState() => _WelcomeScreenState();
+  _TutorialScreenState createState() => _TutorialScreenState();
 }
 
-class _WelcomeScreenState extends State<WelcomeScreen> {
+class _TutorialScreenState extends State<TutorialScreen> {
   int pageIndex = 0;
-
-  void initState() {
-    super.initState();
-  }
 
   List<Widget> _demo = [
     Container(
@@ -140,137 +132,52 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         ],
       ),
     ),
-    Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: Colors.blue[100],
-      ),
-      padding: EdgeInsets.all(10),
-      alignment: Alignment.center,
-      height: 300,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Text(
-              "Search Mode: \n\n Here you can search for specific flashcards using different filters.",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
-      ),
-    ),
-    Container(
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: Colors.blue[100],
-      ),
-      padding: EdgeInsets.all(10),
-      alignment: Alignment.center,
-      height: 300,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Center(
-            child: Text(
-              "Let's get started!",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          ),
-        ],
-      ),
-    ),
   ];
 
   @override
   Widget build(BuildContext context) {
-    void _pushFlashcards() {
-      context.read<AuthenticationProvider>().userId;
-      Provider.of<Flashcards>(context, listen: false).pushFlashcards();
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => HomeScreen(),
-        ),
-      );
-    }
-
-    void _timer() {
-      Timer timer = new Timer(
-        new Duration(seconds: 1),
-        () {
-          _pushFlashcards();
-        },
-      );
-    }
-
     return Scaffold(
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.1,
-            ),
-            CarouselSlider(
-              options: CarouselOptions(
-                height: MediaQuery.of(context).size.height * 0.7,
-                enlargeCenterPage: true,
-                onPageChanged: (index, reason) => setState(
-                  () {
-                    print(pageIndex);
+      appBar: AppBar(
+        title: Text("How To Use"),
+      ),
+      drawer: Drawer(
+        child: MainDrawer(),
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[50],
+        ),
+        child: Center(
+          child: Column(
+            children: [
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.1,
+              ),
+              CarouselSlider(
+                options: CarouselOptions(
+                  height: MediaQuery.of(context).size.height * 0.7,
+                  enlargeCenterPage: true,
+                  onPageChanged: (index, reason) => setState(() {
                     pageIndex = index;
-                    if (index == 6) {
-                      _timer();
-                    }
-                  },
+                  }),
                 ),
-                enableInfiniteScroll: false,
+                items: _demo,
               ),
-              items: _demo,
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.015,
-            ),
-            CarouselIndicator(
-              height: 10,
-              count: 7,
-              index: pageIndex,
-              activeColor: Colors.blue[300],
-              color: Colors.grey[300],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.03,
-            ),
-            GestureDetector(
-              onTap: _pushFlashcards,
-              child: Container(
-                alignment: Alignment.center,
-                width: MediaQuery.of(context).size.width * 0.4,
-                height: MediaQuery.of(context).size.height * 0.07,
-                decoration: BoxDecoration(
-                  color: Colors.blue[300],
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                padding: EdgeInsets.all(5),
-                child: Text(
-                  "Get Started",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.015,
               ),
-            ),
-          ],
+              CarouselIndicator(
+                height: 10,
+                count: 5,
+                index: pageIndex,
+                activeColor: Colors.blue[300],
+                color: Colors.grey[300],
+              ),
+              SizedBox(
+                height: MediaQuery.of(context).size.height * 0.03,
+              ),
+            ],
+          ),
         ),
       ),
     );

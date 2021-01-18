@@ -36,7 +36,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Flashcards>(context)
+      Provider.of<Flashcards>(context, listen: false)
           .fetchAndSetFlashcardsForReview()
           .then((_) {
         setState(() {
@@ -50,7 +50,7 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _loadedFlashcards = Provider.of<Flashcards>(context);
+    final _loadedFlashcards = Provider.of<Flashcards>(context, listen: false);
     final firstThreeFlashcards = _loadedFlashcards.items.take(3).toList();
     final appBar = AppBar(
       toolbarHeight: MediaQuery.of(context).size.height * 0.08,
@@ -63,6 +63,9 @@ class _ReviewSelectionScreenState extends State<ReviewSelectionScreen> {
         child: MainDrawer(),
       ),
       body: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[50],
+        ),
         height:
             MediaQuery.of(context).size.height - appBar.preferredSize.height,
         child: Column(

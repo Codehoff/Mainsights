@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import 'package:flutter_complete_guide/widgets/chart.dart';
 import "package:provider/provider.dart";
 import "package:pie_chart/pie_chart.dart";
+import "../providers/auth2.dart";
 
 import 'package:flutter_complete_guide/widgets/main_drawer.dart';
 import "../providers/flashcards.dart";
@@ -24,7 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Flashcards>(context).fetchAllFlashcards().then((_) {
+      Provider.of<Flashcards>(context, listen: false)
+          .fetchAllFlashcards()
+          .then((_) {
         setState(() {
           _isLoading = false;
         });
@@ -40,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
       title: Text('Home'),
     );
 
-    final loadedFlashcards = Provider.of<Flashcards>(context);
+    final loadedFlashcards = Provider.of<Flashcards>(context, listen: false);
 
     final flashcards = loadedFlashcards.items;
     final solvedFlashcards =

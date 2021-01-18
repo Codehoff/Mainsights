@@ -46,7 +46,7 @@ class _ReviewscreenState extends State<Reviewscreen> {
       setState(() {
         _isLoading = true;
       });
-      Provider.of<Flashcards>(context)
+      Provider.of<Flashcards>(context, listen: false)
           .fetchAndSetFlashcardsForReview()
           .then((_) {
         setState(() {
@@ -73,6 +73,9 @@ class _ReviewscreenState extends State<Reviewscreen> {
               child: CircularProgressIndicator(),
             )
           : Container(
+              decoration: BoxDecoration(
+                color: Colors.blue[50],
+              ),
               height: MediaQuery.of(context).size.height -
                   appBar.preferredSize.height,
               child: LocalFlashcardsShow(),

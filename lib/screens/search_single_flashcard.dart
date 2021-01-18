@@ -59,105 +59,110 @@ class _StudySingleFlashcardScreenState
       drawer: Drawer(
         child: MainDrawer(),
       ),
-      body: SwipeDetector(
-        onSwipeLeft: _increaseCounter,
-        onSwipeRight: _decreaseCounter,
-        swipeConfiguration: SwipeConfiguration(
-          horizontalSwipeMinDisplacement: 10,
-          horizontalSwipeMinVelocity: 30,
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[50],
         ),
-        child: Column(
-          children: [
-            SizedBox(
-              height: 20,
-            ),
-            Container(
-              child: Center(
-                child: Text(
-                  "Question ${counter + 1} of ${flashcards.length}",
-                  style: TextStyle(fontSize: 22),
-                ),
+        child: SwipeDetector(
+          onSwipeLeft: _increaseCounter,
+          onSwipeRight: _decreaseCounter,
+          swipeConfiguration: SwipeConfiguration(
+            horizontalSwipeMinDisplacement: 10,
+            horizontalSwipeMinVelocity: 30,
+          ),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 20,
               ),
-            ),
-            SizedBox(
-              height: (MediaQuery.of(context).size.height -
-                      appBar.preferredSize.height) *
-                  0.02,
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  switched == true ? switched = false : switched = true;
-                });
-              },
-              child: Container(
-                padding: EdgeInsets.all(10),
-                height: (MediaQuery.of(context).size.height -
-                        appBar.preferredSize.height) *
-                    0.8,
-                decoration: BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                        color: flashcards[counter].complexity == "Basic"
-                            ? Colors.green[300]
-                            : flashcards[counter].complexity == "Intermediate"
-                                ? Colors.orange[300]
-                                : Colors.red[300],
-                        width: 8),
-                    bottom: BorderSide(
-                        color: flashcards[counter].complexity == "Basic"
-                            ? Colors.green[300]
-                            : flashcards[counter].complexity == "Intermediate"
-                                ? Colors.orange[300]
-                                : Colors.red[300],
-                        width: 8),
+              Container(
+                child: Center(
+                  child: Text(
+                    "Question ${counter + 1} of ${flashcards.length}",
+                    style: TextStyle(fontSize: 22),
                   ),
                 ),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      height: 20,
+              ),
+              SizedBox(
+                height: (MediaQuery.of(context).size.height -
+                        appBar.preferredSize.height) *
+                    0.02,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    switched == true ? switched = false : switched = true;
+                  });
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  height: (MediaQuery.of(context).size.height -
+                          appBar.preferredSize.height) *
+                      0.8,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      top: BorderSide(
+                          color: flashcards[counter].complexity == "Basic"
+                              ? Colors.green[300]
+                              : flashcards[counter].complexity == "Intermediate"
+                                  ? Colors.orange[300]
+                                  : Colors.red[300],
+                          width: 8),
+                      bottom: BorderSide(
+                          color: flashcards[counter].complexity == "Basic"
+                              ? Colors.green[300]
+                              : flashcards[counter].complexity == "Intermediate"
+                                  ? Colors.orange[300]
+                                  : Colors.red[300],
+                          width: 8),
                     ),
-                    SizedBox(
-                      child: switched == false
-                          ? Text(
-                              "Question:",
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
-                            )
-                          : Text(
-                              "Answer:",
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
-                            ),
-                    ),
-                    SizedBox(
-                      height: 40,
-                    ),
-                    Container(
-                      height: (MediaQuery.of(context).size.height -
-                              appBar.preferredSize.height) *
-                          0.55,
-                      alignment: Alignment.center,
-                      child: switched == false
-                          ? AutoSizeText(
-                              flashcards[counter].question,
-                              maxLines: 10,
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
-                            )
-                          : AutoSizeText(
-                              flashcards[counter].answer,
-                              maxLines: 10,
-                              style: TextStyle(
-                                  fontSize: 25, fontWeight: FontWeight.bold),
-                            ),
-                    ),
-                  ],
+                  ),
+                  child: Column(
+                    children: [
+                      SizedBox(
+                        height: 20,
+                      ),
+                      SizedBox(
+                        child: switched == false
+                            ? Text(
+                                "Question:",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              )
+                            : Text(
+                                "Answer:",
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                      ),
+                      SizedBox(
+                        height: 40,
+                      ),
+                      Container(
+                        height: (MediaQuery.of(context).size.height -
+                                appBar.preferredSize.height) *
+                            0.55,
+                        alignment: Alignment.center,
+                        child: switched == false
+                            ? AutoSizeText(
+                                flashcards[counter].question,
+                                maxLines: 10,
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              )
+                            : AutoSizeText(
+                                flashcards[counter].answer,
+                                maxLines: 10,
+                                style: TextStyle(
+                                    fontSize: 25, fontWeight: FontWeight.bold),
+                              ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

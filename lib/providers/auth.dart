@@ -24,7 +24,8 @@ class Auth with ChangeNotifier {
         _token != null) {
       return _token;
     }
-    return null;
+    refreshSession();
+    return _token;
   }
 
   String get userId {
@@ -129,21 +130,20 @@ class Auth with ChangeNotifier {
 
   Future<void> refreshSession() async {
     final url =
-        'https://securetoken.googleapis.com/v1/token?key=AIzaSyAKsQswem3CjYVRFI1853hI3uGvSau2wKE';
+        "https://securetoken.googleapis.com/v1/token?key=AIzaSyAKsQswem3CjYVRFI1853hI3uGvSau2wKE";
 
     try {
       final response = await http.post(
         url,
         headers: {
           "Accept": "application/json",
-          "Content-Type": "application/x-www-form-urlencoded"
-        },
-        body: json.encode({
+          'Content-Type': 'application/x-www-form-urlencoded',
           'grant_type': 'refresh_token',
-          'refresh_token': '[REFRESH_TOKEN]',
-        }),
+          'refresh_token': '[REFRESH_TOKEN]'
+        },
       );
       final responseData = json.decode(response.body);
+      print(responseData);
       if (responseData['error'] != null) {
         throw HttpException(responseData['error']['message']);
       }

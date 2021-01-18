@@ -71,6 +71,9 @@ class _IncorrectFlashcardsShowState extends State<IncorrectFlashcardsShow> {
         child: MainDrawer(),
       ),
       body: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[50],
+        ),
         height:
             MediaQuery.of(context).size.height - appBar.preferredSize.height,
         child: Column(

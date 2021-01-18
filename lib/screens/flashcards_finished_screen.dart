@@ -51,69 +51,74 @@ class _FlashcardsFinishedScreenState extends State<FlashcardsFinishedScreen> {
       drawer: Drawer(
         child: MainDrawer(),
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            alignment: Alignment.center,
-            child: Text("Congratulations, you completed this set of cards!"),
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Container(
-            alignment: Alignment.center,
-            child: Text(
-                "You answered ${flashcardsLength - _flashcards.length} out of $flashcardsLength questions correctly!"),
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          incorrectFlashcards.length == 0
-              ? Text("")
-              : GestureDetector(
-                  onTap: _changePage,
-                  child: Container(
-                    margin: EdgeInsets.all(20),
-                    alignment: Alignment.center,
-                    width: 200,
-                    decoration: BoxDecoration(
-                      color: Colors.blue[300],
-                      borderRadius: BorderRadius.circular(5),
-                    ),
-                    padding: EdgeInsets.all(5),
-                    child: Text(
-                      "Review incorrect questions",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
+      body: Container(
+        decoration: BoxDecoration(
+          color: Colors.blue[50],
+        ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              alignment: Alignment.center,
+              child: Text("Congratulations, you completed this set of cards!"),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Container(
+              alignment: Alignment.center,
+              child: Text(
+                  "You answered ${flashcardsLength - _flashcards.length} out of $flashcardsLength questions correctly!"),
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            incorrectFlashcards.length == 0
+                ? Text("")
+                : GestureDetector(
+                    onTap: _changePage,
+                    child: Container(
+                      margin: EdgeInsets.all(20),
+                      alignment: Alignment.center,
+                      width: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.blue[300],
+                        borderRadius: BorderRadius.circular(5),
+                      ),
+                      padding: EdgeInsets.all(5),
+                      child: Text(
+                        "Review incorrect questions",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                   ),
+            GestureDetector(
+              onTap: _goBack,
+              child: Container(
+                alignment: Alignment.center,
+                width: 200,
+                decoration: BoxDecoration(
+                  color: Colors.blue[300],
+                  borderRadius: BorderRadius.circular(5),
                 ),
-          GestureDetector(
-            onTap: _goBack,
-            child: Container(
-              alignment: Alignment.center,
-              width: 200,
-              decoration: BoxDecoration(
-                color: Colors.blue[300],
-                borderRadius: BorderRadius.circular(5),
-              ),
-              padding: EdgeInsets.all(5),
-              child: Text(
-                "Back to review overview",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
+                padding: EdgeInsets.all(5),
+                child: Text(
+                  "Back to review overview",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

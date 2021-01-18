@@ -9,7 +9,7 @@ import "./home_screen.dart";
 
 enum AuthMode { Signup, Login }
 
-class LogInPage extends StatelessWidget {
+class AuthScreen extends StatelessWidget {
   static const routeName = '/auth';
 
   @override

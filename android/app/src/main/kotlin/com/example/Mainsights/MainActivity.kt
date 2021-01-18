@@ -1,4 +1,4 @@
-package com.sijoen.Mainsights
+package com.sijoen.mainsights
 
 import io.flutter.embedding.android.FlutterActivity
 

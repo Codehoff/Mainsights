@@ -46,9 +46,11 @@ class Flashcards with ChangeNotifier {
         }),
       );
     });
+    notifyListeners();
   }
 
   Future<void> fetchAllFlashcards() async {
+    print(userId);
     final url =
         'https://mainsights-1fb71.firebaseio.com/flashcards/$userId.json?auth=$authToken';
     final response = await http.get(url);
